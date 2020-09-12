@@ -1,0 +1,152 @@
+<mat-tab-group [animationDuration]="'0'">
+  <mat-tab label="Log A Call">
+    <!-- <div>
+      <button mat-button class="glbl-btn lg-btn" (click)='openLogCall()'>
+        Add Log A Call
+      </button>
+    </div> -->
+    <app-fmp-tero-card>
+      <div class="header">Log a call</div>
+      <div class="main">
+        <div class="button-list">
+          <button mat-button class="glbl-btn lg-btn" (click)='openLogCall()'>
+            Log a call
+          </button>
+        </div>
+
+        <div class="upcoming-due">
+          <div class="upcoming-header">
+            <span class="material-icons">
+              keyboard_arrow_right
+            </span>
+            <span>Log Details</span>
+          </div>
+          <div class="upcoming-content">
+            <ng-container *ngFor='let log of CustomerLogACallList ; let i = index'>
+              <div class="arrow-line">
+                <div>
+                  <div class="upcoming-content-header" [class.active]="selectedIndex === i">
+                    <span class="material-icons up" (click)="setIndex(i)">
+                      keyboard_arrow_right
+                    </span>
+                    <span class="material-icons down" (click)="setIndex(i)">
+                      keyboard_arrow_down
+                    </span>
+                    <span class="material-icons link-icon">
+                      dns
+                    </span>
+                    <span class="pointer">
+                      <!-- <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                    </mat-checkbox>  -->
+                      {{log.Name}}
+                    </span>
+                  </div>
+                  <div class="upcoming-description">
+                    <b>{{log.RelatedTo}} </b>&nbsp;<b>{{log.Comments}}</b>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+    </app-fmp-tero-card>
+  </mat-tab>
+  <mat-tab label="New Task">
+    <app-fmp-tero-card>
+      <div class="header">Task</div>
+      <div class="main">
+        <div class="button-list">
+          <button mat-button class="glbl-btn lg-btn" (click)='openNewtask()'>
+            Create A Task
+          </button>
+        </div>
+
+        <div class="upcoming-due">
+          <div class="upcoming-header">
+            <span class="material-icons">
+              keyboard_arrow_right
+            </span>
+            <span>Upcoming & Due</span>
+          </div>
+          <div class="upcoming-content">
+            <ng-container *ngFor='let upcoming of customerTaskDetails ; let i = index'>
+              <div class="arrow-line">
+                <div>
+                  <div class="upcoming-content-header" [class.active]="selectedIndex === i">
+                    <span class="material-icons up" (click)="setIndex(i)">
+                      keyboard_arrow_right
+                    </span>
+                    <span class="material-icons down" (click)="setIndex(i)">
+                      keyboard_arrow_down
+                    </span>
+                    <span class="material-icons link-icon">
+                      dns
+                    </span>
+                    <span class="pointer">
+                      <!-- <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                    </mat-checkbox>  -->
+                      {{upcoming.Name}}
+                    </span>
+                  </div>
+                  <div class="upcoming-description">
+                    <b>{{upcoming.AssignedTo}} </b>&nbsp;<b>{{upcoming.Status}}</b> &nbsp;{{upcoming.Subject}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </app-fmp-tero-card>
+  </mat-tab>
+  <mat-tab label="New Event">
+    <app-fmp-tero-card>
+      <div class="header">New Event</div>
+      <div class="main">
+        <div class="button-list">
+          <button mat-button class="glbl-btn lg-btn" (click)='openEvent()'>
+            New Event
+          </button>
+        </div>
+        <div class="upcoming-due">
+          <div class="upcoming-header">
+            <span class="material-icons">
+              keyboard_arrow_right
+            </span>
+            <span>Event Details</span>
+          </div>
+          <div class="upcoming-content">
+            <ng-container *ngFor='let event of customerEventList ; let i = index'>
+              <div class="arrow-line">
+                <div>
+                  <div class="upcoming-content-header" [class.active]="selectedIndex === i">
+                    <span class="material-icons up" (click)="setIndex(i)">
+                      keyboard_arrow_right
+                    </span>
+                    <span class="material-icons down" (click)="setIndex(i)">
+                      keyboard_arrow_down
+                    </span>
+                    <span class="material-icons link-icon">
+                      dns
+                    </span>
+                    <span class="pointer">
+                      <!-- <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                    </mat-checkbox>  -->
+                      {{event.Subject}}
+                    </span>
+                  </div>
+                  <div class="upcoming-description">
+                    Related To:-<b>{{event.RelatedTo}} </b>&nbsp;Assigned To:-<b>{{event.AssignedTo}}</b>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+      </div>
+    </app-fmp-tero-card>
+  </mat-tab>
+</mat-tab-group>

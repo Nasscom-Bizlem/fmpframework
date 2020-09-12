@@ -1,0 +1,259 @@
+<div class="left-wrapper">
+
+  <div class="logo">
+    <span>Fetch My</span>
+    <span>Payments</span>
+  </div>
+  <mat-list role="list">
+    <mat-list-item role="listitem">
+      <!-- <mat-icon mat-list-icon>home</mat-icon> -->
+      <img src="assets/images1/home.png" class="home">
+      <span>Home</span>
+    </mat-list-item>
+
+
+<mat-list-item role="listitem" class="slide-in-up" appExpandMenu
+     (click)="navigateToPath('/reminder')">
+      <div class="slide-inner">
+        <img src="assets/images1/setup-icon.png" class="refresh">
+        <div>
+          <span>Receivable</span>
+          <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </mat-list-item>
+
+    <div class="glbl-open-advance" @fade>
+      <ul>
+        <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Create Reminders</span>
+        </li>
+       
+      <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Customers</span>
+        </li>
+
+
+     <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Invoices</span>
+        </li>
+
+        <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Payments</span>
+        </li>
+
+        <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Reconcilliation</span>
+        </li>
+
+        <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Customer Portal</span>
+        </li>
+
+      </ul>
+    </div>
+
+
+    <!-- <mat-list-item role="listitem" (click)="navigateToPath('/reminder')">
+      <mat-icon mat-list-icon>home</mat-icon>
+      <img src="assets/images1/reminder.png" class="reminder" >
+      <span>Create Reminders</span>
+    </mat-list-item> -->
+
+    <!-- reminder -->
+    <!-- <mat-list-item role="listitem"
+     routerLinkActive="active"  (click)="navigateToOverView('/reminder')">
+      <img src="assets/images1/Customers.png" class="customer">
+      <span>Customers</span>
+    </mat-list-item> -->
+
+     <!-- /admin/invoice-details' -->
+    <!-- <mat-list-item role="listitem" (click)="navigateToPath('/reminder')">
+      <mat-icon mat-list-icon>home</mat-icon> [queryParams]="{ CustomerId: customerId }"
+      <img src="assets/images1/Invoices.png" class="refresh">
+      <span>Invoices</span>
+    </mat-list-item> -->
+
+    <!-- <mat-list-item role="listitem" (click)="navigateToPath('/reminder')">
+         [routerLink]="['/admin/payment']" routerLinkActive="active"
+        <mat-icon mat-list-icon>home</mat-icon> Payments-logo.png
+      <img src="assets/images1/Payments.png" class="refresh">
+      <span>Payments</span>
+    </mat-list-item> -->
+
+    <mat-list-item role="listitem" class='slide-in-up' appExpandMenu>
+      <!-- <mat-icon mat-list-icon>home</mat-icon> -->
+      <div class="slide-inner">
+        <img src="assets/images1/Advanced.png" class="refresh">
+        <div>
+          <span>Advanced</span>
+          <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </mat-list-item>
+
+    <div class="glbl-open-advance" @fade>
+      <ul>
+        <li>
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Payment plans</span>
+        </li>
+        <li>
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Recurring Payments</span>
+        </li>
+        <li>
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Late Fees</span>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- <mat-list-item role="listitem">
+      <img src="assets/images1/Reconciliation.png" class="refresh">
+      <span>Reconcilliation</span>
+    </mat-list-item> -->
+
+
+    <!-- <mat-list-item role="listitem" >
+      <img src="assets/images1/customer-portal.png" class="people">
+      <span>Customer Portal</span>
+    </mat-list-item> -->
+
+    <mat-list-item role="listitem" class="slide-in-up" appExpandMenu
+     (click)="navigateToPath('/reminder')">
+      <div class="slide-inner">
+        <img src="assets/images1/setup-icon.png" class="refresh">
+        <div>
+          <span>Setup</span>
+          <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </mat-list-item>
+
+    <div class="glbl-open-advance" @fade>
+      <ul>
+        <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Projects</span>
+        </li>
+        <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Groups</span>
+        </li>
+        <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>communication</span>
+        </li>
+
+         <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Chat</span>
+        </li>
+
+        <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Payments</span>
+        </li>
+
+          <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Google Analytics/GTM </span>
+        </li>
+
+          <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Mail Read & Track</span>
+        </li>
+
+      </ul>
+    </div>
+
+
+   <mat-list-item role="listitem" class="slide-in-up" appExpandMenu
+     (click)="navigateToPath('/reminder')">
+      <div class="slide-inner">
+        <img src="assets/images1/setup-icon.png" class="refresh">
+        <div>
+          <span>Authorisation</span>
+          <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </mat-list-item>
+
+    <div class="glbl-open-advance" @fade>
+      <ul>
+        <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Users</span>
+        </li>
+        <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Roles & Permissions</span>
+        </li>
+        <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Add plugin</span>
+        </li>
+      </ul>
+    </div>
+
+
+
+   <mat-list-item role="listitem" class="slide-in-up" appExpandMenu
+     (click)="navigateToPath('/reminder')">
+      <div class="slide-inner">
+        <img src="assets/images1/setup-icon.png" class="refresh">
+        <div>
+          <span>Integration</span>
+          <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </mat-list-item>
+
+    <div class="glbl-open-advance" @fade>
+      <ul>
+        <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Data sources</span>
+        </li>
+        <li (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Web services </span>
+        </li>
+        
+      </ul>
+    </div>
+
+
+  <mat-list-item role="listitem" class="slide-in-up" appExpandMenu
+     (click)="navigateToPath('/reminder')">
+      <div class="slide-inner">
+        <img src="assets/images1/setup-icon.png" class="refresh">
+        <div>
+          <span>Fullfillment</span>
+          <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </mat-list-item>
+
+    <div class="glbl-open-advance" @fade>
+      <ul>
+        <li  (click)="navigateToPath('/reminder')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Manage Service Master</span>
+        </li>
+       
+        
+      </ul>
+    </div>
+
+  </mat-list>
+</div>

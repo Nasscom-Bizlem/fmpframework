@@ -1,0 +1,7 @@
+{
+  "pageSize":"20",
+  "sessionTimeOut":"30",
+  "testURL":"http://localhost:4200",
+  "baseUrlV1":"http://199.217.112.145:8089/fma/api/",
+  "switchMiddleTierV1": true
+}

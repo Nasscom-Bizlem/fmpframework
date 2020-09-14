@@ -1,0 +1,41 @@
+<div class="confirm-header">
+  <h1 mat-dialog-title>Add Customer TeamSpace</h1>
+  <!-- <button > -->
+  <i mat-icon-button class="material-icons close pointer" [mat-dialog-close]='false'>close</i>
+  <!-- </button> -->
+</div>
+<div class="dialog-content" [formGroup]="teamSpaceForm">
+  <div>
+    <label>Customer Group Name</label>
+    <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+      <input matInput placeholder="" value="" formControlName="TeamSpaceName">
+    </mat-form-field>
+    <div *ngIf="submitted && f.TeamSpaceName.errors" class="invalid-feedback">
+      <div *ngIf="f.TeamSpaceName.errors.required">TeamSpaceName is required</div>
+    </div>
+  </div>
+
+  <div>
+    <label>Description</label>
+    <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+      <textarea matInput formControlName="Description"></textarea>
+    </mat-form-field>
+    <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+      <div *ngIf="f.Description.errors.required">Description is required</div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="dialog-footer">
+  <div class="dialog-footer">
+    <button mat-button class="glbl-btn  green-btn" (click)='onAddteamSpace()'>
+      <span>Save</span>
+    </button>
+    <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
+      <span>Cancel</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="table-wrapper tbl-border">
+  <div class="table-header">
+    <div>
+      <h5>Notes(1)</h5>
+    </div>
+    <div>
+      <!-- <button mat-button class="glbl-btn xs-glbl-btn green-btn">
+        Preview
+      </button> -->
+      <button mat-button class="glbl-btn xs-glbl-btn violet-btn" (click)='openNotesList()'>
+        Add Note
+      </button>
+      <!-- <button mat-button class="glbl-btn  xs-glbl-btn blue-btn">
+        Edit Notes
+      </button> -->
+      <button mat-button class="glbl-btn  xs-glbl-btn orange-btn">
+        Delete
+      </button>
+      <span class="material-icons refresh" mat-icon-button (click)='refreshData()'>
+        loop
+      </span>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="glbl-tbl">
+
+    <ng-container matColumnDef="check">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-1">
+        <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-1">
+        <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Title">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-6">
+        Title
+      </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6 pointer">
+        <span>{{element.Title}}</span>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Text Preview</th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-4 "> <span>{{element.Description}}</span> </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="CreatedBy">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Created By </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.CreatedBy}}</span> </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="LastModified">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Last Modified </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.LastModified}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="LastModifiedBy">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Last Modified By </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.LastModifiedBy}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="view">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> View </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+        <mat-icon mat-icon-button class="edit" (click)='deleteNotes(element)'>
+          delete
+        </mat-icon>
+        <mat-icon mat-icon-button class="edit" (click)='editNotes(element)'>
+          edit
+        </mat-icon>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<app-fmp-tero-card>
+  <div class="header">
+    <div>
+      <h5>Files(1)</h5>
+      <div>
+        <button mat-button class="glbl-btn xs-glbl-btn violet-btn">
+          Add Files
+        </button>
+        <button mat-button class="glbl-btn  xs-glbl-btn orange-btn">
+          Delete
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <div class="main">
+    <div>
+      <span>Customer-Dashboard</span>&nbsp;
+      <span>July 1,2020 &nbsp;. 473KB &nbsp;.png</span>
+    </div>
+  </div>
+</app-fmp-tero-card>

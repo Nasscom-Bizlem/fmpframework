@@ -1,0 +1,52 @@
+<mat-toolbar  [ngClass]="{'active':isOpen,'inactive':!isOpen}">
+
+  <div class="home-logo" >
+    <button mat-icon-button class="ham" (click)="navOpen()" *ngIf='!isOpen'>
+      <img src="assets/images1/menu.png" width="26px"  >
+    </button>
+    <button mat-icon-button class="cross" *ngIf='isOpen' (click)="navOpen()">
+      <mat-icon>close</mat-icon>
+    </button>
+
+  </div>
+  <div class="home-content">
+    <div class="elementor-inner">
+    </div>
+    <div class="elementor-inner">
+      <div class="header-dots">
+        <div class="nav-link iconImg">
+          <img src="assets/images/refresh.png" class="refresh">
+
+        </div>
+        <div class="nav-link iconImg">
+          <img src="assets/images/user.png" class="user">
+        </div>
+        <div class="nav-link iconImg">
+          <img src="assets/images/help.png" class="help">
+
+        </div>
+        <div class="nav-link iconImg">
+          <mat-icon mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button">more_vert</mat-icon>
+          <mat-menu #menu="matMenu" class="header-menu">
+            <button mat-menu-item class="header-text-btn">
+              <span>Account</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>voicemail</mat-icon>
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item (click)='logOut()'>
+              <mat-icon>arrow_forward</mat-icon>
+              <span>LogOut</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</mat-toolbar>

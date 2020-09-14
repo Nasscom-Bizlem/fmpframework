@@ -1,0 +1,68 @@
+<div class="confirm-header">
+  <h1 mat-dialog-title>Add Notes</h1>
+  <!-- <button > -->
+  <i mat-icon-button class="material-icons close pointer" [mat-dialog-close]='false'>close</i>
+  <!-- </button> -->
+</div>
+<div class="dialog-content" [formGroup]="notesForm">
+  <div>
+    <label>Title</label>
+    <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+      <input matInput placeholder="" value="" formControlName="Title">
+    </mat-form-field>
+    <div *ngIf="submitted && f.Title.errors" class="invalid-feedback">
+      <div *ngIf="f.Title.errors.required">Title is required</div>
+    </div>
+  </div>
+  <div>
+    <label>CreatedBy</label>
+    <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+      <input matInput placeholder="" value="" formControlName="CreatedBy">
+    </mat-form-field>
+    <div *ngIf="submitted && f.CreatedBy.errors" class="invalid-feedback">
+      <div *ngIf="f.CreatedBy.errors.required">CreatedBy is required</div>
+    </div>
+  </div>
+  <div>
+    <label>LastModified</label>
+    <mat-form-field   class="glbl-datepicker" [floatLabel]="'never'">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+       [(ngModel)]="planModel.start_time"
+        (ngModelChange)='dateChanged($event)' formControlName="LastModified">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div *ngIf="submitted && f.LastModified.errors" class="invalid-feedback">
+      <div *ngIf="f.LastModified.errors.required">LastModified is required</div>
+    </div>
+  </div>
+  <div>
+    <label>Description</label>
+    <mat-form-field class="glb-textarea" [floatLabel]="'never'">
+      <textarea matInput formControlName="Description"></textarea>
+    </mat-form-field>
+    <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+      <div *ngIf="f.Description.errors.required">Description is required</div>
+    </div>
+  </div>
+  <div>
+    <label>LastModifiedBy</label>
+    <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+      <input matInput placeholder="" value="" formControlName="LastModifiedBy">
+    </mat-form-field>
+    <div *ngIf="submitted && f.LastModifiedBy.errors" class="invalid-feedback">
+      <div *ngIf="f.LastModifiedBy.errors.required">LastModifiedBy is required</div>
+    </div>
+  </div>
+
+</div>
+<div class="dialog-footer">
+  <div class="dialog-footer">
+    <button mat-button class="glbl-btn  green-btn" (click)='onSubmit()'>
+      <span>Save</span>
+    </button>
+    <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
+      <span>Cancel</span>
+    </button>
+  </div>
+</div>

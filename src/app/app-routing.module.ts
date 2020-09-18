@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CustomerComponent } from './features/customer/customer.component';
 import { LoginComponent } from './core-services/control/login/login.component';
 import { RegistrationComponent } from './core-services/control/registration/registration.component';
 import { AuthLoginGuard } from './core-services/guard/authLogin.guard';
@@ -15,50 +14,73 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'registration', component: RegistrationComponent },
       { path: 'notfound', component: NotfoundComponent },
+
+      //---------------------------Incentives-------------------------------------------
       {
-        path: 'customerdashboard',
+        path: 'incentives',
         canActivateChild: [AuthLoginGuard],
         loadChildren: () =>
-          import('./customers-dashboard/customers-dashboard.module').then(
-            (m) => m.CustomersDashboardModule
+          import('./incentives/incentives.module').then(
+            (m) => m.IncentivesModule
+          ),
+      },
+
+      //---------------------------Incentives END-------------------------------------------
+
+      //---------------------------receivables-------------------------------------------
+      {
+        path: 'receivables',
+        canActivateChild: [AuthLoginGuard],
+        loadChildren: () =>
+          import('./receivables/receivables.module').then(
+            (m) => m.ReceivablesModule
+          ),
+      },
+
+      //---------------------------receivables END-------------------------------------------
+
+      //---------------------------Assortment-------------------------------------------
+      {
+        path: 'assortment1',
+        canActivateChild: [AuthLoginGuard],
+        loadChildren: () =>
+          import('./assortment/assotment1/assotment1.module').then(
+            (m) => m.Assotment1Module
           ),
       },
       {
-        path: 'invoicedashboard',
+        path: 'assortment2',
         canActivateChild: [AuthLoginGuard],
         loadChildren: () =>
-          import('./invoice-dashboard/invoice-dashboard.module').then(
-            (m) => m.InvoiceDashboardModule
+          import('./assortment/assotment2/assotment2.module').then(
+            (m) => m.Assotment2Module
           ),
       },
       {
-        path: 'customer',
+        path: 'assortment3',
         canActivateChild: [AuthLoginGuard],
         loadChildren: () =>
-          import('./features/customer/customer.module').then(
-            (m) => m.CustomerModule
+          import('./assortment/assotment3/assotment3.module').then(
+            (m) => m.Assotment3Module
           ),
       },
-      // {
-      //   path: 'customer/:id',
-      //   canActivateChild: [AuthLoginGuard],
-      //   loadChildren: () =>
-      //     import('./features/customer/customer.module').then(
-      //       (m) => m.CustomerModule
-      //     ),
-      // },
       {
-        path: 'admin',
+        path: 'assortment4',
         canActivateChild: [AuthLoginGuard],
         loadChildren: () =>
-          import('./admin/admin.module').then((m) => m.AdminModule),
+          import('./assortment/assotment4/assotment4.module').then(
+            (m) => m.Assotment4Module
+          ),
       },
       {
-        path: 'settings',
+        path: 'assortment5',
         canActivateChild: [AuthLoginGuard],
         loadChildren: () =>
-          import('./settings/settings.module').then((m) => m.SettingsModule),
+          import('./assortment/assotment5/assotment5.module').then(
+            (m) => m.Assotment5Module
+          ),
       },
+      //---------------------------Assortment END-------------------------------------------
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: '**', component: NotfoundComponent },
     ],

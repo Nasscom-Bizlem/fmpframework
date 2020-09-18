@@ -17,7 +17,6 @@ import { VerticalSplitPaneComponent } from './split-pane/vertical-split-pane.com
 import { VerticalSplitSeparatorComponent } from './split-pane/vertical-split-pane-separator.component';
 import { SplitPaneComponent } from './split-pane/split-pane.component';
 import { FilterComponent } from './filter/filter.component';
-import { AddteamspaceComponent } from './dialog/addteamspace/addteamspace.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PopoverComponent } from './popover/popover.component';
 import { PopupDataComponent } from './popup-data/popup-data.component';
@@ -45,7 +44,6 @@ const sharedModules: any[] = [
     VerticalSplitSeparatorComponent,
     SplitPaneComponent,
     FilterComponent,
-    AddteamspaceComponent,
     NotfoundComponent,
     PopoverComponent,
     PopupDataComponent,

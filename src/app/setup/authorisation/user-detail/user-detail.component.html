@@ -1,0 +1,233 @@
+<div class="user" style="padding-top: 70px; margin-left: 10px; margin-right: 10px;">
+  <!-- <nav class="nav nav-pills nav-justified">
+    <li class="nav-link active margindata">
+      <a [routerLink]="'/settings/user'" style="text-decoration: none;">Users</a>
+    </li>
+    <li class="nav-link active setslash" style="color: black;">
+      {{ title }}
+    </li>
+  </nav>
+  <br> -->
+   <nav aria-label="breadcrumb" class="navdata"> 
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">
+        <a [routerLink]="'/settings/user'">Users</a>
+      </li>
+      <li
+        class="breadcrumb-item active"
+        style="color: black;"
+        aria-current="page"
+      >
+        {{ title }}
+      </li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-sm-12">
+      <mat-tab-group>
+        <mat-tab label="General">
+          <div class="user">
+            <div class="dialog-content" [formGroup]="userEditForm">
+              <fieldset class="glbl-set">
+                <legend align="left">Information</legend>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group" align="left">
+                      <label>Login</label>
+
+                      <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                        <input matInput formControlName="UserId" />
+                        <div *ngIf="submitted && f.UserId.errors">
+                          <mat-error *ngIf="submitted && f.UserId.errors.required" class="invalid-feedback">Login is
+                            required</mat-error>
+                        </div>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" align="left">
+                      <label>First Name</label>
+                      <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                        <input matInput formControlName="Name" />
+                        <div *ngIf="submitted && f.Name.errors">
+                          <mat-error *ngIf="submitted && f.Name.errors.required" class="invalid-feedback">First name is
+                            required</mat-error>
+                        </div>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" align="left">
+                      <label>Last Name</label>
+                      <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                        <input matInput formControlName="LastName" />
+                        <div *ngIf="submitted && f.LastName.errors">
+                          <mat-error *ngIf="submitted && f.LastName.errors.required" class="invalid-feedback">Last name
+                            is required</mat-error>
+                        </div>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" align="left">
+                      <label>Email</label>
+                      <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                        <input matInput formControlName="EmailId" />
+                        <div *ngIf="submitted && f.EmailId.errors">
+                          <mat-error *ngIf="submitted && f.EmailId.errors.required" class="invalid-feedback">Email is
+                            required</mat-error>
+                          <mat-error *ngIf="submitted && f.EmailId.errors.email" class="invalid-feedback">Email is
+                            invalid</mat-error>
+                        </div>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="glbl-set">
+                <legend align="left">Authentication</legend>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group" align="left">
+                      <label>Password</label>
+                      <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                        <input matInput formControlName="Password" (input)="onPasswordInput()"
+                          [type]="hide ? 'password' : 'text'" />
+                        <!-- <div *ngIf="submitted && f.Password.errors"> -->
+                        <!--  <mat-error *ngIf="submitted && f.Password.errors.required" class="invalid-feedback">Password
+                              is required</mat-error> -->
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <mat-error *ngIf="Password.hasError('required')">Password is required</mat-error>
+                        <mat-error *ngIf="Password.hasError('minlength')">Password must have at least {{minPw}}
+                          characters</mat-error>
+
+                        <!-- </div>  -->
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" align="left">
+                      <label>Confirmation</label>
+                      <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                        <input matInput formControlName="confirmation" (input)="onPasswordInput()"
+                          [type]="hide ? 'password' : 'text'" />
+                        <!--  <div *ngIf="submitted && f.confirmation.errors"> -->
+                        <!-- <mat-error *ngIf=" submitted && f.confirmation.errors.required" class="invalid-feedback">Confirmation is required</mat-error> -->
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+                        <mat-error *ngIf="confirmation.hasError('required')">Please confirm your password</mat-error>
+                        <mat-error *ngIf="confirmation.invalid && !confirmation.hasError('required')">password and
+                          confirmPassword do not match</mat-error>
+                        <!-- </div> -->
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" align="left">
+                      <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'" formControlName="generate_password"
+                        (change)="onCheckboxChangeGeneratePassword($event)">
+                        Generate Password
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" align="left">
+                      <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'"
+                        formControlName="change_password_next" (change)="onCheckboxChangePasswordNextLogin($event)">
+                        Must change password at next login
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="col-md-12">
+                <div class="form-group" align="left">
+                  <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'" formControlName="send">
+                    Send account information to the user
+                  </mat-checkbox>
+                </div>
+                <br>
+                <div class="row" *ngIf="showMsgGeneral">
+                  <div class="col-xs-12">
+                    <p class="alert alert-success">
+                      <strong>Users Updated!</strong>
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="footer">
+            <button mat-button class="glbl-btn" (click)="saveUser()">
+              <span>Save</span>
+            </button>
+            <button mat-button class="glbl-btn" (click)="close()">
+              <span>Cancel</span>
+            </button>
+          </div>
+
+        </mat-tab>
+        <mat-tab label="Allocation">
+          <div class="user">
+            <div class="dialog-content" [formGroup]="allocationForm">
+              <fieldset class="glbl-set">
+                <legend>Information</legend>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Team Space</label>
+                      <ng-select [multiple]="true" appendTo="body" placeholder="Select Team Space"
+                        formControlName="team_space" [(ngModel)]="selectedalloationTeamSpace">
+                        <ng-option *ngFor="let teamSpaceListObj of teamSpaceList" [value]="teamSpaceListObj.Id">
+                          {{ teamSpaceListObj.Name }}
+                        </ng-option>
+                      </ng-select>
+                      <div *ngIf="submitted1 && j.team_space.errors">
+                        <mat-error *ngIf="submitted1 && j.team_space.errors.required" class="invalid-feedback">Team
+                          space is required</mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Role</label>
+                      <ng-select [multiple]="true" appendTo="body" placeholder="Select Role" formControlName="role"
+                        [(ngModel)]="selectedalloationRole">
+                        <ng-option *ngFor="let roleListObj of roleList" [value]="roleListObj.Id">
+                          {{ roleListObj.RoleName }}
+                        </ng-option>
+                      </ng-select>
+                      <div *ngIf="submitted1 && j.role.errors">
+                        <mat-error *ngIf="submitted1 && j.role.errors.required" class="invalid-feedback">Role is
+                          required</mat-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="footer">
+            <button mat-button class="glbl-btn" (click)="saveAllocation()">
+              <span>Save</span>
+            </button>
+            <button mat-button class="glbl-btn" (click)="close()">
+              <span>Cancel</span>
+            </button>
+          </div>
+
+          <br>
+          <div class="row" *ngIf="showMsgAllocation">
+            <div class="col-xs-12">
+              <p class="alert alert-success">
+                <strong>teamSpaceRoleAllocation added!</strong>
+              </p>
+            </div>
+          </div>
+
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

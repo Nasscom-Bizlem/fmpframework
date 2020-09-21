@@ -1,3 +1,4 @@
+  
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomerComponent } from './features/customer/customer.component';
@@ -83,3 +84,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
+

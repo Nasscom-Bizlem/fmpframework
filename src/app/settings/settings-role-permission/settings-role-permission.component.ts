@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UiService } from 'src/app/shared/ui.service';
-
+import { UiService } from '../../shared/ui.service';
+import { DialogService } from '../../shared/dialog/dialog.service';// import { DialogService } from '../../../shared/dialog/dialog.service';
 @Component({
   selector: 'app-settings-role-permission',
   templateUrl: './settings-role-permission.component.html',

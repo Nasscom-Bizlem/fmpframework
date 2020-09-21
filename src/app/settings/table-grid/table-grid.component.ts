@@ -6,8 +6,8 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UiService } from 'src/app/shared/ui.service';
-import { DialogService } from 'src/app/shared/dialog/dialog.service';
+import { UiService } from '../../shared/ui.service';
+import { DialogService } from '../../shared/dialog/dialog.service';
 
 export interface PeriodicElement {
   firstname: string;

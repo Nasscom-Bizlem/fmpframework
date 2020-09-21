@@ -59,6 +59,19 @@ const routes: Routes = [
         loadChildren: () =>
           import('./settings/settings.module').then((m) => m.SettingsModule),
       },
+      {
+        path: 'fullfillment',
+        canActivateChild: [AuthLoginGuard],
+        loadChildren: () =>
+          import('./fullfillment/fullfillment.module').then((m) => m.FullfillmentModule),
+      },
+      { path: 'incentives', loadChildren: () => import('./incentives/incentives.module').then(m => m.IncentivesModule) },
+      { path: 'data-source', loadChildren: () => import('./settings/data-source/data-source.module').then(m => m.DataSourceModule) },
+      { path: 'event-action', loadChildren: () => import('./settings/event-action/event-action.module').then(m => m.EventActionModule) },
+      { path: 'payments', loadChildren: () => import('./settings/payments/payments.module').then(m => m.PaymentsModule) },
+
+
+      
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: '**', component: NotfoundComponent },
     ],
@@ -69,4 +82,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

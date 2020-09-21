@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UiService } from 'src/app/shared/ui.service';
-
+import { UiService } from '../../shared/ui.service';
+import { DialogService } from '../../shared/dialog/dialog.service';
 @Component({
   selector: 'app-settings-user',
   templateUrl: './settings-user.component.html',
@@ -8,7 +8,7 @@ import { UiService } from 'src/app/shared/ui.service';
 })
 export class SettingsUserComponent implements OnInit {
 
-  constructor(private uiService: UiService) {}
+  constructor(private uiService: UiService) { }
 
   ngOnInit(): void {
     this.uiService.displayedColumns.next('user');

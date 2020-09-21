@@ -44,6 +44,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
   ctx: any;
 
   ngOnInit(): void {
+    // this.uiService.isLogginPage.emit(false);
     if (window.innerWidth > 1025) {
       this.view = [window.innerWidth / 2.95, 280];
       this.barPadding = '24';
@@ -88,7 +89,8 @@ export class CustomerComponent implements OnInit, AfterViewInit {
           .openCustomerList(this.customerListModel, this.customerDetails)
           .subscribe((res) => {
             if (res) {
-              this.customerService.addCustomer(res).subscribe((res11) => {});
+              this.customerService.addCustomer(res).subscribe((res11) => {
+              });
             }
           });
       });

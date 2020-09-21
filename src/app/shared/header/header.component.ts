@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
   }
   logOut() {
     localStorage.removeItem('currentUser');
-    // this.UiService.isLogginPage.next(false);
     // this.baseService.isAuthenticated();
     this.router.navigate(['login']);
   }

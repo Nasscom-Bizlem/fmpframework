@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class UiService {
   isGroupColumnClicked = new EventEmitter<boolean>();
   roleData = new EventEmitter<any>();
   hideSideNav: boolean = true;
-  isLogginPage: Subject<any> = new Subject();
+  isLogginPage = new BehaviorSubject(null);
 
   backToCustomerList = new BehaviorSubject(null);
 

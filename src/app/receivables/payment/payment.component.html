@@ -1,1 +1,268 @@
-<p>payment works!</p>
+<div class="payment-wrapper">
+    <div class="payment-inner">
+      <div class="left">
+        <div class="date">
+          <mat-form-field class="glbl-datepicker" [floatLabel]="'never'">
+  
+            <input matInput [matDatepicker]="picker" [formControl]="startDate">
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <span class="material-icons" (click)="picker.open()">
+            date_range
+          </span>
+  
+        </div>
+        <div class="date">
+          <mat-form-field class="glbl-datepicker" [floatLabel]="'never'">
+  
+            <input matInput [matDatepicker]="picker1" [formControl]="endDate">
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <span class="material-icons" (click)="picker1.open()">
+            date_range
+          </span>
+        </div>
+        <div class="customer-data">
+          <span>Customer (30)</span>
+        </div>
+        <div class="customer-search">
+          <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+            <input matInput placeholder="Recap your call" value="">
+            <mat-icon matPrefix>search</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div>
+        <mat-icon (click)='toggleMenu()'>view_module</mat-icon>
+      </div>
+    </div>
+    <div class="payment-status">
+      <nav class="ribbon ribbon--alpha" role="navigation" aria-label="breadcrumbs">
+        <div class="ribbon__element overdue">
+  
+          <span>OverDue</span>
+          <span>$ 100K</span>
+          <span>1 Week</span>
+  
+        </div>
+        <div class="ribbon__element current">
+          <span>OverDue</span>
+          <span>$ 100K</span>
+          <span>1 Week</span>
+        </div>
+        <div class="ribbon__element paid">
+          <span>Paid</span>
+          <span>$ 100K</span>
+          <span>15 Week</span>
+        </div>
+      </nav>
+    </div>
+    <div class="payment-cards">
+      <div>
+        <div>
+          <span>DSO @</span>
+          <span>54</span>
+          <span>
+            <mat-icon class="red">expand_more</mat-icon>
+            <span><span class="red">0% </span><span>from this last week</span></span>
+          </span>
+        </div>
+      </div>
+      <div class="border">
+        <div>
+          <span>Cash Collected</span>
+          <span>$ 7.3</span>
+          <span>
+            <mat-icon class="red">expand_more</mat-icon>
+            <span><span class="red">27.88% </span><span class="grey">from this last week</span></span>
+          </span>
+        </div>
+      </div>
+      <div class="border">
+        <div>
+          <span>Open Invoices</span>
+          <span>54</span>
+          <span>
+            <mat-icon class="green">expand_more</mat-icon>
+            <span class="green">27.88% <span>from this last week</span></span>
+          </span>
+        </div>
+      </div>
+      <div>
+        <div>
+          <span>Remainders opened</span>
+          <span>0 / 54</span>
+          <span>
+            <mat-icon class="red">expand_more</mat-icon>
+            <span class="red">20% <span>from this last week</span></span>
+          </span>
+        </div>
+      </div>
+      <div class="border">
+        <div>
+          <span>Accounts requiring calls</span>
+          <span>0 / 48</span>
+          <span>
+            <mat-icon class="red">expand_more</mat-icon>
+            <span class="red">0% <span>from this last week</span></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="table-wrapper tbl-border dialog-tbl">
+  
+      <table mat-table [dataSource]="dataSource" class="glbl-tbl grey-border-margin">
+  
+  
+  
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+        <!-- <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Follow Up
+              </mat-checkbox> -->
+        <!-- lens -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="invoiceValue">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-2">
+  
+          </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-2">
+            <span *ngIf='element.priority===1'>
+              <span class="high"></span>
+              <span>{{element.invoiceValue}}</span>
+            </span>
+            <span *ngIf='element.priority===2'><span class="medium"></span><span>{{element.invoiceValue}}</span> </span>
+            <span *ngIf='element.priority===3'><span class="low"></span><span>{{element.invoiceValue}}</span> </span>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="check">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-1">
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-1">
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="customerName">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-6">
+            Customer Name
+          </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.customerName}}</span> </td>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="recievable">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Recievable</th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.recievable}}</span> </td>
+        </ng-container>
+  
+        <!-- Weight Column -->
+        <ng-container matColumnDef="recieved">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Recieved </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.recieved}}</span> </td>
+        </ng-container>
+  
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="outstanding">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> outstanding </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.recievable - element.recieved}}</span>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="lastContacted">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Last Contacted </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.lastContacted}}</span> </td>
+        </ng-container>
+        <ng-container matColumnDef="priority">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Priority </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+            <span *ngIf='element.priority===1'>
+              <span class="high"></span>
+              <span>High</span>
+            </span>
+            <span *ngIf='element.priority===2'><span class="medium"></span><span>Medium</span> </span>
+            <span *ngIf='element.priority===3'><span class="low"></span><span>Low</span> </span>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="icon">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Enable/Disable </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+            <mat-icon mat-icon-button class="edit enabled" *ngIf='element.priority!=1'>
+              timer
+            </mat-icon>
+            <mat-icon mat-icon-button class="edit disabled" *ngIf='element.priority===1'>
+              timer_off
+            </mat-icon>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="view">
+          <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> View </th>
+          <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>dialpad</mat-icon>
+                <span>Redial</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>voicemail</mat-icon>
+                <span>Check voice mail</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>notifications_off</mat-icon>
+                <span>Disable alerts</span>
+              </button>
+            </mat-menu>
+        </ng-container>
+  
+  
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <!-- <app-activity-task [@slideInOut]="menuState"></app-activity-task> -->
+    </div>
+  </div>
+  
+  
+  <div class="backdrop" (click)='toggleMenu()' [class.open]="menuState =='in'"></div>
+  <app-activity-task [@slideInOut]="menuState"></app-activity-task>
+  
+  
+  <!-- <vertical-split-pane >
+    <div class="split-pane-content-primary">left</div>
+  </vertical-split-pane>
+  
+  
+  <h5>Percent mode:</h5>
+  <div class="split-example ex-percent">
+    <as-split unit="percent" [direction]="direction"
+     (dragEnd)="dragEnd('percent', $event)" #split="asSplit">
+      <as-split-area size="30" #area1="asSplitArea">
+        <h5>Initial size: <b>30%</b></h5>
+        <h5>Current size: <b>{{ sizes.percent.area1 }}%</b></h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tiam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur.</p>
+      </as-split-area>
+      <as-split-area size="70" #area2="asSplitArea">
+        <h5>Initial size: <b>70%</b></h5>
+        <h5>Current size: <b>{{ sizes.percent.area2 }}%</b></h5>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
+          enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+          eodolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+          dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+          suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+          voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
+          pariatur?</p>
+      </as-split-area>
+    </as-split>
+  </div> -->
+  

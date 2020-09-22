@@ -8,13 +8,15 @@ import {
 } from '@angular/router';
 import { BaseService } from '../base.service';
 import { UiService } from 'src/app/shared/ui.service';
+import { GlobalConstantService } from '../global-constant.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthLoginGuard implements CanActivate, CanActivateChild {
   constructor(
     private baseService: BaseService,
     private router: Router,
-    private Uiservice: UiService
+    private Uiservice: UiService,
+    private globalConstants: GlobalConstantService
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -29,6 +31,7 @@ export class AuthLoginGuard implements CanActivate, CanActivateChild {
     //   this.router.navigate(['notfound']);
     //   return false;
     // }
+
     return true;
   }
 }

@@ -1,0 +1,119 @@
+<div>
+    <!-- <span class="material-icons" (click)='goToProfile()' matTooltip="Your Invoice">
+      account_circle
+    </span> -->
+    <!-- <mat-icon matTooltip="Your Invoice" (click)='goToProfile()'>account_circle</mat-icon> -->
+  </div>
+  <div class="table-wrapper tbl-border">
+    <p>
+      Your Invoice
+    </p>
+    <table mat-table [dataSource]="dataSource" class="glbl-tbl invoice-tbl">
+  
+      <ng-container matColumnDef="check">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-1">
+          <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-1">
+          <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="InvoiceNumber">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">
+          Invoice Number
+        </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-3"> <span>{{element.InvoiceNumber}}</span> </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="InvoiceDate">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Invoice Date</th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.InvoiceDate}}</span> </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="DueDate">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Due Date </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.DueDate}}</span> </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Terms">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3"> Terms </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-3"> <span>{{element.Terms}}</span>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Location">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Location </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.Location}}</span> </td>
+      </ng-container>
+      <ng-container matColumnDef="Memo">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Memo </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.Memo}}</span> </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Product">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Item</th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.Product}}</span> </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-6">ItemDescription </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.Description}}</span> </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ItemQuantity">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Item Quantity </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.ItemQuantity}}</span> </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ItemRate">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Item Rate </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.ItemRate}}</span> </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="ItemAmount">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Item Amount</th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.ItemQuantity * element.ItemRate}}</span>
+        </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="ServiceDate">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-6">Service Date</th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.ServiceDate}}</span>
+        </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="icon">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Enable/Disable </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-3">
+          <mat-icon mat-icon-button class="edit enabled" *ngIf='element.priority!=1'>
+            timer
+          </mat-icon>
+          <mat-icon mat-icon-button class="edit disabled" *ngIf='element.priority===1'>
+            timer_off
+          </mat-icon>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3"> View </th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-3">
+          <mat-icon mat-icon-button class="edit" (click)='showCustomerInvoiceDetails(element)'>
+            visibility
+          </mat-icon>
+  
+      </ng-container>
+  
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

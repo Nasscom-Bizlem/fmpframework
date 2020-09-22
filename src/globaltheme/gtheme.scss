@@ -636,7 +636,7 @@ app-details {
   }
 }
 
-app-admin-payment {
+app-admin-payment,app-payment {
   .payment-wrapper {
     .payment-inner {
       background: #ebf0f3;
@@ -2086,4 +2086,15 @@ app-popover {
   display: block;
   position: relative;
   left: 29%;
+}
+app-invoice {
+  >div {
+    padding: 0 15px;
+    margin-bottom: 20px;
+    >div{
+      &.iqra-activity{
+        display: flex;
+      }
+    }
+  }
 }

@@ -1,0 +1,261 @@
+<div class="confirm-header">
+  <h1 mat-dialog-title>Invoice Number #{{this.data.invoiceNumber}}</h1>
+  <!-- <button > -->
+  <i mat-icon-button class="material-icons close pointer" [mat-dialog-close]='false'>close</i>
+  <!-- </button> -->
+</div>
+<div class="dialog-content">
+  <div class="invoice-list">
+    <div>
+      <div>
+        <div>
+          <label>Customer <mat-icon (click)="show(tpl, origin,'customer-backdrop')" #origin>help</mat-icon></label>
+          <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+            <mat-select panelClass="drop-panel" (selectionChange)='getCustomerDetails($event)'>
+              <mat-option *ngFor="let customers of customerListModel" [value]="customers">
+                {{customers.Name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <div>
+          <label>Email <mat-icon (click)="show(tpl, origin,'email-backdrop')" #origin>help</mat-icon></label>
+          <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+            <input matInput placeholder="" value="" [(ngModel)]="email">
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div>
+        <label>Online Payments</label>
+        <div>
+          <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'" (change)="card('Card')">
+            Cards
+          </mat-checkbox>
+        </div>
+        <div>
+          <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'" (change)="bank('BankTransfer')">
+            Bank Transfer
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="due-balance">
+      <label>Balance Due</label>
+      <span>{{ totalSum | currency:'USD':'symbol-narrow':'1.2-2'}}</span>
+    </div>
+  </div>
+  <div class="invoice-list details">
+    <div>
+      <div>
+        <div>
+          <label>Address</label>
+          <div class="address">
+            <span>{{ customerAddress}}</span>
+            <span>{{customerAddressCity}}</span>
+            <span>{{customerAddressCountry}}</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <label>Terms</label>
+          <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+            <mat-select [(value)]='termsValue' (selectionChange)='getTerms($event)'>
+              <mat-option value="Net30">Net 30</mat-option>
+              <mat-option value="Net45">Net 45</mat-option>
+              <mat-option value="Net60">Net 60</mat-option>
+              <mat-option value="Net75">Net 75</mat-option>
+              <mat-option value="Net90">Net 90</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <label>Invoice Date</label>
+        <div>
+          <mat-form-field class="glbl-datepicker" [floatLabel]="'never'">
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="planModel.start_time"
+              (ngModelChange)='dateChanged($event)'>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <label>Due Date</label>
+        <div>
+          <mat-form-field class="glbl-datepicker" [floatLabel]="'never'">
+            <input matInput [matDatepicker]="picker1" placeholder="Choose a date" [(ngModel)]="planDueModel.start_time"
+              (ngModelChange)='dueDateChanged($event)'>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="service-details">
+    <div class="service-header">
+      <div class="card">
+        <!-- Page form start -->
+        <form [formGroup]="productForm" novalidate >
+          <div class="card-content">
+            <mat-card formArrayName="Products">
+              <div *ngFor="let unit of ArrayControls; let i=index">
+                <mat-divider *ngIf="ArrayControlsLength > 1 && i > 0"></mat-divider>
+                <div [formGroupName]="i">
+                  <div>
+                    <div class="inner">
+                      <label><span></span></label>
+                    </div>
+                    <div class="inner">
+                      <label><span>#</span></label>
+                      <mat-icon (click)="addUnit()">add_box</mat-icon>
+                    </div>
+                    <div class="inner">
+                      <label> <span>Product Name</span></label>
+                      <div>
+                        <mat-form-field [floatLabel]="'never'">
+                          <input matInput placeholder="Product Name" formControlName="ProductName" required>
+                          <!-- <mat-error *ngIf="unit.controls.ProductName.invalid">
+                            Unit name is required.
+                          </mat-error> -->
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="inner">
+                      <label><span>Description</span></label>
+                      <div>
+                        <mat-form-field [floatLabel]="'never'">
+                          <input matInput placeholder="Description" formControlName="Description" required>
+                          <!-- <mat-error *ngIf="unit.controls.Description.invalid">
+                            Unit name is required.
+                          </mat-error> -->
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="inner">
+                      <label><span>Quantity</span></label>
+                      <div>
+                        <mat-form-field [floatLabel]="'never'">
+                          <input matInput placeholder="Quantity" type="number" formControlName="Qty" required>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="inner">
+                      <label><span>Rate</span></label>
+                      <div>
+                        <mat-form-field [floatLabel]="'never'">
+                          <input matInput placeholder="Unit price" type="number" formControlName="UnitPrice" required>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="inner">
+                      <label><span>Amount</span></label>
+                      <div>
+                        <mat-form-field [floatLabel]="'never'">
+                          <input matInput placeholder="Total sum" formControlName="Amount" readonly>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="inner">
+                      <label><span>Tax</span></label>
+                      <div>
+                        <mat-form-field [floatLabel]="'never'">
+                          <input matInput placeholder="Tax">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="inner">
+                      <label><span>Delete</span></label>
+                      <mat-icon *ngIf="ArrayControlsLength > 1" (click)="removeUnit(i)">delete forever</mat-icon>
+                      <!-- <button type="button" mat-mini-fab color="warn" *ngIf="ArrayControlsLength > 1"
+                        (click)="removeUnit(i)">
+
+                      </button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <mat-card-actions> -->
+              <!-- <button type="button" mat-raised-button (click)="addUnit()">
+                  <mat-icon>add box</mat-icon>
+                  Add new unit
+                </button> -->
+
+              <!-- </mat-card-actions> -->
+            </mat-card>
+          </div>
+
+
+        </form>
+        <div class="product-bottom">
+          <div>
+            <div class="card-actions">
+              <button type="button" mat-button (click)="clearAllUnits()" class="clear-all">
+                <mat-icon>remove_circle</mat-icon>
+                Clear all
+              </button>
+              <button mat-button [disabled]="productForm.invalid" class="submit" (click)='save(productForm.value, productForm.valid,$event)'>Submit</button>
+            </div>
+            <div class="messages">
+              <div>
+                <label>Message On Invoice</label>
+                <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                  <textarea matInput placeholder="" value="" [(ngModel)]="invoiceMessage"></textarea>
+
+                </mat-form-field>
+              </div>
+              <div>
+                <label>Message On Statement</label>
+                <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                  <textarea matInput placeholder="" value="" [(ngModel)]="invoiceStatement"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card-subtotal">
+              Sub Total:- {{ totalSum | currency:'USD':'symbol-narrow':'1.2-2'}}
+            </div>
+            <div class="card-subtotal">
+              Balance Due:- {{ totalSum | currency:'USD':'symbol-narrow':'1.2-2'}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <!-- <button
+  mat-raised-button
+  color="primary"
+  (click)="openComponentOverlay()">
+  open cdkPortal popup</button> -->
+
+
+  <ng-template #tpl let-close="close">
+    And here's some amazing content. It's very engaging. Right?
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+      <a class="button is-danger is-small" (click)="close({id: 2})">Close</a>
+    </div>
+  </ng-template>
+
+
+
+  <div class="dialog-footer">
+    <div class="dialog-footer">
+      <button mat-button class="glbl-btn  green-btn">
+        <span>Save</span>
+      </button>
+      <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
+        <span>Cancel</span>
+      </button>
+    </div>
+  </div>

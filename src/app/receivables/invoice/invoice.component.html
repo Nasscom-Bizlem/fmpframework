@@ -1,1 +1,15 @@
-<p>invoice works!</p>
+<div>
+    <app-banner [invoiceDetails]='invoiceDetail'></app-banner>
+
+    <div class="iqra-activity">
+        <app-invoice-activity></app-invoice-activity>
+        <ng-container *ngIf='!!invoiceDetail&&invoiceDetail.Products && invoiceDetail.Products.length>0'>
+            <app-iqra [invoiceDetailsProducts]='invoiceDetail.Products'></app-iqra>
+        </ng-container>
+    </div>
+    <div class="invoice-tabs">
+        <app-invoice-tab></app-invoice-tab>
+    </div> 
+
+    <router-outlet></router-outlet>
+</div>

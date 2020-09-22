@@ -1,0 +1,27 @@
+<div class="tiles-wrapper">
+  <a class="tiles-inner user-details" [routerLink]="['/receivables/invoice/transaction']" routerLinkActive="active"
+    [queryParams]="{CustomerId: customerId,InvoiceID: InvoiceIDs}">
+    <span>Transaction</span>
+  </a>
+  <!-- /receivables/invoice/transactiondetails -->
+  <a class="tiles-inner proj" [routerLink]="['/receivables/invoice/transactiondetails']" routerLinkActive="active"
+    [queryParams]="{CustomerId: customerId,InvoiceID: InvoiceIDs}">
+    <span>Details</span>
+  </a>
+  <a class="tiles-inner group" [routerLink]="['/receivables/invoice/transactiondisputes']" routerLinkActive="active"
+    [queryParams]="{CustomerId: customerId,InvoiceID: InvoiceIDs}">
+    <span>Disputes</span>
+  </a>
+  <a class="tiles-inner user-details" [routerLink]="['/receivables/invoice/transactionlogs']"
+    routerLinkActive="active" [queryParams]="{CustomerId: customerId,InvoiceID: InvoiceIDs}">
+    <span>Log A Call</span>
+  </a>
+  <a class="tiles-inner group" [routerLink]="['/receivables/invoice/transactionnotesfile']" routerLinkActive="active"
+    [queryParams]="{CustomerId: customerId,InvoiceID: InvoiceIDs}">
+    <span>Notes & File</span>
+  </a>
+  <a class="tiles-inner disputes" [routerLink]="['/receivables/invoice/transactionreminder']"
+    routerLinkActive="active" [queryParams]="{CustomerId: customerId,InvoiceID: InvoiceIDs}">
+    <span>Reminder/Action</span>
+  </a>
+</div>

@@ -3,18 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './core-services/control/login/login.component';
 import { RegistrationComponent } from './core-services/control/registration/registration.component';
 import { AuthLoginGuard } from './core-services/guard/authLogin.guard';
+import { CustomerDashboardComponent } from './dashboard-collection/customer-dashboard/customer-dashboard.component';
+import { CustomerInvoiceComponent } from './dashboard-collection/customer-invoice/customer-invoice.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 const routes: Routes = [
   {
     path: '',
     canActivate: [],
-    canActivateChild: [],
+    canActivateChild: [AuthLoginGuard],
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'registration', component: RegistrationComponent },
       { path: 'notfound', component: NotfoundComponent },
-
+      { path: 'customerdashboard', component: CustomerDashboardComponent },
+      { path: 'customerinvoice', component: CustomerInvoiceComponent },
       //---------------------------Incentives-------------------------------------------
       {
         path: 'incentives',

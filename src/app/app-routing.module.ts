@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'notfound', component: NotfoundComponent },
       { path: 'customerdashboard', component: CustomerDashboardComponent },
       { path: 'customerinvoice', component: CustomerInvoiceComponent },
+      
       //---------------------------Incentives-------------------------------------------
       {
         path: 'incentives',

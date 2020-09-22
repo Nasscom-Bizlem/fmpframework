@@ -1,3 +1,4 @@
+<!-- <ng-container *ngIf='!isLogginPage'> -->
 
   <div class="base-container" [class.is-mobile]="mobileQuery.matches"
     [ngClass]="{'isbackdrop':isbackdrop,'notbackdrop':!isbackdrop}">
@@ -16,3 +17,8 @@
     </mat-sidenav-container>
   </div>
 
+<!-- </ng-container> -->
+<!--
+<ng-container *ngIf='isLogginPage'>
+  <router-outlet></router-outlet>
+</ng-container> -->

@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +13,6 @@ export class UiService {
   isLogginPage = new BehaviorSubject(null);
 
   backToCustomerList = new BehaviorSubject(null);
-  isLogginPageSub: Subject<any> = new Subject();
-
- // backToCustomerList = new BehaviorSubject(null);
-  public elementdata  = new BehaviorSubject(null);
 
   closeSideNav = new EventEmitter();
 

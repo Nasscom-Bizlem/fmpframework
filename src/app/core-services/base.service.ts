@@ -20,8 +20,10 @@ export class BaseService {
   public isAuthenticated(): boolean {
     const userDetails = localStorage.getItem('currentUser');
     if (userDetails) {
+      this.UiService.isLogginPage.next(false);
       return true;
     } else {
+      // this.UiService.isLogginPage.emit(true);
       return false;
     }
     // Check whether the token is expired and return

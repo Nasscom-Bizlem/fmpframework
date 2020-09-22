@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnChanges } from '@angular/core';
 import { UiService } from 'src/app/shared/ui.service';
 import { Router } from '@angular/router';
 import { GlobalConstantService } from '../../global-constant.service';
@@ -30,12 +30,12 @@ export class LoginComponent implements OnInit ,OnChanges{
   password = new FormControl('', [Validators.required]);
 
   ngOnInit(): void {
-    debugger;
     this.UiService.isLogginPage.next(true);
   }
   ngOnChanges(){
-  }
+    this.UiService.isLogginPage.next(true);
 
+  }
   forgotPassword() {
     this.isForgot = true;
   }
@@ -56,11 +56,9 @@ export class LoginComponent implements OnInit ,OnChanges{
     this.authGuard.LoggedUser(params).subscribe((res) => {
       console.log(res);
       if (res.User) {
-        debugger;
         this.userdata = res.User;
         localStorage.setItem('currentUser', JSON.stringify(this.userdata));
         const customer = JSON.parse(localStorage.getItem('currentUser'));
-        this.UiService.isLogginPage.next(false);
         this.router.navigate(['/customerdashboard']);
         // this.router.navigate(['/customers']);
 

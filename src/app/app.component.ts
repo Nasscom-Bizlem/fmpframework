@@ -29,14 +29,12 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   mobileQuery: MediaQueryList;
   reason = '';
   isbackdrop = false;
-  isLogginPage : any;
+  isLogginPage: boolean;
   sub: Subscription;
   queryParam: any;
 
   // tslint:disable-next-line: variable-name
   private _mobileQueryListener: () => void;
-
-  loginSubscription: Subscription;
 
   constructor(
     public sideNavService: UiService,
@@ -66,10 +64,15 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     // });
   }
   ngOnInit() {
-    this.loginSubscription = this.uiService.isLogginPage.subscribe((res) => {
-      this.isLogginPage = res;
+    this.uiService.isLogginPage.subscribe((res) => {
+      if (res) {
+        this.isLogginPage = res;
+      }
     });
-
+    if (this.router.url.includes('/login')) {
+      debugger;
+      this.isLogginPage = false;
+    }
     // this.router.events
     //   .pipe(filter((e) => e instanceof NavigationStart))
     //   .subscribe(() => {
@@ -93,9 +96,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     // tslint:disable-next-line: deprecation
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.sub.unsubscribe();
-    this.loginSubscription.unsubscribe();
   }
-  //data
   close(reason: string) {
     console.log(reason);
     // this.navToggle.emit(true);

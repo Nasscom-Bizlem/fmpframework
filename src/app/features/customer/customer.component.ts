@@ -91,7 +91,6 @@ export class CustomerComponent implements OnInit, AfterViewInit {
             if (res) {
               this.customerService.addCustomer(res).subscribe((res11) => {
               });
-              this.customerService.addCustomer(res).subscribe((res11) => {});
             }
           });
       });

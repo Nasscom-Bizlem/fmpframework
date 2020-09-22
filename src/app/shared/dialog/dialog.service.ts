@@ -24,12 +24,6 @@ import { CustomerDetailsModel } from 'src/app/features/customer/customermodel/ge
 import { PromisePayDialogComponent } from './promise-pay-dialog/promise-pay-dialog.component';
 import { PromisePayModel } from 'src/app/features/customer/customermodel/promise-pay.model';
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
-import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.component';
-import { TeamAddDialogComponent } from './team-add-dialog/team-add-dialog.component';
-import { AdminRoleDialogComponent } from './admin-role-dialog/admin-role-dialog.component';
-import { SettingRoleModel } from 'src/app/setup/authorisation/settings-model/setting-role-model.model';
-import { SettingTeamSpaceModel } from 'src/app/setup/authorisation/settings-model/setting-team-space-model.model';
-import { SettingUserModel } from 'src/app/setup/authorisation/settings-model/setting-user-model.model';
 
 @Injectable({
   providedIn: 'root',
@@ -167,7 +161,18 @@ export class DialogService {
 
   //   return d.afterClosed();
   // }
-  
+  openProject(projectTitle: string, modeldata: any) {
+    const d = this.dialog.open(AdminProjectDialogComponent, {
+      data: {
+        title: projectTitle,
+        modeldata: [],
+      },
+      width: '80%',
+      maxWidth: '80vw',
+    });
+
+    return d.afterClosed();
+  }
   delete(projectTitle: string) {
     const d = this.dialog.open(DeleteDialogComponent, {
       data: {
@@ -216,88 +221,4 @@ export class DialogService {
 
     return d.afterClosed();
   }
-
-  openProject(projectTitle: string, modeldata: any) {
-    const d = this.dialog.open(AdminProjectDialogComponent, {
-      data: {
-        title: projectTitle,
-        modeldata: [],
-      },
-      width: '80%',
-      maxWidth: '80vw',
-    });
-
-    return d.afterClosed();
-  }
-
-  openRole( settingRoleModel?: SettingRoleModel ) {
-    const d = this.dialog.open(AdminRoleDialogComponent, {
-      data: {
-        //modeldata: modeldata,
-        modeldata: settingRoleModel,
-      },
-      width: '50%',
-      maxWidth: '50vw',
-    });
-
-    return d.afterClosed();
-
-  }
-
-
-  openNewTeam( settingTeamSpaceModel?: SettingTeamSpaceModel ) {
-    const d = this.dialog.open(TeamAddDialogComponent, {
-      data: {
-        //modeldata: modeldata,
-        modeldata: settingTeamSpaceModel,
-      },
-      width: '50%',
-      maxWidth: '50vw',
-    });
-
-    return d.afterClosed();
-
-  }
-
- /*  openNewTeam(projectTitle: string, modeldata: any) {
-    const d = this.dialog.open(TeamAddDialogComponent, {
-      data: {
-        title: projectTitle,
-        modeldata: [],
-      },
-      width: '50%',
-      maxWidth: '50vw',
-    });
-
-    return d.afterClosed();
-  } */
-
-  /* openNewUser(projectTitle: string, modeldata: any) {
-    const d = this.dialog.open(UserAddDialogComponent, {
-      data: {
-        title: projectTitle,
-        modeldata: [],
-      },
-      width: '50%',
-      maxWidth: '50vw',
-    });
-
-    return d.afterClosed();
-  } */
-
-  openNewUser( settingUserModel?: SettingUserModel ) {
-    const d = this.dialog.open(UserAddDialogComponent, {
-      data: {
-        //modeldata: modeldata,
-        modeldata: settingUserModel,
-      },
-      width: '50%',
-      maxWidth: '50vw',
-    });
-
-   // console.log("d:: "+d.getState);
-    return d.afterClosed();
-
-  }
-
 }

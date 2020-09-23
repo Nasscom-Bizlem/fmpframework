@@ -3,9 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { SettingsUserComponent } from './settings-user/settings-user.component';
 import { SettingsProjectComponent } from './settings-project/settings-project.component';
 import { SettingsGroupsComponent } from './settings-groups/settings-groups.component';
-import { SettingsRolePermissionComponent } from '../authorisation/settings-role-permission/settings-role-permission.component';
+import { SettingsRolePermissionComponent } from './settings-role-permission/settings-role-permission.component';
 import { AuthorisationComponent } from '../authorisation/authorisation.component';
-
+import { TeamSpaceComponent } from './team-space/team-space.component';
+import { AddPluginComponent} from './add-plugin/add-plugin.component'
+import { AllocationComponent} from './allocation/allocation.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   {
@@ -18,7 +21,10 @@ const routes: Routes = [
       { path: 'project', component: SettingsProjectComponent },
       { path: 'group', component: SettingsGroupsComponent },
       { path: 'role', component: SettingsRolePermissionComponent },
-       
+      { path: 'details', component: UserDetailComponent },
+      { path: 'add-plugin', component: AddPluginComponent },
+      { path: 'allocation', component: AllocationComponent },
+      { path: 'team-space', component: TeamSpaceComponent },      
      
 
       { path: '', pathMatch: 'full', redirectTo: 'user' },

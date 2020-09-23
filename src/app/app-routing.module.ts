@@ -59,16 +59,17 @@ const routes: Routes = [
         loadChildren: () =>
           import('./settings/settings.module').then((m) => m.SettingsModule),
       },
-      {
-        path: 'fullfillment',
-        canActivateChild: [AuthLoginGuard],
-        loadChildren: () =>
-          import('./fullfillment/fullfillment.module').then((m) => m.FullfillmentModule),
-      },
+      { path: 'authorisation', loadChildren: () => import('./settings/authorisation/authorisation.module').then(m => m.AuthorisationModule) },
+
       { path: 'incentives', loadChildren: () => import('./incentives/incentives.module').then(m => m.IncentivesModule) },
       { path: 'data-source', loadChildren: () => import('./settings/data-source/data-source.module').then(m => m.DataSourceModule) },
       { path: 'event-action', loadChildren: () => import('./settings/event-action/event-action.module').then(m => m.EventActionModule) },
       { path: 'payments', loadChildren: () => import('./settings/payments/payments.module').then(m => m.PaymentsModule) },
+      { path: 'web-services', loadChildren: () => import('./settings/web-services/web-services.module').then(m => m.WebServicesModule) },
+      { path: 'import-export', loadChildren: () => import('./settings/import-export/import-export.module').then(m => m.ImportExportModule) },
+      { path: 'fullfillment', loadChildren: () => import('./settings/fullfillment/fullfillment.module').then(m => m.FullfillmentModule) },
+      { path: 'setup', loadChildren: () => import('./settings/setup/setup.module').then(m => m.SetupModule) },
+      { path: 'other-settings', loadChildren: () => import('./settings/other-settings/other-settings.module').then(m => m.OtherSettingsModule) },
 
 
       

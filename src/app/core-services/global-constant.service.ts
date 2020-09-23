@@ -210,4 +210,116 @@ export class GlobalConstantService {
   //invoice/getInvoiceDetail
 
   ///invoice/getCustomerInvoiceList
+
+ //Allocation
+
+ get addAllocation() {
+  return this.GET_URL('teamspace/addTeamSpaceApproleAllocation');
+}
+get getAllocationList() {
+  return this.GET_URL('teamspace/getTeamSpaceApproleAllocationList');
+}
+
+get getPluginDataAndPermissions() {
+  return this.GET_URL('approle/getMasterPluginList');
+}
+
+get deleteTeamMember() {
+  return this.GET_URL('teamspace/deleteTeamSpaceMember');
+}
+
+//fullfillment
+get updateSuspendStatus(){
+  return 'http://fetchmypayments.com:8052/BillingandServiceFullfillment/updateSuspendStatus';
+
+}
+
+get addServicemaster(){
+  return 'http://fetchmypayments.com:8052/BillingandServiceFullfillment/InsertintoServiceMaster';
+
+}
+
+get FetchCustomerMaster(){
+  return 'http://fetchmypayments.com:8052/BillingandServiceFullfillment/GetCustomerMaster';
+
+}
+get FetchTransType(){
+  return 'http://fetchmypayments.com:8052/BillingandServiceFullfillment/GetTransectionTypeNewData';
+
+}
+get Extendtrail(){
+  return 'http://fetchmypayments.com:8052/BillingandServiceFullfillment/ExtensionofFreetrialAccount';
+
+}
+
+get fetchserviceListbyCRN(){
+  return 'http://fetchmypayments.com:8052/BillingandServiceFullfillment/GetAllservicesByCRN';
+
+}
+
+get addEventList() {
+  return this.GET_URL('customer/addCustomerEvent');
+}
+
+get fetchCustomerEventList() {
+  return this.GET_URL('customer/getCustomerEventList');
+}
+
+// users
+
+get addUser() {
+  return this.GET_URL('user/addUser');
+}
+get getUsersList() {
+  return this.GET_URL('user/getUserList');
+}
+get deleteUsers() {
+  return this.GET_URL('user/deleteUser');
+}
+get editUsers() {
+  return this.GET_URL('user/updateUser');
+}
+get getUsersInfo() {
+  return this.GET_URL('user/getUserInfo');
+}
+
+// teamspace
+
+get addTeamspace() {
+  return this.GET_URL('teamspace/addTeamSpace');
+}
+get getTeamSpaceList() {
+  return this.GET_URL('teamspace/getTeamSpaceList');
+} 
+
+get editTeamspace() {
+  return this.GET_URL('teamspace/updateTeamSpace');
+}
+
+get deleteTeamSpace() {
+  return this.GET_URL('teamspace/deleteTeamSpace');
+}
+get addTeamMember() {
+  return this.GET_URL('teamspace/addTeamMember');
+}
+
+//settings roles
+
+get addRoles() {
+  return this.GET_URL('approle/addRole');
+} 
+
+get getRolesList() {
+  return this.GET_URL('approle/getAppRoleList');
+} 
+
+get RolesDelete() {
+  return this.GET_URL('approle/deleteAppRole');
+}
+
+get editRoles() {
+  return this.GET_URL('approle/updateAppRole');
+}
+
+
 }

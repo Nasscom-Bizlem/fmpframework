@@ -19,6 +19,11 @@ import { CustomernotesComponent } from './customernotes/customernotes.component'
 import { PromisePayDialogComponent } from './promise-pay-dialog/promise-pay-dialog.component';
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
 
+import { AdminRoleDialogComponent } from './admin-role-dialog/admin-role-dialog.component';
+import { TeamAddDialogComponent } from './team-add-dialog/team-add-dialog.component';
+import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     NewTaskDialogComponent,
@@ -34,14 +39,17 @@ import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dial
     CustomernotesComponent,
     PromisePayDialogComponent,
     AddInvoiceDialogComponent,
-
+    AdminRoleDialogComponent,
+    TeamAddDialogComponent,
+    UserAddDialogComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     MaterialModule,
     NgxMaterialTimepickerModule,
-    SharedModule
+    SharedModule,
+    NgSelectModule
   ],
   exports: [],
   providers: [ CurrencyPipe,   DatePipe,],

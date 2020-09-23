@@ -35,26 +35,7 @@
       <span>Payments</span>
     </mat-list-item>
 
-    <mat-list-item role="listitem" class='slide-in-up' appExpandMenu>
-      <!-- <mat-icon mat-list-icon>home</mat-icon> -->
-      <div class="slide-inner">
-        <img src="assets/images1/Advanced.png" class="refresh">
-        <div>
-          <span>Fullfillment</span>
-          <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
-        </div>
-      </div>
-    </mat-list-item>
 
-    <div class="glbl-open-advance" @fade>
-      <ul>
-        <li (click)="navigateToPath('/fullfillment/service-master')">
-          <img src="assets/images1/settings.png" class="refresh">
-          <span>Manage Service Master</span>
-        </li>
-
-      </ul>
-    </div>
     <mat-list-item role="listitem" class='slide-in-up' appExpandMenu>
       <!-- <mat-icon mat-list-icon>home</mat-icon> -->
       <div class="slide-inner">
@@ -110,7 +91,7 @@
 
       <ul>
         <mat-list-item role="listitem" class="slide-in-up" appExpandMenu
-          (click)="navigateToPath('/settings/authorisation')">
+          >
           <div class="slide-inner">
             <!-- <img src="assets/images1/setup-icon.png" class="refresh"> -->
             <div>
@@ -121,30 +102,34 @@
         </mat-list-item>
         <div class="glbl-open-advance" @fade>
           <ul>
-            <li (click)="navigateToPath('/settings/project')">
+            <li (click)="navigateToPath('/authorisation/user')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Users</span>
+            </li>
+            <li (click)="navigateToPath('/authorisation/project')">
               <img src="assets/images1/Payment.png" class="refresh">
               <span>Projects</span>
             </li>
-            <li (click)="navigateToPath('/settings/group')">
+            <!-- <li (click)="navigateToPath('/authorisation/')">
               <img src="assets/images1/Payment.png" class="refresh">
               <span>Groups</span>
-            </li>
-            <li (click)="navigateToPath('/settings/role')">
+            </li> -->
+            <li (click)="navigateToPath('/authorisation/role')">
               <img src="assets/images1/Payment.png" class="refresh">
               <span>Role & permission</span>
             </li>
-            <li (click)="navigateToPath('/settings/add-plugin')">
+            <li (click)="navigateToPath('/authorisation/add-plugin')">
               <img src="assets/images1/Payment.png" class="refresh">
               <span>Add Plugin</span>
             </li>
-            <li (click)="navigateToPath('/settings/team-space')">
+            <li (click)="navigateToPath('/authorisation/group')">
               <img src="assets/images1/Payment.png" class="refresh">
               <span>Team Space</span>
             </li>
-            <li (click)="navigateToPath('/settings/allocation')">
+            <!-- <li (click)="navigateToPath('/authorisation/allocation')">
               <img src="assets/images1/Payment.png" class="refresh">
               <span>Allocation</span>
-            </li>
+            </li> -->
           </ul>
         </div>
 
@@ -255,30 +240,209 @@
          
           </ul>
         </div>
-        <!-- <li (click)="navigateToPath('/settings/event-action')">
-          <img src="assets/images1/Payment.png" class="refresh">
-          <span>Event Action</span>
-        </li> -->
-        <li (click)="navigateToPath('/settings/import-export')">
-          <img src="assets/images1/Payment.png" class="refresh">
-          <span>Data Import/Export</span>
-        </li>
-        <li (click)="navigateToPath('/settings/my-accounts')">
-          <img src="assets/images1/Payment.png" class="refresh">
-          <span>My Accounts</span>
-        </li>
-        <li (click)="navigateToPath('/settings/other-settings')">
-          <img src="assets/images1/Payment.png" class="refresh">
-          <span>Other Settings</span>
-        </li>
+
+        <mat-list-item role="listitem" class="slide-in-up" appExpandMenu>
+          <div class="slide-inner">
+            <!-- <img src="assets/images1/setup-icon.png" class="refresh"> -->
+            <div>
+              <span>Web Services</span>
+              <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+            </div>
+          </div>
+        </mat-list-item>
+        <div class="glbl-open-advance" @fade>
+          <ul>
+            <li (click)="navigateToPath('/web-services/manage-event')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Manage Event</span>
+            </li>
+            <li (click)="navigateToPath('/web-services/add-event')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Add Event</span>
+            </li>
+            <li (click)="navigateToPath('/web-services/save-version')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Save & Version</span>
+            </li>
+            <li (click)="navigateToPath('/web-services/event-list')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Event List</span>
+            </li>
+         
+          </ul>
+        </div>
+
+        <!-- //import-export -->
+        <mat-list-item role="listitem" class="slide-in-up" appExpandMenu>
+          <div class="slide-inner">
+            <!-- <img src="assets/images1/setup-icon.png" class="refresh"> -->
+            <div>
+              <span>Data Import/Export</span>
+              <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+            </div>
+          </div>
+        </mat-list-item>
+        <div class="glbl-open-advance" @fade>
+          <ul>
+            <li (click)="navigateToPath('/import-export/import-data')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Import Data</span>
+            </li>
+            <li (click)="navigateToPath('/import-export/upload')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Upload</span>
+            </li>
+            <li (click)="navigateToPath('/import-export/map-file')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Map File</span>
+            </li>
+            <li (click)="navigateToPath('/import-export/review-save')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Review & Save</span>
+            </li>
+            <li (click)="navigateToPath('/import-export/map-list')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Map List</span>
+            </li>
+          </ul>
+        </div>
+       
+        <!-- //fullfillment -->
+        <mat-list-item role="listitem" class="slide-in-up" appExpandMenu>
+          <div class="slide-inner">
+            <!-- <img src="assets/images1/setup-icon.png" class="refresh"> -->
+            <div>
+              <span>Fullfillment</span>
+              <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+            </div>
+          </div>
+        </mat-list-item>
+        <div class="glbl-open-advance" @fade>
+          <ul>
+            <li (click)="navigateToPath('/fullfillment/free-trail')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Request Free Trail</span>
+            </li>
+            <li (click)="navigateToPath('/fullfillment/extend-trail')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Extended Trail</span>
+            </li>
+            <li (click)="navigateToPath('/fullfillment/suspend-account')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Suspend Account</span>
+            </li>
+            <li (click)="navigateToPath('/fullfillment/restore-suspentions')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Restore Suspentions</span>
+            </li>
+            <li (click)="navigateToPath('/fullfillment/upgrade-trail')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Upgrade Trail</span>
+            </li>
+            <li (click)="navigateToPath('/fullfillment/service-extension')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Service Extension</span>
+            </li>
+            <li (click)="navigateToPath('/fullfillment/restore-suspention')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Restore Suspention</span>
+            </li>
+            <li (click)="navigateToPath('/fullfillment/service-master')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Manage Service Master</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- //settings -->
+        <mat-list-item role="listitem" class="slide-in-up" appExpandMenu>
+          <div class="slide-inner">
+            <!-- <img src="assets/images1/setup-icon.png" class="refresh"> -->
+            <div>
+              <span>Settings</span>
+              <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+            </div>
+          </div>
+        </mat-list-item>
+        <div class="glbl-open-advance" @fade>
+          <ul>
+            <li (click)="navigateToPath('/setup/email')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Email</span>
+            </li>
+            <li (click)="navigateToPath('/setup/chat')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Chat</span>
+            </li>
+            <li (click)="navigateToPath('/setup/whatsapp')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Whatsapp</span>
+            </li>
+            <li (click)="navigateToPath('/setup/sms')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>SMS</span>
+            </li>
+            <li (click)="navigateToPath('/setup/call-centre')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Call Center</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- //settings -->
+        <mat-list-item role="listitem" class="slide-in-up" appExpandMenu>
+          <div class="slide-inner">
+            <!-- <img src="assets/images1/setup-icon.png" class="refresh"> -->
+            <div>
+              <span>Other Settings</span>
+              <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+            </div>
+          </div>
+        </mat-list-item>
+        <div class="glbl-open-advance" @fade>
+          <ul>
+            <li (click)="navigateToPath('/other-settings/rule-flow')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Create Rule Flow</span>
+            </li>
+            <li (click)="navigateToPath('/other-settings/create-rule')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Create Rules</span>
+            </li>
+            <li (click)="navigateToPath('/other-settings/workflow')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Create Work Flow</span>
+            </li>
+            <li (click)="navigateToPath('/other-settings/analytics')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Google Analytics/GTM</span>
+            </li>
+            <li (click)="navigateToPath('/other-settings/mail-read')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Mail Read & Track</span>
+            </li>
+            <li (click)="navigateToPath('/other-settings/manage-rule-flow')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Manage Rule Flow</span>
+            </li>
+            <li (click)="navigateToPath('/other-settings/manage-rules')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Manage Rules</span>
+            </li>
+            <li (click)="navigateToPath('/other-settings/manage-workflow')">
+              <img src="assets/images1/Payment.png" class="refresh">
+              <span>Manage Work Flow</span>
+            </li>
+          </ul>
+        </div>
         <!-- <li (click)="navigateToPath('/settings/payments')">
           <img src="assets/images1/Payment.png" class="refresh">
           <span>Payments</span>
         </li> -->
-        <li (click)="navigateToPath('/settings/web-services')">
+        <!-- <li (click)="navigateToPath('/settings/web-services')">
           <img src="assets/images1/Payment.png" class="refresh">
           <span>Web Services</span>
-        </li>
+        </li> -->
       </ul>
     </div>
 

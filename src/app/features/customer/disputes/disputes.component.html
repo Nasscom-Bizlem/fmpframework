@@ -1,0 +1,89 @@
+<div class="table-wrapper tbl-border">
+  <div class="table-header">
+    <div>
+      <h5>Recently Viewed</h5>
+    </div>
+    <div>
+      <!--
+New Dispute
+New Task
+Log Call
+Delete Dispute
+Preview
+ -->
+
+
+      <button mat-button class="glbl-btn xs-glbl-btn green-btn" (click)='openDispute()'>
+        New Dispute
+      </button>
+      <button mat-button class="glbl-btn xs-glbl-btn violet-btn" (click)='openLogCall()'>
+        Log Call
+      </button>
+      <button mat-button class="glbl-btn  xs-glbl-btn yellow-btn" (click)='openNewtask()' >
+        New Task
+      </button>
+      <!-- <button mat-button class="glbl-btn xs-glbl-btn  blue-btn ">
+        Preview
+      </button> -->
+      <!-- <button mat-button class="glbl-btn  xs-glbl-btn orange-btn">
+        Delete Dispute
+      </button> -->
+      <span class="material-icons refresh" mat-icon-button>
+        loop
+      </span>
+    </div>
+  </div>
+ <table mat-table [dataSource]="dataSource" class="glbl-tbl" >
+
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-6">
+        Dispute Id
+      </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6 pointer"> <span>{{element.Id}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ContactName">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Contact Name</th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-4 "> <span>{{element.ContactName}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Subject">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Subject </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.Subject}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Priority">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Priority </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.Priority}}</span> </td>
+    </ng-container>
+    <ng-container matColumnDef="LastActivity">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Last Activity </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{getDateFormate(element.LastActivity)}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Owner">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Owner </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.Owner}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="view">
+      <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> View </th>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+        <mat-icon mat-icon-button class="edit" (click)='deleteDispute(element)'>
+          delete
+        </mat-icon>
+        <mat-icon mat-icon-button class="edit" (click)='editDispute(element)'>
+          edit
+        </mat-icon>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+ <ng-container>
+    <mat-paginator [length]='count' [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+      (page)="pageEvent($event)"></mat-paginator>
+  </ng-container>
+</div>

@@ -1,0 +1,23 @@
+
+  <div class="tiles-wrapper">
+    <a class="tiles-inner user-details" [routerLink]="['/customer/overview']"  routerLinkActive="active" [queryParams]="{ CustomerId: customerId }">
+      <span>Overview</span>
+    </a>
+    <a class="tiles-inner proj" [routerLink]="['/customer/details']" routerLinkActive="active" [queryParams]="{ CustomerId: customerId }">
+      <span>Details</span>
+    </a>
+    <a class="tiles-inner group" [routerLink]="['/customer/invoices']" routerLinkActive="active" [queryParams]="{ CustomerId: customerId }">
+      <span>Invoices</span>
+    </a>
+    <a class="tiles-inner user-details" [routerLink]="['/customer/reminder']" routerLinkActive="active" [queryParams]="{ CustomerId: customerId }">
+      <span>Reminders & Actions</span>
+    </a>
+    <a class="tiles-inner group" [routerLink]="['/customer/notesfile']" routerLinkActive="active" [queryParams]="{ CustomerId: customerId }">
+      <span>Notes & Files</span>
+    </a>
+    <a class="tiles-inner disputes" [routerLink]="['/customer/disputes']" routerLinkActive="active" [queryParams]="{ CustomerId: customerId }">
+      <span>Disputes</span>
+    </a>
+  </div>
+
+

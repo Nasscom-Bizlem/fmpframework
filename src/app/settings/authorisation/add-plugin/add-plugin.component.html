@@ -1,0 +1,107 @@
+<!-- <div class="tiles-wrapper">
+    <h1 class="title">Add Plugin</h1>
+</div>
+<div>
+    <span class="material-icons">
+        keyboard_backspace
+    </span>
+    <div class="inner-fieldset">
+        <div>
+            <span>Name</span>
+            <mat-form-field class="m-l-40 pos-rel" style="width:250px;">
+                <input matInput>
+            </mat-form-field>
+
+        </div>
+        <div class="float-mat-icons">
+            <mat-card class="icon-card">
+                <mat-icon class="icon-size">assignment_turned_in</mat-icon>
+            </mat-card>
+            <mat-card class="icon-card">
+                <mat-icon class="icon-size">delete</mat-icon>
+            </mat-card>
+            <mat-card class="icon-card">
+                <mat-icon class="icon-size mat-circle">add_circle</mat-icon>
+            </mat-card>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<div class="table-wrapper tbl-border dialog-tbl tab-height">
+
+    <table mat-table [dataSource]="dataSource" class="glbl-tbl mat-elevation-z8">
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox >
+                </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <mat-checkbox >
+                </mat-checkbox>
+            </td>
+           
+        </ng-container>
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6">
+                ID
+            </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.Id}}</span> </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Permission">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-4">Permission</th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.Permission}}</span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="MethodURL">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-4">Method URL </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.MethodURL}}</span> </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="UIURL">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">UI URL</th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.UIURL}}</span> </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="ButtonID">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Button ID </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.ButtonID}}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ElementID">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Element ID </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.ElementID}}</span>
+
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
+
+<div class="single-flex">
+    <button mat-button class="cancel-btn">
+        <span>Cancel</span>
+    </button>
+
+    <button mat-button class="mat-focus-indicator glbl-btn mat-button mat-button-base">
+        Save
+    </button>
+
+</div> -->

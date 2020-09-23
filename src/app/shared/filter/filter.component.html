@@ -1,0 +1,39 @@
+<fieldset class="glbl-set">
+  <legend>Filters</legend>
+  <div class="inner-fieldset">
+    <div>
+      <span>Status:</span>
+      <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+        <mat-label>Active(20)</mat-label>
+        <mat-select panelClass="drop-panel" [(value)]="foods[0].value">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <span>Group:</span>
+      <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+        <mat-label>Active(20)</mat-label>
+        <mat-select panelClass="drop-panel" [(value)]="foods[0].value">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <span>User:</span>
+      <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+        <input matInput placeholder="Search" value="">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-button class="glbl-btn">
+        Apply
+      </button>
+    </div>
+  </div>
+
+</fieldset>

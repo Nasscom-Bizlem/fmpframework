@@ -7,13 +7,16 @@ import { EmailComponent } from './email/email.component';
 import { SmsComponent } from './sms/sms.component';
 import { WhatsappComponent } from './whatsapp/whatsapp.component';
 import { SetupRoutingModule } from './setup-routing.module';
+import { MaterialModule } from 'src/app/shared/material.module';
+import { OauthComponent } from './oauth/oauth.component';
 
 
 @NgModule({
-  declarations: [CallCentreComponent, ChatComponent,WhatsappComponent, EmailComponent, SmsComponent],
+  declarations: [CallCentreComponent, ChatComponent,WhatsappComponent, EmailComponent, SmsComponent, OauthComponent],
   imports: [
     CommonModule,
-    SetupRoutingModule
+    SetupRoutingModule,
+    MaterialModule
   ]
 })
 export class SetupModule{}

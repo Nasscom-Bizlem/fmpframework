@@ -24,6 +24,7 @@ import { CustomerDetailsModel } from 'src/app/features/customer/customermodel/ge
 import { PromisePayDialogComponent } from './promise-pay-dialog/promise-pay-dialog.component';
 import { PromisePayModel } from 'src/app/features/customer/customermodel/promise-pay.model';
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
+import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsapp-dialog.component';
 
 @Injectable({
   providedIn: 'root',
@@ -173,6 +174,19 @@ export class DialogService {
 
     return d.afterClosed();
   }
+
+  editSettingDialog(dialogTitle: string, modeldata: any) {
+    const d = this.dialog.open(EditWhatsappDialogComponent, {
+      data: {
+        title: dialogTitle,
+        modeldata: [],
+      },
+      width: '50%',
+      maxWidth: '50vw',
+    });
+    return d.afterClosed();
+  }
+  
   delete(projectTitle: string) {
     const d = this.dialog.open(DeleteDialogComponent, {
       data: {

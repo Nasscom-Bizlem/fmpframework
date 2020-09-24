@@ -18,6 +18,7 @@ import { AdminProjectDialogComponent } from './admin-project-dialog/admin-projec
 import { CustomernotesComponent } from './customernotes/customernotes.component';
 import { PromisePayDialogComponent } from './promise-pay-dialog/promise-pay-dialog.component';
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
+import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsapp-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dial
     CustomernotesComponent,
     PromisePayDialogComponent,
     AddInvoiceDialogComponent,
+    EditWhatsappDialogComponent,
 
   ],
   imports: [

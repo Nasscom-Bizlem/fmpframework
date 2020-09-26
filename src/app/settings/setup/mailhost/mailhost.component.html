@@ -1,0 +1,105 @@
+<div class="tiles-wrapper">
+    <a class="tiles-inner email"  [routerLink]="['/setup/email']" routerLinkActive="active">
+      <span>Email</span>
+    </a>
+    <a class="tiles-inner whatsapp" [routerLink]="['/setup/whatsapp']" routerLinkActive="active">
+      <span>WhatsApp & SMS</span>
+    </a>
+    <a class="tiles-inner oauth" [routerLink]="['/setup/oauth']" routerLinkActive="active">
+      <span>OAuth</span>
+    </a>
+    <a class="tiles-inner mailhost" [routerLink]="['/setup/mailhost']" routerLinkActive="active">
+        <span>Mailhost</span>
+    </a>
+  </div>
+  <div mat-content class="mat-container">
+      <div class="mat-icon-group">
+          <!-- <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Refresh">
+              visibility 
+          </mat-icon></a> -->
+          <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Edit">
+              edit
+          </mat-icon></a>
+          <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Delete">
+              delete 
+          </mat-icon></a>
+          <a href="javascript:void(0)" routerLinkActive="active" (click)='openMailhostDialog()'><mat-icon aria-hidden="false" aria-label="Add">
+              add_circle_outline 
+          </mat-icon></a>
+      </div>
+      <div class="table-wrapper">
+          <mat-table [dataSource]="mailhostDataSource" class="glbl-tbl">
+              
+              <!-- Position Column -->
+              <ng-container matColumnDef="check">
+                  <th><mat-header-cell *matHeaderCellDef class="tbl-xs-1">
+                    <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                    </mat-checkbox>
+                  </mat-header-cell></th>
+                  <td><mat-cell *matCellDef="let element" class="tbl-xs-1">
+                    <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                    </mat-checkbox>
+                  </mat-cell></td>
+                </ng-container>
+            
+              <!-- User Column -->
+              <ng-container matColumnDef="user">
+                  <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4">
+                    User
+                  </mat-header-cell></th>
+                  <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.user}} </span></mat-cell></td>
+                </ng-container>
+            
+              <!-- Outbound Mail Column -->
+              <ng-container matColumnDef="outboundMail">
+                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Outbound Mail </mat-header-cell></th>
+                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.outboundMial}} </span></mat-cell></td>
+              </ng-container>
+            
+              <!-- Mail Limit Column -->
+              <ng-container matColumnDef="mailLimit">
+                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Mail Limit </mat-header-cell></th>
+                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.mailLimit}} </span>
+                  <!-- <mat-icon aria-hidden="false"> {{element.typeV}} </mat-icon> -->
+              </mat-cell></td>
+              </ng-container>
+  
+              <!-- SMS Column -->
+              <ng-container matColumnDef="sms">
+                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> SMS </mat-header-cell></th>
+                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.sms}} </span></mat-cell></td>
+              </ng-container>
+  
+              <!-- SMS Limit Column -->
+              <ng-container matColumnDef="smsLimit">
+                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> SMS Limit </mat-header-cell></th>
+                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.smsLimit}} </span></mat-cell></td>
+              </ng-container>
+  
+              <!-- Whatsapp Column -->
+              <ng-container matColumnDef="whatsapp">
+                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Whatsapp </mat-header-cell></th>
+                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.whatsapp}} </span></mat-cell></td>
+              </ng-container>
+
+              <!-- Whatsapp Limit Column -->
+              <ng-container matColumnDef="whatsappLimit">
+                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Whatsapp Limit </mat-header-cell></th>
+                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.whatsappLimit}} </span></mat-cell></td>
+              </ng-container>
+  
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="action">
+                  <th><mat-header-cell *matHeaderCellDef class="tbl-xs-3"> Action </mat-header-cell></th>
+                  <td><mat-cell *matCellDef="let element" class="tbl-xs-3">
+                      <a mat-icon-button href="javascript:void(0)" (click)='openMailhostDialog()'>
+                          <mat-icon>edit</mat-icon></a>
+                      </mat-cell></td>
+              </ng-container>
+            
+              <mat-header-row *matHeaderRowDef="mailhostDisplayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: mailhostDisplayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+  </div>
+  

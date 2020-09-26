@@ -26,6 +26,8 @@ import { PromisePayModel } from 'src/app/features/customer/customermodel/promise
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
 import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsapp-dialog.component';
 import { AddOauthDialogComponent } from './add-oauth-dialog/add-oauth-dialog.component';
+import { AddEmailDialogComponent } from './add-email-dialog/add-email-dialog.component';
+import { AddMailhostDialogComponent } from './add-mailhost-dialog/add-mailhost-dialog.component';
 
 @Injectable({
   providedIn: 'root',
@@ -184,6 +186,30 @@ export class DialogService {
       },
       width: '50%',
       maxWidth: '50vw',
+    });
+    return d.afterClosed();
+  }
+
+  addMailhostDialog(dialogTitle: string, modeldata: any) {
+    const d = this.dialog.open(AddMailhostDialogComponent, {
+      data: {
+        title: dialogTitle,
+        modeldata: [],
+      },
+      width: '50%',
+      maxWidth: '50vw',
+    });
+    return d.afterClosed();
+  }
+  
+  addEmailDialog(dialogTitle: string, modeldata: any) {
+    const d = this.dialog.open(AddEmailDialogComponent, {
+      data: {
+        title: dialogTitle,
+        modeldata: [],
+      },
+      width: '25%',
+      maxWidth: '25vw',
     });
     return d.afterClosed();
   }

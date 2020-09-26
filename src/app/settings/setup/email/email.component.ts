@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'src/app/shared/dialog/dialog.service';
 
 export interface PeriodicElement {
+  check: boolean;
   username: string;
   oauth: string;
   hostname: string;
@@ -9,11 +11,11 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {username: 'Rahul', oauth: 'Absdcslkcn2131', hostname: 'Mr. John', password: 'Hncwkw', action: true},
-  {username: 'Ram', oauth: 'Absdcslkcn2131', hostname: 'Mr. Marc', password: 'Hncwkwkl', action: true},
-  {username: 'Jay', oauth: 'Absdcslkcn2131', hostname: 'Mr. James', password: 'Hncwkwklk', action: true},
-  {username: 'Raj', oauth: 'Absdcslkcn2131', hostname: 'Mr. David', password: 'Hncwkwklfe', action: true},
-  {username: 'Sam', oauth: 'Absdcslkcn2131', hostname: 'Mr. John', password: 'Hncwkwklkjd', action: true},
+  {check: false, username: 'Rahul', oauth: 'Absdcslkcn2131', hostname: 'Mr. John', password: 'Hncwkw', action: true},
+  {check: false, username: 'Ram', oauth: 'Absdcslkcn2131', hostname: 'Mr. Marc', password: 'Hncwkwkl', action: true},
+  {check: false, username: 'Jay', oauth: 'Absdcslkcn2131', hostname: 'Mr. James', password: 'Hncwkwklk', action: true},
+  {check: false, username: 'Raj', oauth: 'Absdcslkcn2131', hostname: 'Mr. David', password: 'Hncwkwklfe', action: true},
+  {check: false, username: 'Sam', oauth: 'Absdcslkcn2131', hostname: 'Mr. John', password: 'Hncwkwklkjd', action: true},
 ];
 
 @Component({
@@ -23,13 +25,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class EmailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogService: DialogService) { }
 
   ngOnInit(): void {
   }
 
   title = 'Email';
-  displayedColumns: string[] = ['username', 'oauth', 'hostname', 'password', 'action'];
+  displayedColumns: string[] = ['check', 'username', 'oauth', 'hostname', 'password', 'action'];
   dataSource = ELEMENT_DATA;
+
+  openEmailDialog() {
+    this.dialogService.addEmailDialog('Add', []).subscribe((res) => {
+      console.log(res);
+    });
+  }
 
 }

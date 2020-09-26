@@ -20,6 +20,8 @@ import { PromisePayDialogComponent } from './promise-pay-dialog/promise-pay-dial
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
 import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsapp-dialog.component';
 import { AddOauthDialogComponent } from './add-oauth-dialog/add-oauth-dialog.component';
+import { AddEmailDialogComponent } from './add-email-dialog/add-email-dialog.component';
+import { AddMailhostDialogComponent } from './add-mailhost-dialog/add-mailhost-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { AddOauthDialogComponent } from './add-oauth-dialog/add-oauth-dialog.com
     AddInvoiceDialogComponent,
     EditWhatsappDialogComponent,
     AddOauthDialogComponent,
+    AddEmailDialogComponent,
+    AddMailhostDialogComponent,
     
   ],
   imports: [

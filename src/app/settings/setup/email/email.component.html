@@ -8,6 +8,9 @@
     <a class="tiles-inner oauth" [routerLink]="['/setup/oauth']" routerLinkActive="active">
       <span>OAuth</span>
     </a>
+    <a class="tiles-inner mailhost" [routerLink]="['/setup/mailhost']" routerLinkActive="active">
+      <span>Mailhost</span>
+    </a>
   </div>
 <div class="mat-container">
     <div class="mat-icon-group">
@@ -20,36 +23,49 @@
         <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Delete">
             delete 
         </mat-icon></a>
-        <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Add">
+        <a href="javascript:void(0)" routerLinkActive="active" (click)='openEmailDialog()'><mat-icon aria-hidden="false" aria-label="Add">
             add_circle_outline
         </mat-icon></a>
     </div>
     <div class="table-wrapper">
     <mat-table [dataSource]="dataSource"  class="glbl-tbl">
-        <!-- Position Column -->
+        <!-- Check Column -->
+        <ng-container matColumnDef="check">
+          <th><mat-header-cell *matHeaderCellDef class="tbl-xs-1">
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+            </mat-checkbox>
+          </mat-header-cell></th>
+          <td><mat-cell *matCellDef="let element" class="tbl-xs-1">
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+            </mat-checkbox>
+          </mat-cell></td>
+        </ng-container>
+
+        <!-- Username Column -->
         <ng-container matColumnDef="username">
           <th><mat-header-cell *matHeaderCellDef class="tbl-xs-6"> User Name </mat-header-cell></th>
           <td><mat-cell *matCellDef="let element" class="tbl-xs-6"><span> {{element.username}} </span></mat-cell></td>
         </ng-container>
       
-        <!-- Name Column -->
+        <!-- OAuth Column -->
         <ng-container matColumnDef="oauth">
           <th><mat-header-cell *matHeaderCellDef class="tbl-xs-6"> OAuth </mat-header-cell></th>
           <td><mat-cell *matCellDef="let element" class="tbl-xs-6"><span> {{element.oauth}} </span></mat-cell></td>
         </ng-container>
       
-        <!-- Weight Column -->
+        <!-- HostName Column -->
         <ng-container matColumnDef="hostname">
           <th><mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Host Name </mat-header-cell></th>
           <td><mat-cell *matCellDef="let element" class="tbl-xs-6"><span> {{element.hostname}} </span></mat-cell></td>
         </ng-container>
       
-        <!-- Symbol Column -->
+        <!-- Password Column -->
         <ng-container matColumnDef="password">
           <th><mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Password </mat-header-cell></th>
           <td><mat-cell *matCellDef="let element" class="tbl-xs-6"><span> {{element.password}} </span></mat-cell></td>
         </ng-container>
       
+        <!-- Action Column -->
         <ng-container matColumnDef="action">
           <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Action </mat-header-cell></th>
           <td><mat-cell *matCellDef="let element" class="tbl-xs-4"> 
@@ -60,10 +76,5 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-    <mat-list role="list">
-        <mat-divider></mat-divider>
-        <button mat-raised-button class="glbl-btn">Cancel</button>
-        <button mat-raised-button class="glbl-btn green-btn">Save</button>
-      </mat-list>
 </div>
 </div>

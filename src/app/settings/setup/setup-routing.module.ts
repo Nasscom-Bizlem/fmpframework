@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CallCentreComponent } from './call-centre/call-centre.component';
 import { ChatComponent } from './chat/chat.component';
 import { EmailComponent } from './email/email.component';
+import { MailhostComponent } from './mailhost/mailhost.component';
 import { OauthComponent } from './oauth/oauth.component';
 import { SetupComponent } from './setup.component';
 import { SmsComponent } from './sms/sms.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'chat', component: ChatComponent },
       { path: 'email', component: EmailComponent },
       { path: 'sms', component: SmsComponent },
+      { path: 'mailhost', component: MailhostComponent},
       { path: 'oauth', component: OauthComponent },
       { path: 'whatsapp', component: WhatsappComponent },
 

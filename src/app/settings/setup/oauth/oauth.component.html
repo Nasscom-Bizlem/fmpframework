@@ -20,8 +20,8 @@
         <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Delete">
             delete 
         </mat-icon></a>
-        <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Add">
-            add 
+        <a href="javascript:void(0)" (click)='openOauthDialog()'routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Add">
+            add_circle_outline
         </mat-icon></a>
     </div>
     <div class="table-wrapper">
@@ -73,10 +73,5 @@
             <!-- <mat-header-row *matHeaderRowDef="oauthDisplayedColumns"></mat-header-row> -->
             <mat-row *matRowDef="let row; columns: oauthDisplayedColumns;"></mat-row>
         </mat-table>
-        <mat-list role="list">
-            <mat-divider></mat-divider>
-            <button mat-raised-button class="glbl-btn">Cancel</button>
-            <button mat-raised-button class="glbl-btn green-btn">Save</button>
-          </mat-list>
       </div>
 </div>

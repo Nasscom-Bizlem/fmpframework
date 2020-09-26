@@ -19,6 +19,7 @@ import { CustomernotesComponent } from './customernotes/customernotes.component'
 import { PromisePayDialogComponent } from './promise-pay-dialog/promise-pay-dialog.component';
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
 import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsapp-dialog.component';
+import { AddOauthDialogComponent } from './add-oauth-dialog/add-oauth-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsap
     PromisePayDialogComponent,
     AddInvoiceDialogComponent,
     EditWhatsappDialogComponent,
-
+    AddOauthDialogComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,7 @@ import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsap
     SharedModule
   ],
   exports: [],
-  providers: [ CurrencyPipe,   DatePipe,],
+  providers: [ CurrencyPipe, DatePipe,],
   entryComponents: [
     NewTaskDialogComponent,
     CustomerInvoiceDialogComponent,
@@ -60,7 +62,6 @@ import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsap
     AdminProjectDialogComponent,
     PromisePayDialogComponent,
     AddInvoiceDialogComponent
-
   ],
 })
 export class DialogModule {}

@@ -35,7 +35,7 @@ export class WhatsappComponent implements OnInit {
   messageDataSource = MESSAGE_ELEMENT_DATA;
 
   openSettingDialog() {
-    this.dialogService.editSettingDialog('Manage', []).subscribe((res) => {
+    this.dialogService.editSettingDialog('Add/Edit', []).subscribe((res) => {
       console.log(res);
     });
   }

@@ -20,7 +20,7 @@
         <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Delete">
             delete 
         </mat-icon></a>
-        <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Add">
+        <a href="javascript:void(0)" routerLinkActive="active" (click)='openSettingDialog()'><mat-icon aria-hidden="false" aria-label="Add">
             add_circle_outline 
         </mat-icon></a>
     </div>
@@ -83,7 +83,7 @@
             <ng-container matColumnDef="action">
                 <th><mat-header-cell *matHeaderCellDef class="tbl-xs-3"> Action </mat-header-cell></th>
                 <td><mat-cell *matCellDef="let element" class="tbl-xs-3">
-                    <a mat-button href="javascript:void(0)" (click)='openSettingDialog()'>
+                    <a mat-icon-button href="javascript:void(0)" (click)='openSettingDialog()'>
                         <mat-icon>edit</mat-icon></a>
                     </mat-cell></td>
             </ng-container>
@@ -91,11 +91,5 @@
             <mat-header-row *matHeaderRowDef="messageDisplayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: messageDisplayedColumns;"></mat-row>
         </mat-table>
-
-        <mat-list role="list">
-            <mat-divider></mat-divider>
-            <button mat-raised-button class="glbl-btn">Cancel</button>
-            <button mat-raised-button class="glbl-btn green-btn">Save</button>
-          </mat-list>
       </div>
 </div>

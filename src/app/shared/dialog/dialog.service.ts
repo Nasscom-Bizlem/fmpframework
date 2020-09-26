@@ -25,6 +25,7 @@ import { PromisePayDialogComponent } from './promise-pay-dialog/promise-pay-dial
 import { PromisePayModel } from 'src/app/features/customer/customermodel/promise-pay.model';
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
 import { EditWhatsappDialogComponent } from './edit-whatsapp-dialog/edit-whatsapp-dialog.component';
+import { AddOauthDialogComponent } from './add-oauth-dialog/add-oauth-dialog.component';
 
 @Injectable({
   providedIn: 'root',
@@ -183,6 +184,18 @@ export class DialogService {
       },
       width: '50%',
       maxWidth: '50vw',
+    });
+    return d.afterClosed();
+  }
+
+  addOauthDialog(dialogTitle: string, modeldata: any) {
+    const d = this.dialog.open(AddOauthDialogComponent, {
+      data: {
+        title: dialogTitle,
+        modeldata: [],
+      },
+      width: '25%',
+      maxWidth: '25vw',
     });
     return d.afterClosed();
   }

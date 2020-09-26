@@ -1,0 +1,49 @@
+<div class="header">
+    <h1 mat-dialog-title>{{data.title}}
+    <span>
+    <i mat-icon-button class="material-icons close pointer " [mat-dialog-close]='false'>close</i>
+    </span></h1>
+  </div>
+  
+    <mat-grid-list cols="1">
+      <mat-grid-tile>
+        <div class="dialog-content" [formGroup]="addOauthForm">
+            <div class="form-group">
+                <mat-file-upload [labelText]="'Select a file (or multiple) to upload:'" 
+                [selectButtonText]="'Choose File(s)'"
+                [uploadButtonText]="'Submit'" 
+                [allowMultipleFiles]="true" 
+                [showUploadButton]="true"
+                [acceptedTypes]="'.png, .jpg, .jpeg'">
+                </mat-file-upload>
+            </div>
+
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="" value="" >
+          </mat-form-field>
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+          </div>
+          <mat-form-field>
+            <mat-label>URL</mat-label>
+            <input matInput placeholder="" value="" >
+          </mat-form-field>
+          <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
+            <div *ngIf="f.url.errors.required">Url is required</div>
+          </div>
+        </div>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  
+    <div class="dialog-footer">
+      <button mat-button class="glbl-btn green-btn" (click)='onSave()'>
+        <span>Save</span>
+      </button>
+      <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
+        <span>Cancel</span>
+      </button>
+    </div>
+    
+  

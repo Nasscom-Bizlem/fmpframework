@@ -2706,4 +2706,34 @@ app-edit-whatsapp-dialog{
 .mat-button{
     margin-left: 10px;
 }
+.mat-form-field{
+  width: 85%;
+}
+}
+app-add-oauth-dialog{
+.header{
+  .mat-dialog-title{
+      margin: 5px;
+  }
+  span{
+      position: relative; 
+      float: right;
+  }
+}
+.dialog-content{
+  margin-left: 10%;
+}
+.dialog-footer{
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.mat-button{
+  margin-left: 10px;
+}
+
+.mat-form-field {
+  width: 80%;
+}
 }

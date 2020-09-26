@@ -16,7 +16,7 @@ import { OauthComponent } from './oauth/oauth.component';
   imports: [
     CommonModule,
     SetupRoutingModule,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class SetupModule{}

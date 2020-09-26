@@ -9,6 +9,13 @@
       <mat-grid-tile>
         <div class="dialog-content" [formGroup]="manageSettingForm">
           <mat-form-field>
+            <mat-label>Choose an Message Type</mat-label>
+            <mat-select>
+              <mat-option value="option1">WhatsApp</mat-option>
+              <mat-option value="option2">SMS</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
             <mat-label>Account Name</mat-label>
             <input matInput placeholder="" value="" >
           </mat-form-field>

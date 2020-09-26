@@ -1,0 +1,198 @@
+<div class="dialog-content" [formGroup]="extendTrailForm">
+    <h1 align="center">Extend Trial</h1>
+  
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Members</label>
+        
+        <ng-select
+          appendTo="body"
+          formControlName="Customer"  placeholder="Select Customer">
+          <ng-option *ngFor="let CustomerMaster of CustomerMasterList" [value]="CustomerMaster.Email">
+            {{ CustomerMaster.Email }}
+          </ng-option>
+        
+        </ng-select>
+  
+        <div *ngIf="submitted && f.Customer.errors" class="invalid-feedback">
+          <div *ngIf="f.Customer.errors.required">Customer is required</div>
+        </div>
+  
+      </div>
+    </div>
+  <br>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Upgrade Trial</label>
+        <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+          <!-- <mat-select panelClass="drop-panel" [(ngModel)]="selectedPluginName" [(value)]="pluginnames[0].value" (change)="changePluginName($event)"> -->
+            <!-- <mat-select placeholder="Select Plugin Name" panelClass="drop-panel" [(ngModel)]="selectedPluginName" (ngModelChange)="changePluginName($event)" formControlName="PluginName"> -->
+              <mat-select placeholder="Select Extension days" panelClass="drop-panel" (selectionChange)="changeExtensiondays($event)" formControlName="TransType">
+            <mat-option *ngFor="let oneTransType of TransTypeList" [value]="oneTransType.TransTypeId" [attr.data-Days]="oneTransType.Days">
+              {{ oneTransType.TransTypeName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!--<ng-select
+          
+          appendTo="body"
+          formControlName="TransType"  placeholder="Select Extension days">
+          <ng-option *ngFor="let oneTransType of TransTypeList" [attr.data-Days]="oneTransType.Days"  [value]="oneTransType.TransTypeId">
+            {{ oneTransType.TransTypeName }}
+          </ng-option>
+        
+        </ng-select>-->
+  
+        <div *ngIf="submitted && f.TransType.errors" class="invalid-feedback">
+          <div *ngIf="f.TransType.errors.required">Customer is required</div>
+        </div>
+  
+      </div>
+    </div>
+  
+  
+  
+  
+  
+   <!-- <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Customer ID</mat-label>
+            <input
+              matInput
+              formControlName="customer_id"
+              placeholder="Enter customer ID"
+            />
+            <div *ngIf="submitted && f.customer_id.errors">
+              <mat-error
+                *ngIf="submitted && f.customer_id.errors.required"
+                class="invalid-feedback"
+                >Login is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Customer Name</mat-label>
+            <input
+              matInput
+              formControlName="customer_name"
+              placeholder="Enter customer name"
+            />
+            <div *ngIf="submitted && f.customer_name.errors">
+              <mat-error
+                *ngIf="submitted && f.customer_name.errors.required"
+                class="invalid-feedback"
+                >First name is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Service ID</mat-label>
+            <input
+              matInput
+              formControlName="service_id"
+              placeholder="Enter service ID"
+            />
+            <div *ngIf="submitted && f.service_id.errors">
+              <mat-error
+                *ngIf="submitted && f.service_id.errors.required"
+                class="invalid-feedback"
+                >Last name is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Service Name</mat-label>
+            <input
+              matInput
+              formControlName="service_name"
+              placeholder="Enter your service"
+            />
+            <div *ngIf="submitted && f.service_name.errors">
+              <mat-error
+                *ngIf="submitted && f.service_name.errors.required"
+                class="invalid-feedback"
+                >Email is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Extend Free Trail</mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="days"
+              placeholder="Days"
+            />
+            <div *ngIf="submitted && f.days.errors">
+              <mat-error
+                *ngIf="submitted && f.days.errors.required"
+                class="invalid-feedback"
+                >Password is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Previous Request</mat-label>
+            <input
+              matInput
+              formControlName="previous_request"
+              placeholder="Previous request"
+            />
+            <div *ngIf="submitted && f.previous_request.errors">
+              <mat-error
+                *ngIf="submitted && f.previous_request.errors.required"
+                class="invalid-feedback"
+                >Confirmation is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Reason</mat-label>
+            <textarea matInput formControlName="previous_request"></textarea>
+            <div *ngIf="submitted && f.previous_request.errors">
+              <mat-error
+                *ngIf="submitted && f.previous_request.errors.required"
+                class="invalid-feedback"
+                >Confirmation is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>-->
+    <br>
+    <div align="center">
+      <button mat-button class="glbl-btn" align="center" (click)="save()">
+        <span>Save</span>
+      </button>
+    </div>
+  </div>
+  

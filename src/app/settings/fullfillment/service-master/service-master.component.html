@@ -1,0 +1,138 @@
+<div class="dialog-content" [formGroup]="serviceMasterForm">
+    <h1 align="center">Service Master</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored">
+            <mat-label>ServiceName</mat-label>
+            <input
+              matInput
+              formControlName="ServiceName"
+              placeholder="Enter Service Name"
+            />
+            <div *ngIf="submitted && f.ServiceName.errors">
+              <mat-error
+                *ngIf="submitted && f.ServiceName.errors.required"
+                class="invalid-feedback"
+                >Service Name is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored">
+            <mat-label>Price</mat-label>
+            <input
+              matInput
+              formControlName="Price"
+              placeholder="Enter Price"
+            />
+            <div *ngIf="submitted && f.Price.errors">
+              <mat-error
+                *ngIf="submitted && f.Price.errors.required"
+                class="invalid-feedback"
+                > Price is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored">
+            <mat-label>Currency </mat-label>
+            <input
+              matInput
+              formControlName="Currency"
+              placeholder="Enter Currency"
+            />
+            <div *ngIf="submitted && f.Currency.errors">
+              <mat-error
+                *ngIf="submitted && f.Currency.errors.required"
+                class="invalid-feedback"
+                >Last name is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored">
+            <mat-label>SchemeId</mat-label>
+          
+  
+      <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+        <mat-select panelClass="drop-panel" [(value)]="foods[0].value" formControlName="SchemeId">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+           <!--- <input
+              matInput
+              formControlName="SchemeId"
+              placeholder="Enter your SchemeId"
+            />-->
+            <div *ngIf="submitted && f.SchemeId.errors">
+              <mat-error
+                *ngIf="submitted && f.SchemeId.errors.required"
+                class="invalid-feedback"
+                >SchemeId is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored">
+            <mat-label>Billing_Unit1</mat-label>
+            <input
+              matInput
+              formControlName="Billing_Unit1"
+              placeholder="Billing Unit"
+            />
+            <div *ngIf="submitted && f.Billing_Unit1.errors">
+              <mat-error
+                *ngIf="submitted && f.Billing_Unit1.errors.required"
+                class="invalid-feedback"
+                >Billing Unit is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored">
+            <mat-label>Billing_period </mat-label>
+            <input
+              matInput
+              formControlName="Billing_period"
+              placeholder="Billing period "
+            />
+            <div *ngIf="submitted && f.Billing_period.errors">
+              <mat-error
+                *ngIf="submitted && f.Billing_period.errors.required"
+                class="invalid-feedback"
+                > Billing period is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      
+    </div>
+    <div align="center">
+      <button mat-button class="glbl-btn" align="center" (click)="save()">
+        <span>Save</span>
+      </button>
+    </div>
+  </div>
+  

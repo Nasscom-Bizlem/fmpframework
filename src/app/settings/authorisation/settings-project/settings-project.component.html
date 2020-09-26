@@ -1,0 +1,18 @@
+<div class="project-wrapper">
+  <div class="single-flex">
+    <button mat-button class="xs-glbl-btn green-btn" (click)='openProjectDialog()'>
+      <mat-icon>add_circle</mat-icon>
+      <span>Add Projects</span>
+    </button>
+
+  </div>
+  <app-filter></app-filter>
+  <div class="project-inner">
+    <app-table-grid></app-table-grid>
+  </div>
+</div>
+<div>
+  <button mat-button class="glbl-btn">
+    Save
+  </button>
+</div>

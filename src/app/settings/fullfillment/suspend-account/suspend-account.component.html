@@ -1,0 +1,242 @@
+<div class="dialog-content" [formGroup]="suspendAccountForm">
+    <h1 align="center">Suspend Account</h1>
+    <div class="row">
+  
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Customer</label>
+  
+          <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+                <mat-select placeholder="Select Customer Name" panelClass="drop-panel" [(ngModel)]="selectCustomerName" (selectionChange)="onchangeCustomer($event)" formControlName="Customer">
+              <mat-option *ngFor="let CustomerMaster of CustomerMasterList" [value]="CustomerMaster.CRN" [attr.data-CRN]="CustomerMaster.CRN">
+                {{CustomerMaster.Email}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+         <!-- <ng-select
+            appendTo="body"
+            formControlName="Customer"  placeholder="Select Customer">
+            <ng-option *ngFor="let CustomerMaster of CustomerMasterList" (selectionChange)="onchangecustomerName($event)" [value]="CustomerMaster.Email">
+              {{ CustomerMaster.Email }}
+            </ng-option>
+          </ng-select>-->
+    
+          <div *ngIf="submitted && f.Customer.errors" class="invalid-feedback">
+            <div *ngIf="f.Customer.errors.required">Select Customer First</div>
+          </div>
+    
+        </div>
+      </div>
+  
+  
+      <div *ngIf="edited">
+        <label>Services:</label>
+        
+        <div class="inner-fieldset">
+  
+          <div *ngFor="let Services of ServiceList">
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'" [checked]="false" name="ServiceList" 
+            id="{{Services.ServiceID}}" (change)="onserviceselect($event,Services.TransactionID)">
+            <label> {{ Services.ServiceName }} </label>
+            </mat-checkbox>
+          </div>
+  
+           <!-- <div *ngFor="let permissionname of permissionsData">
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'" [checked]="permissionname.state" name="{{permissionname.name}}" 
+            id="{{permissionname.name}}" (change)="onCheckboxChange($event,[(permissionname.name)])">
+            <label> {{ permissionname.name }} </label>
+            </mat-checkbox>
+          </div> -->
+         
+        </div>
+  
+      </div>
+      <div class="col-md-12" *ngIf="edited">
+        <div class="form-group">
+          <mat-form-field class="col-md-12" class="mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored">
+            <mat-label>Reason </mat-label>
+            <input
+              matInput
+              formControlName="reason"
+              placeholder="Enter Reason"
+            />
+            <div *ngIf="submitted && f.reason.errors">
+              <mat-error
+                *ngIf="submitted && f.reason.errors.required"
+                class="invalid-feedback"
+                >Reason is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+  
+      
+      <!-- <div class="col-md-4">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>CRN</mat-label>
+            <input matInput formControlName="crn" placeholder="Enter CRN" />
+            <div *ngIf="submitted && f.crn.errors">
+              <mat-error
+                *ngIf="submitted && f.crn.errors.required"
+                class="invalid-feedback"
+                >Login is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group col-md-12">
+          <mat-form-field class="col-md-12">
+            <mat-label>Customer Name</mat-label>
+            <input
+              matInput
+              formControlName="customer_name"
+              placeholder="Enter customer name"
+            />
+            <div *ngIf="submitted && f.customer_name.errors">
+              <mat-error
+                *ngIf="submitted && f.customer_name.errors.required"
+                class="invalid-feedback"
+                >First name is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Over Due Amount</mat-label>
+            <input
+              matInput
+              formControlName="over_due_amount"
+              placeholder="Amount"
+            />
+            <div *ngIf="submitted && f.over_due_amount.errors">
+              <mat-error
+                *ngIf="submitted && f.over_due_amount.errors.required"
+                class="invalid-feedback"
+                >Last name is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Last Payment</mat-label>
+            <input matInput formControlName="payment" placeholder="Payment" />
+            <div *ngIf="submitted && f.payment.errors">
+              <mat-error
+                *ngIf="submitted && f.payment.errors.required"
+                class="invalid-feedback"
+                >Email is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Duration</mat-label>
+            <input matInput formControlName="duration" placeholder="Duration" />
+            <div *ngIf="submitted && f.duration.errors">
+              <mat-error
+                *ngIf="submitted && f.duration.errors.required"
+                class="invalid-feedback"
+                >Password is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Extension Given</mat-label>
+            <input
+              matInput
+              formControlName="extentions"
+              placeholder="Extentions"
+            />
+            <div *ngIf="submitted && f.extentions.errors">
+              <mat-error
+                *ngIf="submitted && f.extentions.errors.required"
+                class="invalid-feedback"
+                >Confirmation is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Reason</mat-label>
+            <input matInput formControlName="reason" placeholder="Reason" />
+            <div *ngIf="submitted && f.reason.errors">
+              <mat-error
+                *ngIf="submitted && f.reason.errors.required"
+                class="invalid-feedback"
+                >Confirmation is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Recomended By</mat-label>
+            <input
+              matInput
+              formControlName="recomended_by"
+              placeholder="Recomended By"
+            />
+            <div *ngIf="submitted && f.recomended_by.errors">
+              <mat-error
+                *ngIf="submitted && f.recomended_by.errors.required"
+                class="invalid-feedback"
+                >Confirmation is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <mat-form-field class="col-md-12">
+            <mat-label>Approved By</mat-label>
+            <input
+              matInput
+              formControlName="approve_by"
+              placeholder="Approved By"
+            />
+            <div *ngIf="submitted && f.approve_by.errors">
+              <mat-error
+                *ngIf="submitted && f.approve_by.errors.required"
+                class="invalid-feedback"
+                >Confirmation is required</mat-error
+              >
+            </div>
+          </mat-form-field>
+        </div>
+      </div>-->
+    </div>
+    <br>
+    <div align="center">
+      <button mat-button class="glbl-btn" (click)="save()">
+        <span>Save</span>
+      </button>
+    </div>
+  </div>
+  

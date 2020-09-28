@@ -45,18 +45,15 @@
           </div>
     </mat-tab>
     <mat-tab label="OAuth Set Up">
-        <mat-grid-list cols="1">
-            <mat-grid-tile>
-              <div class="dialog-content" [formGroup]="emailForm">
-                <mat-form-field>
-                    <mat-label>Choose an Icon</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-              </div>
-            </mat-grid-tile>
-        </mat-grid-list>
+      <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-grid-tile *ngFor="let img of icon">
+            <mat-list dense>
+                <mat-list-item>
+                    <div mat-card-avatar matLine><img src="{{img.image}}"></div>
+                    <h6 matLine style="text-align: center;">{{img.imageName}}</h6>
+                </mat-list-item>
+            </mat-list>
+        </mat-grid-tile>
+    </mat-grid-list>
     </mat-tab>
   </mat-tab-group>

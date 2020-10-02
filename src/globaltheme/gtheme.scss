@@ -66,7 +66,7 @@ app-header {
     box-shadow: 15px 0 21px -2px rgba(0, 0, 0, 0.21);
     background: #4753fd;
     background: linear-gradient(90deg, #4753fd 19%, #2291fa 60%, #00c8f9 100%);
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     justify-content: space-between;
     &.inactive {
       .home-logo {
@@ -161,10 +161,10 @@ app-left-panel {
       > span {
         display: block;
         &:first-child {
-          font: 100 22px "Poppins", sans-serif;
+          font: 100 22px 'Poppins', sans-serif;
         }
         &:nth-child(2) {
-          font: 500 22px "Poppins", sans-serif;
+          font: 500 22px 'Poppins', sans-serif;
         }
       }
     }
@@ -175,7 +175,7 @@ app-left-panel {
       // overflow: auto;
       .mat-list-item {
         color: #fbfbfb;
-        font: 100 14px "Poppins", sans-serif;
+        font: 100 14px 'Poppins', sans-serif;
         height: 40px;
         padding: 2px 0;
         cursor: pointer;
@@ -252,7 +252,7 @@ app-left-panel {
           display: block;
           cursor: pointer;
           color: #fbfbfb;
-          font: 100 14px "Poppins", sans-serif;
+          font: 100 14px 'Poppins', sans-serif;
           padding: 5px;
           &:focus {
             outline: none;
@@ -314,7 +314,7 @@ app-customer {
         flex-direction: column;
         > div {
           text-align: center;
-          font: 100 15px "Poppins", sans-serif;
+          font: 100 15px 'Poppins', sans-serif;
           .user {
             width: 96px;
             min-width: 96px;
@@ -555,7 +555,7 @@ app-overview {
           .trends-header {
             padding: 15px;
             font-weight: 600;
-            font: 600 16px "Poppins", sans-serif;
+            font: 600 16px 'Poppins', sans-serif;
             color: #3d3c41;
           }
           .trends-inner {
@@ -628,7 +628,7 @@ app-details {
             padding: 7px 0;
             display: block;
             font-weight: 500;
-            font: 600 12px "Poppins", sans-serif;
+            font: 600 12px 'Poppins', sans-serif;
           }
         }
       }
@@ -636,7 +636,8 @@ app-details {
   }
 }
 
-app-admin-payment,app-payment {
+app-admin-payment,
+app-payment {
   .payment-wrapper {
     .payment-inner {
       background: #ebf0f3;
@@ -657,7 +658,7 @@ app-admin-payment,app-payment {
             border-left: 2px solid #d2d2d2;
             padding-left: 20px;
             line-height: 20px;
-            font: 600 13px/28px "Poppins", sans-serif;
+            font: 600 13px/28px 'Poppins', sans-serif;
             padding-right: 20px;
             > span {
               line-height: 20px;
@@ -686,7 +687,7 @@ app-admin-payment,app-payment {
               .mat-form-field-infix {
               padding: 3px 7px;
               border-top: 0px solid transparent;
-              font: 400 14px/25px "Poppins", sans-serif;
+              font: 400 14px/25px 'Poppins', sans-serif;
               .mat-form-field-label-wrapper > label.mat-form-field-label {
                 padding-left: 6px;
                 position: relative;
@@ -787,7 +788,7 @@ app-admin-payment,app-payment {
           border-left: 25px solid;
           border-top: 2em solid transparent;
           bottom: 0;
-          content: "";
+          content: '';
           height: 0;
           position: absolute;
           right: 0;
@@ -800,7 +801,7 @@ app-admin-payment,app-payment {
           border-left: 25px solid;
           border-top: 2em solid transparent;
           bottom: 0;
-          content: "";
+          content: '';
           height: 0;
           position: absolute;
           right: 0;
@@ -884,7 +885,7 @@ app-activity-task {
   min-width: 250px;
   z-index: 4;
   // z-index: 9999;
-  font: 300 14px/28px "Poppins", sans-serif;
+  font: 300 14px/28px 'Poppins', sans-serif;
   .tasker {
     padding: 15px;
     display: flex;
@@ -896,7 +897,7 @@ app-activity-task {
       min-width: 200px;
       line-height: 39px;
       height: 39px;
-      font: 500 14px/28px "Poppins", sans-serif;
+      font: 500 14px/28px 'Poppins', sans-serif;
     }
   }
   .mat-tab-group {
@@ -921,7 +922,7 @@ app-activity-task {
             white-space: nowrap;
             position: relative;
             background: #e2e4e6;
-            font: 100 14px/28px "Poppins", sans-serif;
+            font: 100 14px/28px 'Poppins', sans-serif;
             &.mat-tab-label-active {
               background: #0066e5;
               color: #fff;
@@ -1111,12 +1112,12 @@ app-add-customer-dialog {
             white-space: nowrap;
             position: relative;
             background: #e2e4e6;
-            font: 100 14px/28px "Poppins", sans-serif;
+            font: 100 14px/28px 'Poppins', sans-serif;
             &.mat-tab-label-active {
               background: #0066e5;
               .mat-tab-label-content {
                 color: #fff !important;
-                font: 500 12px/28px "Poppins", sans-serif;
+                font: 500 12px/28px 'Poppins', sans-serif;
               }
             }
           }
@@ -1135,7 +1136,7 @@ app-add-customer-dialog {
       .mat-expansion-panel-header {
         padding: 0 10px;
         font-weight: 500;
-        font: 600 14px/28px "Poppins", sans-serif;
+        font: 600 14px/28px 'Poppins', sans-serif;
         background: #e6ebf1 !important;
         margin: 5px 0;
       }
@@ -1480,7 +1481,7 @@ app-invoice-activity {
             min-width: 140px;
             .mat-tab-label-content {
               color: #505052;
-              font: 500 12px/28px "Poppins", sans-serif;
+              font: 500 12px/28px 'Poppins', sans-serif;
             }
           }
         }
@@ -1962,7 +1963,7 @@ app-add-invoice-dialog {
                     min-width: 50px;
                     margin-right: 5px;
                     border: 1px solid #f5f5f5;
-                    font: 300 14px/28px "Poppins", sans-serif;
+                    font: 300 14px/28px 'Poppins', sans-serif;
                     > div {
                       padding: 0 5px;
                     }
@@ -2033,7 +2034,7 @@ app-add-invoice-dialog {
           display: flex;
           justify-content: space-between;
           padding: 10px 0;
-          font: 300 14px/28px "Poppins", sans-serif;
+          font: 300 14px/28px 'Poppins', sans-serif;
           > div {
             .card-actions {
               display: block;
@@ -2088,12 +2089,252 @@ app-popover {
   left: 29%;
 }
 app-invoice {
-  >div {
+  > div {
     padding: 0 15px;
     margin-bottom: 20px;
-    >div{
-      &.iqra-activity{
+    > div {
+      &.iqra-activity {
         display: flex;
+      }
+    }
+  }
+}
+
+//Reconcilattion Scss Only
+app-recon-tab {
+  display: block;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background: #fff;
+  nav {
+    ul {
+      margin: 0;
+      list-style: none;
+      display: flex;
+      width: calc(100% - 30px);
+      justify-content: space-between;
+      padding: 0 15px;
+      // min-height: 60px;
+      align-items: center;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+      li {
+        padding: 5px 15px;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 500;
+        &:active,
+        &:hover,
+        &:focus {
+          outline: none;
+        }
+        &.active {
+          outline: none;
+          border-bottom: 2px solid #3d3c41;
+          a {
+            &:active,
+            &:hover,
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+app-reconcilation {
+  .recon-container {
+    display: block;
+    padding-top: 40px;
+    z-index: 9;
+    // padding: 50px 20px 20px 20px;
+  }
+}
+// .collapsing {
+//   height: auto;
+//   &.in {
+//     position: relative;
+//     height: 0;
+//     overflow: hidden;
+//     -webkit-transition: height 0.35s ease !important;
+//     transition: height 0.35s ease !important;
+//   }
+// }
+
+app-recon-control {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  padding: 20px 20px 15px 20px;
+  display: block;
+  .control-panel {
+    mat-form-field.mat-form-field.glb-ctrl-drop {
+      width: 100px;
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      > div {
+        &.up-down-icon {
+          display: flex;
+          align-items: center;
+          position: relative;
+          margin: 0 15px;
+          > .mat-icon {
+            font-size: 30px;
+            font-weight: 600;
+            width: 30px;
+            height: 30px;
+            color: #3d3c41;
+          }
+        }
+        &.recon-search {
+          width: calc(100% - 60% + 30px);          
+          mat-form-field {
+            &.mat-form-field {
+              &.glb-ctrl-search {
+                height: 32px;
+                .mat-form-field-suffix button {
+                  background: #2887fb;
+                  border-radius: 0;
+                  height: 32px;
+                  width: 34px;
+                  position: relative;
+                  top: -2px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+                  .mat-icon {
+                    top: 0;
+                    left: 0;
+                    font-size: 22px;
+                    height: 22px;
+                    width: 20px;
+                    color: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.filter-ctrl {
+          background: #2887fb;
+          height: 34px;
+          margin: 0 15px;
+          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+          > button {
+            color: #fff;
+            line-height: 34px;
+          }
+        }
+      }
+    }
+  }
+  .open-filter-panel,
+  .open-field-panel {
+    background: #fff;
+    background-color: #fff;
+    color: #333;
+    margin-top: 15px;
+    &.close {
+      max-height: 0;
+      transition: max-height 0.15s ease-out;
+      overflow: hidden;
+    }
+    &.open {
+      max-height: 500px;
+      transition: max-height 0.25s ease-in;
+      border: 1px solid #ccc;
+      box-shadow: 0 0px 2px rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    ul,
+    .column-container {
+      list-style: none;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      li,
+      > div {
+        flex-grow: 1;
+        flex: 1 1;
+        max-width: calc(100% / 3);
+        box-sizing: border-box;
+        flex-basis: calc(100% / 3);
+        > div {
+          display: flex;
+          flex-direction: column;
+          > label {
+            font-size: 13px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    .apply-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #2887fb;
+      height: 34px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+      width: 100px;
+      margin: 0 auto;
+      color: #fff;
+    }
+  }
+
+  .chips-container {
+    margin-top: -15px;
+    > span {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    mat-chip-list {
+      &.mat-chip-list {
+        .mat-chip-list-wrapper {
+          .mat-standard-chip:hover::after,
+          .mat-standard-chip:focus::after {
+            display: none;
+            opacity: 1;
+            background: transparent;
+          }
+          .mat-standard-chip .mat-chip-remove.mat-icon {
+            width: 18px;
+            height: 18px;
+            color: #fff;
+            opacity: 1;
+          }
+          .mat-chip,
+          .mat-chip:hover {
+            color: #fff;
+            background: #1c64f2;
+            background: #fbba00;
+            &:nth-child(4n + 1) {
+              background: #3ac43d;
+            }
+            &:nth-child(4n + 2) {
+              background: #fbbc04;
+            }
+            &:nth-child(4n + 3) {
+              background: #843ce8;
+            }
+            &:nth-child(4n + 4) {
+              background: #3571fc;
+            }
+            &:nth-child(4n + 5) {
+              background: #3ac43d;
+            }
+            &:nth-child(4n + 6) {
+              background: #f76540;
+            }
+          }
+        }
       }
     }
   }

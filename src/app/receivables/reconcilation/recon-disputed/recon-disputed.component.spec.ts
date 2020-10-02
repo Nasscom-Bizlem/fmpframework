@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddteamspaceComponent } from './addteamspace.component';
+import { ReconDisputedComponent } from './recon-disputed.component';
 
-describe('AddteamspaceComponent', () => {
-  let component: AddteamspaceComponent;
-  let fixture: ComponentFixture<AddteamspaceComponent>;
+describe('ReconDisputedComponent', () => {
+  let component: ReconDisputedComponent;
+  let fixture: ComponentFixture<ReconDisputedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddteamspaceComponent ]
+      declarations: [ ReconDisputedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddteamspaceComponent);
+    fixture = TestBed.createComponent(ReconDisputedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,20 +5,20 @@ export class CustomerDisputeModel {
   ContactName: string;
   LastActivity: string;
   Owner: string;
-  Id:number;
+  Id: number;
   Type?: string;
-  InvoiceNumber?: string ;
+  InvoiceNumber?: string;
 }
 
 export class CustomerDisuteRootModel {
   ResponseCode: number;
   ResponseMessage: string;
-  disputesList: CustomerDisputeModel[]
+  disputesList: CustomerDisputeModel[];
 }
 
 ////
-export class UpdateCustomerDisuteRootModel{
+export class UpdateCustomerDisuteRootModel {
   ResponseCode: number;
   ResponseMessage: string;
-  dispute: CustomerDisputeModel
+  dispute: CustomerDisputeModel;
 }

@@ -1,0 +1,190 @@
+<div class="control-panel">
+    <div>
+        <div>
+            <!-- <label>Source</label> -->
+            <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+                <mat-select disableRipple panelClass="drop-panel" (selectionChange)='getSourceDetails($event)'
+                    [(value)]="selected">
+                    <mat-option value="option1">SAP</mat-option>
+                    <mat-option value="option12">SASS</mat-option>
+                    <mat-option value="option13">PASS</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="up-down-icon">
+            <mat-icon class="material-icons">
+                vertical_align_bottom
+            </mat-icon>
+            <mat-icon class="material-icons">
+                vertical_align_top
+            </mat-icon>
+        </div>
+        <div class="recon-search">
+            <!-- <label>Title</label> -->
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+                <input matInput placeholder="" value="">
+                <button matSuffix mat-icon-button>
+                    <mat-icon>search</mat-icon>
+                </button>
+            </mat-form-field>
+
+        </div>
+        <div class="filter-ctrl">
+            <button mat-button (click)="openFilterPanel()">
+                <span class="material-icons">
+                    tune
+                </span>
+                <span>Filter</span>
+            </button>
+        </div>
+        <div class="filter-ctrl" (click)="openFieldPanel()">
+            <button mat-button>
+                <span class="material-icons">
+                    view_column
+                </span>
+                <span>Fields</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<div class="open-filter-panel" [ngClass]="{'open':isFilterPanelOpen,'close':!isFilterPanelOpen}">
+    <ul class="collapse">
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Branch</mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Branch Code</mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Amount </mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Currency </mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Country </mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Party </mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                From Date </mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                To Date </mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Invoice Number </mat-checkbox>
+        </li>
+        <li>
+            <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                Channel </mat-checkbox>
+        </li>
+    </ul>
+    <div class="apply-btn">
+        <button mat-button>Apply</button>
+    </div>
+</div>
+
+<div class="open-field-panel" [ngClass]="{'open':isFiledOpen,'close':!isFiledOpen}">
+    <ng-container *ngIf='columnFields && columnFields.length>0'>
+        <div class="column-container">
+
+            <ng-container *ngFor='let col of columnFields'>
+
+                <ng-container *ngIf='col.Transaction && col.Transaction.length>0'>
+                    <div>
+                        <div>
+                            <label>Transaction</label>
+                            <ng-container *ngFor='let tran of col.Transaction'>
+                                <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'"
+                                    (change)='getFields($event,tran)' [checked]="chipsSelection.indexOf(tran)>-1">
+                                    {{tran.ColumnName}}</mat-checkbox>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf='col.Invoice && col.Invoice.length>0'>
+                    <div>
+                        <div>
+                            <label>Invoice</label>
+                            <ng-container *ngFor='let inv of col.Invoice'>
+                                <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'"
+                                    (change)='getFields($event,inv)' [checked]="chipsSelection.indexOf(inv)>-1">
+                                    {{inv.ColumnName}}</mat-checkbox>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf='col.Settlement && col.Settlement.length>0'>
+                    <div>
+                        <div>
+                            <label>Settlement</label>
+                            <ng-container *ngFor='let settlement of col.Settlement'>
+                                <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'"
+                                    (change)='getFields($event,settlement)'
+                                    [checked]="chipsSelection.indexOf(settlement)>-1">
+                                    {{settlement.ColumnName}}</mat-checkbox>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf='col.Payment && col.Payment.length>0'>
+                    <div>
+                        <div>
+                            <label>Payement</label>
+                            <ng-container *ngFor='let payment of col.Payment'>
+                                <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'"
+                                    (change)='getFields($event,payment)' [checked]="chipsSelection.indexOf(payment)>-1">
+                                    {{payment.ColumnName}}</mat-checkbox>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf='col.Dispute && col.Dispute.length>0'>
+                    <div>
+                        <div>
+                            <label>Dispute</label>
+                            <ng-container *ngFor='let dispute of col.Dispute'>
+                                <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'"
+                                    (change)='getFields($event,dispute)' [checked]="chipsSelection.indexOf(dispute)>-1">
+                                    {{dispute.ColumnName}}</mat-checkbox>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+
+
+        </div>
+    </ng-container>
+
+    <div class="apply-btn">
+        <button mat-button (click)='showChips()'>Apply</button>
+    </div>
+</div>
+
+
+<ng-container *ngIf='!isFiledOpen && !isFilterPanelOpen && chipsSelection && chipsSelection.length>0'>
+    <div class="chips-container">
+        <span>Selected Column</span>
+        <mat-chip-list>
+            <mat-chip *ngFor="let chips of chipsSelection">
+                {{chips.ColumnName}}
+                <mat-icon matChipRemove (click)='removeChipList(chips)'>cancel</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+</ng-container>

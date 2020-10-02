@@ -74,15 +74,15 @@ export class AddCustomerDialogComponent implements OnInit {
   }
 
   addTeamSpace() {
-    this.addCustomerTeamSpaceService.openTeamSpace().subscribe((res) => {
-      if (res.status) {
-        debugger;
-        this.isTeamSpaceAdded = true;
-        this.addCustomerForm.controls['TeamSpace'].setValue(
-          res.teamSpaceData.TeamSpaceName
-        );
-      }
-    });
+    // this.addCustomerTeamSpaceService.openTeamSpace().subscribe((res) => {
+    //   if (res.status) {
+    //     debugger;
+    //     this.isTeamSpaceAdded = true;
+    //     this.addCustomerForm.controls['TeamSpace'].setValue(
+    //       res.teamSpaceData.TeamSpaceName
+    //     );
+    //   }
+    // });
   }
 
   onSubmit() {

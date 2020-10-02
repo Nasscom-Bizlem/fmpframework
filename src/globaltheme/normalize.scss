@@ -21,8 +21,11 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   background: #fbfbfd;
-  font: 300 15px/28px "Poppins", sans-serif;
+  font: 300 14px/28px "Poppins", sans-serif !important;
   background: #e6ebf1;
+}
+button.mat-button{
+  // font: 300 14px/28px "Poppins", sans-serif !important;
 }
 
 /* HTML5 display definitions

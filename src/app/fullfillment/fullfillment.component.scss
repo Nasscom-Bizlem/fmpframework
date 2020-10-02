@@ -1,0 +1,88 @@
+.m-l-40{
+    margin-left:40px;
+}
+
+.pos-rel{
+    position: relative;
+}
+.pos-add{
+    position: absolute;
+    margin-left: -19px;
+    margin-top: 20px;
+}
+.icon-size{
+    margin-left: -7px;
+    position: absolute;
+    bottom: -4px;
+    font-size: large;
+    color: #4753fd;
+        box-shadow: 0 2px 4px 0 rgba(12, 0, 46, 0.04);
+}
+
+.float-mat-icons{
+    display: flex;
+    float: right;
+    margin: -43px 0px 10px 0px;
+}
+
+.example-card{
+    width: 10px;
+    height: 1px;
+    margin-right:20px;
+}
+
+.icon-card{
+    width: 3px;
+    
+    margin-right:20px;
+    position: relative;
+    padding: 11px;
+}
+
+.mat-circle{
+   color:#cc9519;
+}
+
+.title{
+    color:#3d3c41;
+    font-weight:100;
+}
+
+.tab-height{
+    height: 300px;
+}
+
+.cancel-btn{
+    background-color:#fbba00;
+    color:#fff;
+    margin-left:40px;
+    margin-right:11px;
+    box-shadow: 0 2px 4px 0 rgba(12, 0, 46, 0.04);
+    font-weight: 400;
+}
+.glbl-btn{
+    font-weight: 400;
+ 
+}
+.single-flex{
+    margin-right: 43%;margin-top:10px;
+}
+@media screen and (max-width: 600px) {
+    .pos-rel{
+        position: relative;
+        top: -46px;
+    }
+    .m-l-40{
+        margin-left: 58px;
+    }
+    .table-wrapper.tbl-border {
+        border: 1px solid #e2e8f0;
+        /* margin-top: 20px; */
+        border-radius: 4px;
+    }
+
+    .single-flex{
+        margin-right: 24%;
+    margin-top: 10px;
+    }
+  }

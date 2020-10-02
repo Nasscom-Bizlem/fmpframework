@@ -1,59 +1,89 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { IncentivesComponent } from './incentives.component';
 import { TeamComponent } from './team/team.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { ContractComponent } from './contract/contract.component';
+import { DataSourcesComponent } from './data-sources/data-sources.component';
+import { ObjectsComponent } from './objects/objects.component';
+import { PlanComponent } from './plan/plan.component';
+import { QuotaComponent } from './quota/quota.component';
+import { RuleFlowComponent } from './rule-flow/rule-flow.component';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: IncentivesComponent,
-    children: [
-      {
-        path: 'team',
-        canActivateChild: [],
-        loadChildren: () =>
-          import('./team/team.module').then((m) => m.TeamModule),
-      },
-      {
-        path: 'plan',
-        canActivateChild: [],
-        loadChildren: () =>
-          import('./plan/plan.module').then((m) => m.PlanModule),
-      },
-      {
-        path: 'quota',
-        canActivateChild: [],
-        loadChildren: () =>
-          import('./quota/quota.module').then((m) => m.QuotaModule),
-      },
-      {
-        path: 'contract',
-        canActivateChild: [],
-        loadChildren: () =>
-          import('./contract/contract.module').then((m) => m.ContractModule),
-      },
-      {
-        path: 'ruleflow',
-        canActivateChild: [],
-        loadChildren: () =>
-          import('./ruleflow/ruleflow.module').then((m) => m.RuleflowModule),
-      },
-      {
-        path: 'datasource',
-        canActivateChild: [],
-        loadChildren: () =>
-          import('./datasource/datasource.module').then(
-            (m) => m.DatasourceModule
-          ),
-      },
-    ],
+
+// import { IncentivesComponent } from './incentives.component';
+
+const routes: Routes = [{
+  path: '',
+  data: {
+    title: 'Incentives',
+    status: false
   },
+  // resolve: [],
+  // canActivate: [],
+  children: [
+    {
+      path: '',
+      redirectTo: 'team',
+      pathMatch: 'full'
+    },
+    {
+      path: 'team',
+      component: TeamComponent,
+      data: {
+        path: 'team'
+      }
+    }, {
+      path: 'analytics',
+      component: AnalyticsComponent,
+      data: {
+        path: 'analytics'
+      }
+    }, {
+      path: 'cotract',
+      component: ContractComponent,
+      data: {
+        path: 'cotract'
+      }
+    }, {
+      path: 'data-sources',
+      component: DataSourcesComponent,
+      data: {
+        path: 'data-sources'
+      }
+    }, {
+      path: 'objects',
+      component: ObjectsComponent,
+      data: {
+        path: 'objects'
+      }
+    }, {
+      path: 'plan',
+      component: PlanComponent,
+      data: {
+        path: 'plan'
+      }
+    },
+    {
+      path: 'quota',
+      component: QuotaComponent,
+      data: {
+        path: 'quota'
+      }
+    },
+    {
+      path: 'rule-flow',
+      component: RuleFlowComponent,
+      data: {
+        path: 'rule-flow'
+      }
+    },
 
-  { path: '**', component: TeamComponent },
-];
+    { path: '', pathMatch: 'full', redirectTo: 'user' },
+  ],
+},];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class IncentivesRoutingModule {}
+export class IncentivesRoutingModule { }

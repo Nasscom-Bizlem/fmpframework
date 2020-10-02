@@ -1,0 +1,70 @@
+<div class="confirm-header">
+  <div class="layer"></div>
+  <h1 mat-dialog-title>Create New Task</h1>
+  <!-- <button > -->
+  <i mat-icon-button class="material-icons close pointer" [mat-dialog-close]='false'>close</i>
+  <!-- </button> -->
+</div>
+<div class="dialog-content">
+
+  <div>
+    <div>
+      <div>
+        <label>Title</label>
+        <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+          <input matInput placeholder="Recap your call" value="">
+        </mat-form-field>
+      </div>
+      <div>
+        <label>Description</label>
+        <mat-form-field class="glb-textarea" [floatLabel]="'never'">
+          <textarea matInput rows="5" cols="35"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>Assigned To</label>
+        <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+          <mat-select panelClass="drop-panel" [(value)]="foods[0].value">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <label>Due Date</label>
+        <mat-form-field class="glbl-datepicker" [floatLabel]="'never'">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker1">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker [dateClass]="dateClass" #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <label>Color</label>
+        <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'">
+          <mat-select panelClass="drop-panel" [(value)]="foods[0].value">
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="dialog-footer">
+  <div class="dialog-footer">
+    <button mat-button class="glbl-btn  blue-btn" [mat-dialog-close]='false'>
+      <mat-icon>check_circle_outline</mat-icon>
+      <span>Save</span>
+    </button>
+    <button mat-button class="glbl-btn transparent" [mat-dialog-close]='false'>
+      <span>Cancel</span>
+      <mat-icon class="cancel">cancel</mat-icon>
+    </button>
+  </div>
+</div>

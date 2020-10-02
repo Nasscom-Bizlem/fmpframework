@@ -1,0 +1,112 @@
+<div class="confirm-header">
+  <h1 mat-dialog-title>({{taskList.Name}}) Task </h1>
+  <!-- <button > -->
+  <i mat-icon-button class="material-icons close pointer" [mat-dialog-close]='false'>close</i>
+  <!-- </button> -->
+</div>
+<div class="dialog-content">
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="Details">
+
+
+      <app-fmp-tero-card class="row-flex">
+        <div class="header">Details</div>
+        <div class="main">
+          <div>
+            <label>Assigned To</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
+              <input matInput placeholder="" value="" [readonly]='isFieldDisabled' [(ngModel)]='taskList.AssignedTo'>
+              <mat-icon matSuffix (click)='enableFields()'>create</mat-icon>
+            </mat-form-field>
+          </div>
+          <div>
+            <label>Status</label>
+            <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
+              <mat-select panelClass="drop-panel" [(value)]='statusSelected' [disabled]='isFieldDisabled'
+                (selectionChange)='findSelection($event)'>
+                <mat-option *ngFor="let status of status" [value]="status.value">
+                  {{status.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <label>Subject</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='true'>
+              <input matInput placeholder="" value="" [readonly]='true' [(ngModel)]='taskList.Subject'>
+            </mat-form-field>
+          </div>
+          <div>
+            <label>Name</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
+              <input matInput placeholder="" value="" [readonly]='isFieldDisabled' [(ngModel)]='taskList.Name'>
+              <mat-icon matSuffix (click)='enableFields()'>create</mat-icon>
+            </mat-form-field>
+          </div>
+          <div>
+            <label>Due Date</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='true'>
+              <input matInput placeholder="" value="" [disabled]='true' [(ngModel)]='taskList.AtDate'>
+            </mat-form-field>
+          </div>
+          <div>
+            <label>Related To</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
+              <input matInput placeholder="" value="" [readonly]='isFieldDisabled' [(ngModel)]='taskList.AssignedTo'>
+              <mat-icon matSuffix (click)='enableFields()'>create</mat-icon>
+            </mat-form-field>
+          </div>
+          <div>
+            <label>Priority</label>
+            <mat-form-field class="glb-ctrl-drop" [floatLabel]="'never'" [class.readonly]='true'>
+              <mat-select panelClass="drop-panel" [(value)]="priority[0].value" [disabled]='true'>
+                <mat-option *ngFor="let food of priority" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <label>Created By</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
+              <input matInput placeholder="" value="" [readonly]='isFieldDisabled' [(ngModel)]='taskList.Name'>
+              <mat-icon matSuffix (click)='enableFields()'>create</mat-icon>
+            </mat-form-field>
+          </div>
+          <div>
+            <label>Last Modified By</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
+              <input matInput placeholder="Recap your call" value="" [readonly]='isFieldDisabled'
+                [(ngModel)]='taskList.AtDate'>
+            </mat-form-field>
+          </div>
+          <div class="full">
+            <label>Comments</label>
+            <mat-form-field class="glb-textarea" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
+              <textarea matInput [readonly]='isFieldDisabled'></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </app-fmp-tero-card>
+
+
+    </mat-tab>
+
+    <mat-tab label="Related">
+
+      Content 2
+
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
+<div class="dialog-footer">
+  <div class="dialog-footer">
+    <button mat-button class="glbl-btn  green-btn" (click)='updateTask()' [disabled]='isFieldDisabled'>
+      <span>Save</span>
+    </button>
+    <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
+      <span>Cancel</span>
+    </button>
+  </div>
+</div>

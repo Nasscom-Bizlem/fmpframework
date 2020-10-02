@@ -1,5 +1,4 @@
 
-
   <div class="base-container" [class.is-mobile]="mobileQuery.matches"
     [ngClass]="{'isbackdrop':isbackdrop,'notbackdrop':!isbackdrop}">
     <app-header (navToggle)="toggle($event)" *ngIf='!isLogginPage'></app-header>

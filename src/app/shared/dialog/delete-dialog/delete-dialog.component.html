@@ -1,0 +1,22 @@
+<div class="confirm-header">
+  <h1 mat-dialog-title>Delete</h1>
+  <!-- <button [mat-dialog-close]='false' class="close" mat-icon-button>
+    <i class="material-icons">close</i>
+  </button> -->
+
+  <i mat-icon-button class="material-icons close pointer" [mat-dialog-close]='false'>close</i>
+
+</div>
+<div class="dialog-content">
+  <h3>Are you want to delete</h3>
+</div>
+<div class="dialog-footer">
+  <div class="dialog-footer">
+    <button mat-button class="glbl-btn  red-btn" (click)='conditionToDeleteDialogue()' onclick="this.blur()">
+      <span>Delete</span>
+    </button>
+    <button mat-button class="glbl-btn" [mat-dialog-close]='false' onclick="this.blur()">
+      <span>Cancel</span>
+    </button>
+  </div>
+</div>

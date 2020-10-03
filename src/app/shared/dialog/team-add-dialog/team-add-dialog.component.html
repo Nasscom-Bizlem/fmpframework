@@ -1,0 +1,98 @@
+<div class="confirm-header">
+    <h1 mat-dialog-title>{{ titlesTeamSpace }} Team Space</h1>
+   <!--  <button [mat-dialog-close]="false" class="close" mat-icon-button>
+      <i class="material-icons">close</i>
+    </button> -->
+    <i mat-icon-button class="material-icons close pointer" [mat-dialog-close]='false'>close</i>
+  </div>
+  
+  <div class="dialog-content" [formGroup]="teamForm">
+    <fieldset class="glbl-set">
+      <legend>Information</legend>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Name</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+              <input matInput formControlName="Name" placeholder="Enter Name" value=""/>
+              <div *ngIf="submitted && f.Name.errors">
+                <mat-error
+                  *ngIf="submitted && f.Name.errors.required"
+                  class="invalid-feedback"
+                  >Name is required</mat-error
+                >
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Description</label>
+            <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+              <input matInput formControlName="Description" placeholder="Enter Description" />
+              <div *ngIf="submitted && f.Description.errors">
+                <mat-error
+                  *ngIf="submitted && f.Description.errors.required"
+                  class="invalid-feedback"
+                  >Description is required</mat-error
+                >
+              </div>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Members</label>
+            <!-- <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'">
+              <mat-select
+                panelClass="drop-panel"
+                [(value)]="foods[0].value"
+                formControlName="members"
+                multiple="true"
+              >
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{ food.viewValue }}
+                </mat-option>
+              </mat-select>
+              <div *ngIf="submitted && f.members.errors">
+                <mat-error
+                  *ngIf="submitted && f.members.errors.required"
+                  class="invalid-feedback"
+                  >Members is required</mat-error
+                >
+              </div>
+            </mat-form-field> -->
+            <ng-select
+              [multiple]="true"
+              appendTo="body"
+              formControlName="TeamSpaceMember" [(ngModel)]="selectedUser" placeholder="Select Members">
+
+              <!-- <ng-option *ngFor="let member of membersList" [value]="member.value">
+                {{ member.viewValue }}
+              </ng-option> -->
+
+              <ng-option *ngFor="let member of membersList" [value]="member.UserId">
+                {{ member.Name }}
+              </ng-option>
+            
+            </ng-select>
+
+            <div *ngIf="submitted && f.TeamSpaceMember.errors" class="invalid-feedback">
+              <div *ngIf="f.TeamSpaceMember.errors.required">Members is required</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  
+  <div class="dialog-footer">
+    <button mat-button class="glbl-btn" (click)="saveUserAdd()">
+      <span>Save</span>
+    </button>
+    <button mat-button class="glbl-btn" (click)="close()">
+      <span>Cancel</span>
+    </button>
+  </div>
+  

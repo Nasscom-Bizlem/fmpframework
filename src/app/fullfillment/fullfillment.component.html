@@ -1,0 +1,111 @@
+<div class="tiles-wrapper">
+    <h1 class="title">Service Master</h1>
+</div>
+<div>
+    <span class="material-icons">
+        keyboard_backspace
+    </span>
+    <div class="inner-fieldset">    
+        <div class="float-mat-icons">
+            <mat-card class="icon-card">
+                <mat-icon class="icon-size">assignment_turned_in</mat-icon>
+            </mat-card>
+            <mat-card class="icon-card">
+                <mat-icon class="icon-size">delete</mat-icon>
+            </mat-card>
+            <mat-card class="icon-card">
+                <mat-icon class="icon-size mat-circle">add_circle</mat-icon>
+            </mat-card>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<div class="table-wrapper tbl-border dialog-tbl tab-height">
+
+    <table mat-table [dataSource]="dataSource" class="glbl-tbl" matSort>
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6">
+                ID
+            </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.Id}}</span> </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="ServiceName">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-4">Service Name</th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.ServiceName}}</span> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-4">Description </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-4"> <span>{{element.Description}}</span> </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Type">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-3" mat-sort-header>Type</th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.Type}}</span> </td>
+        </ng-container>
+
+
+        <!-- <ng-container matColumnDef="UserStatus">
+        <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">UserStatus</th>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.UserStatus}}</span> </td>
+      </ng-container> -->
+
+
+        <ng-container matColumnDef="Limit">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Limit </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.Limit}}</span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Currency">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"  mat-sort-header> Currency </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.Currency}}</span>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Payment">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Payment </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.Payment}}</span>
+
+            </td>
+        </ng-container>
+         <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Price </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.Price}}</span>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="GracePeriod">
+            <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> Grace Period </th>
+            <td mat-cell *matCellDef="let element" class="tbl-xs-6">
+                <span>{{element.GracePeriod}}</span>
+
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
+
+<div class="single-flex">   
+    <button mat-button class="cancel-btn" >
+      <span>Cancel</span>
+    </button>
+    <button mat-button class="mat-focus-indicator glbl-btn mat-button mat-button-base">
+        Save
+      </button>
+  </div>

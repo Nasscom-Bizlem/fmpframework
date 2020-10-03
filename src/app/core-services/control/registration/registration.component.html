@@ -1,0 +1,89 @@
+<div class="innerWrapper">
+  <div class="app-header__content clearfix">
+    <div class="app-header-right float-right">
+      <div class="d-flex">
+        <div class="header-dots">
+          <div class="nav-link iconImg"><img src="assets/images/refresh.png"></div>
+          <div class="nav-link iconImg"><img src="assets/images/user.png"></div>
+          <div class="nav-link iconImg"><img src="assets/images/help.png"></div>
+          <div class="nav-link iconImg"><img src="assets/images/advanced-search.png"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-0">
+    <div class="col-md-5 loginImage">
+      <img src="assets/images1/login/sign-up.png">
+    </div>
+    <div class="col-md-7">
+      <div class="loginForm">
+        <h2>Welcome Back</h2>
+        <p class="tagLine">Get quick access to all WordPress premium themes with extensions or/and SP Page Builder Pro
+          with support!</p>
+        <form class="formElement" name="sign-in" [formGroup]="registerForm">
+          <div class="form-group">
+            <label>Name<div class="asterisk">*</div></label>
+            <input type="text" class="form-control" formControlName="firstName"
+              [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Id<div class="asterisk">*</div></label>
+            <input type="text" class="form-control" formControlName="email"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password<div class="asterisk">*</div></label>
+            <input type="text" class="form-control" formControlName="password"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password<div class="asterisk">*</div></label>
+            <input type="text" class="form-control" formControlName="cpassword"
+              [ngClass]="{ 'is-invalid': submitted && f.cpassword.errors }" />
+            <div *ngIf="submitted && f.cpassword.errors" class="invalid-feedback">
+              <div *ngIf="f.cpassword.errors.required">Confirm Password is required</div>
+              <div *ngIf="f.cpassword.errors.mustMatch">Passwords must match</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" class="form-control" formControlName="company"
+              [ngClass]="{ 'is-invalid': submitted && f.company.errors }">
+            <div *ngIf="submitted && f.company.errors" class="invalid-feedback">
+              <div *ngIf="f.company.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" formControlName="phone"
+              [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+              <div *ngIf="f.phone.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <!-- <div class="bottomSec">
+                  <div class="forgotPass">
+                      <a>Forgot your password?</a>
+                  </div>
+              </div> -->
+          <button type="submit" name="submit" class="button signUp" (click)='register()'>Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,76 @@
+<div class="header">
+    <!-- <h1 mat-dialog-title>{{data.title}} -->
+      <h1 mat-dialog-title>{{ titlesMailHost }}
+    <span>
+    <i mat-icon-button class="material-icons close pointer " [mat-dialog-close]='false'>close</i>
+    </span></h1>
+  </div>
+  
+    <mat-grid-list cols="2" [formGroup]="mailhostForm">
+      <mat-grid-tile>
+        <div class="dialog-content" >
+          <mat-form-field>
+            <mat-label>User</mat-label>
+            <input matInput placeholder="" value="" formControlName="user">
+          </mat-form-field>
+          <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
+            <div *ngIf="f.user.errors.required">User is required</div>
+          </div>
+          <mat-form-field>
+            <mat-label>Outbound Mail</mat-label>
+            <input matInput placeholder="" value="" formControlName="outboundMail">
+          </mat-form-field>
+          <div *ngIf="submitted && f.outboundMail.errors" class="invalid-feedback">
+            <div *ngIf="f.outboundMail.errors.required">Outbound Mail is required</div>
+          </div>
+          <mat-form-field>
+            <mat-label>Mail Limit</mat-label>
+            <input matInput placeholder="" value="" formControlName="mailLimit">
+          </mat-form-field>
+          <div *ngIf="submitted && f.mailLimit.errors" class="invalid-feedback">
+            <div *ngIf="f.mailLimit.errors.required">Mail Limit is required</div>
+          </div>
+          <mat-form-field>
+            <mat-label>SMS</mat-label>
+            <input matInput placeholder="" value="" formControlName="sms">
+          </mat-form-field>
+          <div *ngIf="submitted && f.sms.errors" class="invalid-feedback">
+            <div *ngIf="f.sms.errors.required">SMS is required</div>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="dialog-content">
+          <mat-form-field>
+            <mat-label>SMS Limit</mat-label>
+            <input matInput placeholder="" value="" formControlName="smsLimit">
+          </mat-form-field>
+          <div *ngIf="submitted && f.smsLimit.errors" class="invalid-feedback">
+            <div *ngIf="f.smsLimit.errors.required">SMS Limit is required</div>
+          </div>
+          <mat-form-field>
+            <mat-label>WhatsApp</mat-label>
+            <input matInput placeholder="" value="" formControlName="Whatsapp">
+          </mat-form-field>
+          <div *ngIf="submitted && f.Whatsapp.errors" class="invalid-feedback">
+            <div *ngIf="f.Whatsapp.errors.required">WhatsApp is required</div>
+          </div>
+          <mat-form-field>
+            <mat-label>WhatsApp Limit</mat-label>
+            <input matInput placeholder="" value="" formControlName="whatsappLimit">
+          </mat-form-field>
+          <div *ngIf="submitted && f.whatsappLimit.errors" class="invalid-feedback">
+            <div *ngIf="f.whatsappLimit.campaign.required">WhatsApp Limit is required</div>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  
+    <div class="dialog-footer">
+      <button mat-button class="glbl-btn green-btn" (click)='onSave()'>
+        <span>Save</span>
+      </button>
+      <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
+        <span>Cancel</span>
+      </button>
+    </div>

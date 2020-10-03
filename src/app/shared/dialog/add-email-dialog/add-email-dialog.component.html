@@ -1,0 +1,74 @@
+<div class="header">
+    <h1 mat-dialog-title>{{data.title}}
+    <span>
+    <i mat-icon-button class="material-icons close pointer " [mat-dialog-close]='false'>close</i>
+    </span></h1>
+  </div>
+  
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="Normal Set Up">
+        <mat-grid-list cols="1">
+            <mat-grid-tile>
+              <div class="dialog-content" [formGroup]="emailForm">
+                <mat-form-field>
+                  <mat-label>Host Name</mat-label>
+                  <input matInput placeholder="" value="" >
+                </mat-form-field>
+                <div *ngIf="submitted && f.hostname.errors" class="invalid-feedback">
+                  <div *ngIf="f.hostname.errors.required">Host Name is required</div>
+                </div>
+                <mat-form-field>
+                  <mat-label>Username</mat-label>
+                  <input matInput placeholder="" value="" >
+                </mat-form-field>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+                <mat-form-field>
+                  <mat-label>Password</mat-label>
+                  <input matInput placeholder="" value="" >
+                </mat-form-field>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+
+          <div class="dialog-footer">
+            <button mat-button class="glbl-btn green-btn" (click)='onSave()'>
+              <span>Save</span>
+            </button>
+            <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
+              <span>Cancel</span>
+            </button>
+          </div>
+    </mat-tab>
+    <mat-tab label="OAuth Set Up">
+      <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-grid-tile *ngFor="let img of icon">
+            <mat-list dense>
+                <mat-list-item>
+                    <div mat-card-avatar matLine><img src="{{img.image}}"></div>
+                    <h6 matLine style="text-align: center;">{{img.imageName}}</h6>
+                </mat-list-item>
+            </mat-list>
+        </mat-grid-tile>
+    </mat-grid-list>
+    </mat-tab>
+    <!-- <mat-tab label="OAuth Set Up">
+        <mat-grid-list cols="1">
+            <mat-grid-tile>
+              <div class="dialog-content" [formGroup]="emailForm">
+                <mat-form-field>
+                    <mat-label>Choose an Icon</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2">Option 2</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab> -->
+  </mat-tab-group>

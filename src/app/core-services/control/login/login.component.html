@@ -1,0 +1,76 @@
+<div class="innerWrapper">
+  <div class="app-header__content clearfix">
+    <div class="app-header-right float-right">
+      <div class="d-flex">
+        <div class="header-dots">
+          <div class="nav-link iconImg"><img src="assets/images/refresh.png"></div>
+          <div class="nav-link iconImg"><img src="assets/images/user.png"></div>
+          <div class="nav-link iconImg"><img src="assets/images/help.png"></div>
+          <div class="nav-link iconImg"><img src="assets/images/advanced-search.png"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-0">
+    <div class="col-md-7">
+      <!-- Sign-in -->
+      <div class="loginForm" id="signIn" *ngIf='!isForgot'>
+        <h2>Welcome Back</h2>
+        <p class="tagLine">Get quick access to all WordPress premium themes with extensions or/and SP Page Builder Pro
+          with support!</p>
+        <form class="formElement" name="sign-in">
+          <div class="form-group">
+            <label>User Name</label>
+            <input type="text" class="form-control" [formControl]="email" required autocomplete="new-phone">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" [formControl]="password" required autocomplete="new-phone">
+          </div>
+          <div class="bottomSec">
+            <div class="checkbox remember">
+              <label>
+                <input type="checkbox" name="rememberme" value="forever">Remember me
+              </label>
+            </div>
+            <div class="forgotPass" (click)="forgotPassword()">
+              <a>Forgot your password?</a>
+            </div>
+          </div>
+          <button type="submit" name="submit" class="button" (click)='logggedIn()'>Sign In</button>
+          <div class="altLogin text-center">New user?
+            <a class="loginLink" (click)='goToRegistration()'>Don't have an account?</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Forgot password -->
+      <div class="loginForm" id="forgotPassword" *ngIf='isForgot'>
+        <h2 style="font-size: 30px;">Forgot Password</h2>
+        <p class="tagLine">Get quick access to all WordPress premium themes with extensions or/and SP Page Builder Pro
+          with support!</p>
+        <form class="formElement" name="sign-in">
+          <div class="form-group">
+            <label>Email Id</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control">
+          </div>
+          <button type="submit" name="submit" class="button">Submit</button>
+          <div class="altLogin text-center">
+            <a class="loginLink" (click)="goToLogin()" style="color: #4509f1;">Back to Sign In</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-5 loginImage">
+      <img src="assets/images1/login/login-image.png">
+    </div>
+  </div>
+
+
+
+</div>

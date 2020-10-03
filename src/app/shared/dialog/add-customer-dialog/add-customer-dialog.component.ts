@@ -7,14 +7,11 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import {
-  CustomerListNewModel,
-  CustomerListModel,
-} from 'src/app/features/customer/customermodel/customerlist.model';
+
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AddCustomerTeamSpaceService } from '../addteamspace/addteamspace.service';
 import { DatePipe } from '@angular/common';
-import { CustomerDetailsModel } from 'src/app/features/customer/customermodel/getcustomerdetails';
+import { CustomerListNewModel } from 'src/app/receivables/customer/customermodel/customerlist.model';
 
 @Component({
   selector: 'app-add-customer-dialog',

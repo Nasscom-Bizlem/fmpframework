@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CustomerTaskModel } from 'src/app/features/customer/customermodel/customertask.model';
+import { CustomerTaskModel } from 'src/app/receivables/customer/customermodel/customertask.model';
 interface Status {
   value: number;
   viewValue: string;

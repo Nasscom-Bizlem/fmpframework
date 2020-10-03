@@ -2,8 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CustomerEventModel } from 'src/app/features/customer/customermodel/customer-events.model';
 import { DatePipe } from '@angular/common';
+import { CustomerEventModel } from 'src/app/receivables/customer/customermodel/customer-events.model';
 interface Food {
   value: string;
   viewValue: string;

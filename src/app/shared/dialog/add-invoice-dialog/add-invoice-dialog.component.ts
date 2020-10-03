@@ -17,16 +17,11 @@ import { Overlay, OverlayRef, OverlayConfig } from '@angular/cdk/overlay';
 import { TemplatePortalDirective, ComponentPortal } from '@angular/cdk/portal';
 import { PopoverService } from '../../popover/popover.service';
 import { PopoverRef } from '../../popover/popover-ref';
-import { CustomerListNewModel } from 'src/app/features/customer/customermodel/customerlist.model';
-import { CustomerService } from 'src/app/features/customer/customer.service';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { DatePipe, CurrencyPipe } from '@angular/common';
-import {
-  AddInvoiceModel,
-  AddressModel,
-  InvoiceCustomerModel,
-  InvoiceDetailModel,
-} from 'src/app/features/customer/customermodel/add-invoice.model';
+import { CustomerService } from 'src/app/receivables/customer/customer.service';
+import { InvoiceCustomerModel, InvoiceDetailModel } from 'src/app/receivables/customer/customermodel/add-invoice.model';
+
 
 @Component({
   selector: 'app-add-invoice-dialog',

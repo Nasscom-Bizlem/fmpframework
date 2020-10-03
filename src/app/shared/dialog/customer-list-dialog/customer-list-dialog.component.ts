@@ -13,9 +13,9 @@ import {
 import { DialogService } from '../dialog.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { CustomerListModel, CustomerListNewModel } from 'src/app/features/customer/customermodel/customerlist.model';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { CustomerListNewModel } from 'src/app/receivables/customer/customermodel/customerlist.model';
 
 @Component({
   selector: 'app-customer-list-dialog',

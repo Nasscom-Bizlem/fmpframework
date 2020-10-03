@@ -1,10 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomerDetailsModel } from 'src/app/features/customer/customermodel/getcustomerdetails';
-import { CustomerDisputeModel } from 'src/app/features/customer/customermodel/customer-dispute.model';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { CustomerDisputeModel } from 'src/app/receivables/customer/customermodel/customer-dispute.model';
 
 @Component({
   selector: 'app-add-dispute',

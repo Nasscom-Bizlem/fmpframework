@@ -2,8 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { NotesModel } from 'src/app/features/customer/customermodel/notes.model';
-// import { NotesModel } from 'src/app/features/customer/customermodel/notes.model';
+import { NotesModel } from 'src/app/receivables/customer/customermodel/notes.model';
 
 @Component({
   selector: 'app-customernotes',

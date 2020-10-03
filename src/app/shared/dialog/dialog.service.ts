@@ -8,22 +8,17 @@ import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import { PaymentActivityDialogComponent } from './payment-activity-dialog/payment-activity-dialog.component';
 import { CustomerListDialogComponent } from './customer-list-dialog/customer-list-dialog.component';
 import { AddCustomerDialogComponent } from './add-customer-dialog/add-customer-dialog.component';
-import { CustomerTaskModel } from 'src/app/features/customer/customermodel/customertask.model';
-import { DisputesComponent } from 'src/app/features/customer/disputes/disputes.component';
 import { AddDisputeComponent } from './add-dispute/add-dispute.component';
-import { CustomerDisputeModel } from 'src/app/features/customer/customermodel/customer-dispute.model';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { AdminProjectDialogComponent } from './admin-project-dialog/admin-project-dialog.component';
-import {
-  CustomerListModel,
-  CustomerListNewModel,
-} from 'src/app/features/customer/customermodel/customerlist.model';
+
 import { CustomernotesComponent } from './customernotes/customernotes.component';
-import { CustomerNotesListModel } from 'src/app/features/customer/customermodel/notes.model';
-import { CustomerDetailsModel } from 'src/app/features/customer/customermodel/getcustomerdetails';
 import { PromisePayDialogComponent } from './promise-pay-dialog/promise-pay-dialog.component';
-import { PromisePayModel } from 'src/app/features/customer/customermodel/promise-pay.model';
 import { AddInvoiceDialogComponent } from './add-invoice-dialog/add-invoice-dialog.component';
+import { CustomerTaskModel } from 'src/app/receivables/customer/customermodel/customertask.model';
+import { CustomerListNewModel } from 'src/app/receivables/customer/customermodel/customerlist.model';
+import { PromisePayModel } from 'src/app/receivables/customer/customermodel/promise-pay.model';
+import { CustomerNotesListModel } from 'src/app/receivables/customer/customermodel/notes.model';
 
 @Injectable({
   providedIn: 'root',

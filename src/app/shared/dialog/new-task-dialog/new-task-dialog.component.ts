@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CustomerTaskModel } from 'src/app/features/customer/customermodel/customertask.model';
+import { CustomerTaskModel } from 'src/app/receivables/customer/customermodel/customertask.model';
 interface Food {
   value: string;
   viewValue: string;

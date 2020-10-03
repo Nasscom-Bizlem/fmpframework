@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PromisePayModel } from 'src/app/features/customer/customermodel/promise-pay.model';
 import { DatePipe } from '@angular/common';
+import { PromisePayModel } from 'src/app/receivables/customer/customermodel/promise-pay.model';
 
 @Component({
   selector: 'app-promise-pay-dialog',

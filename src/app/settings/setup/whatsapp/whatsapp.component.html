@@ -1,99 +1,109 @@
 <div class="tiles-wrapper">
-    <a class="tiles-inner email"  [routerLink]="['/setup/email']" routerLinkActive="active">
-      <span>Email</span>
-    </a>
-    <a class="tiles-inner whatsapp" [routerLink]="['/setup/whatsapp']" routerLinkActive="active">
-      <span>WhatsApp & SMS</span>
-    </a>
-    <a class="tiles-inner oauth" [routerLink]="['/setup/oauth']" routerLinkActive="active">
-      <span>OAuth</span>
-    </a>
-    <a class="tiles-inner mailhost" [routerLink]="['/setup/mailhost']" routerLinkActive="active">
-      <span>Mailhost</span>
-    </a>
+  <a class="tiles-inner email"  [routerLink]="['/setup/email']" routerLinkActive="active">
+    <span>Email</span>
+  </a>
+  <a class="tiles-inner whatsapp" [routerLink]="['/setup/whatsapp']" routerLinkActive="active">
+    <span>WhatsApp & SMS</span>
+  </a>
+  <a class="tiles-inner oauth" [routerLink]="['/setup/oauth']" routerLinkActive="active">
+    <span>OAuth</span>
+  </a>
+  <a class="tiles-inner mailhost" [routerLink]="['/setup/mailhost']" routerLinkActive="active">
+    <span>Mailhost</span>
+  </a>
+</div>
+<div mat-content class="mat-container">
+  <div class="row showmassage" *ngIf="showMsg" >
+    <div class="col-xs-12" fxLayout="row" fxLayoutAlign="center center">
+      <p class="alert alert-success">
+        <strong>{{ message }}</strong>
+      </p>
+    </div>
   </div>
-  <div mat-content class="mat-container">
-      <div class="mat-icon-group">
-          <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Refresh">
-              visibility 
-          </mat-icon></a>
-          <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Edit">
-              edit
-          </mat-icon></a>
-          <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Delete">
-              delete 
-          </mat-icon></a>
-          <a href="javascript:void(0)" routerLinkActive="active" (click)='openSettingDialog()'><mat-icon aria-hidden="false" aria-label="Add">
-              add_circle_outline 
-          </mat-icon></a>
-      </div>
-      <div class="table-wrapper">
-          <mat-table [dataSource]="messageDataSource" class="glbl-tbl">
-              
-              <!-- Position Column -->
-              <ng-container matColumnDef="check">
-                  <th><mat-header-cell *matHeaderCellDef class="tbl-xs-1">
-                    <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
-                    </mat-checkbox>
-                  </mat-header-cell></th>
-                  <td><mat-cell *matCellDef="let element" class="tbl-xs-1">
-                    <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
-                    </mat-checkbox>
-                  </mat-cell></td>
-                </ng-container>
+    <div class="mat-icon-group">
+       <!-- <a [routerLink]="['#']" routerLinkActive="active"><mat-icon aria-hidden="false" aria-label="Refresh">
+            visibility 
+        </mat-icon></a>-->
+        <a href="javascript:void(0)" routerLinkActive="active" (click)='editwhatsappsmsGlobally()'><mat-icon aria-hidden="false" aria-label="Edit">
+            edit
+        </mat-icon></a>
+        <a href="javascript:void(0)" routerLinkActive="active" (click)='deletewhatsappsmsDialog()'><mat-icon aria-hidden="false" aria-label="Delete">
+            delete 
+        </mat-icon></a>
+        <a href="javascript:void(0)" routerLinkActive="active" (click)='openwhatsapp()'><mat-icon aria-hidden="false" aria-label="Add">
+            add_circle_outline 
+        </mat-icon></a>
+    </div>
+    <div class="table-wrapper">
+        <mat-table [dataSource]="dataSource" class="glbl-tbl">
             
-              <!-- Account Type Column -->
-              <ng-container matColumnDef="accountType">
-                  <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4">
-                    Account Type
-                  </mat-header-cell></th>
-                  <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.accountType}} </span></mat-cell></td>
-                </ng-container>
-            
-              <!-- Name Column -->
-              <ng-container matColumnDef="accountName">
-                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Account Name </mat-header-cell></th>
-                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.accountName}} </span></mat-cell></td>
-              </ng-container>
-            
-              <!-- Type Column -->
-              <ng-container matColumnDef="typeV">
-                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Type V </mat-header-cell></th>
-                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.typeV}} </span>
-                  <!-- <mat-icon aria-hidden="false"> {{element.typeV}} </mat-icon> -->
+            <!-- Position Column -->
+            <ng-container matColumnDef="check">
+              <th><mat-header-cell *matHeaderCellDef class="tbl-xs-1">
+                <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
+                </mat-checkbox>
+              </mat-header-cell></th>
+              <td><mat-cell *matCellDef="let element" class="tbl-xs-1">
+                <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'" (change)="onCheckboxChange($event,element)">
+                </mat-checkbox>
               </mat-cell></td>
+            </ng-container>
+          
+            <!-- Account Type Column -->
+            <ng-container matColumnDef="accountType">
+                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4">
+                  Account Type
+                </mat-header-cell></th>
+                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.AccountType}} </span></mat-cell></td>
               </ng-container>
-  
-              <!-- Ph Number Column -->
-              <ng-container matColumnDef="number">
-                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Number </mat-header-cell></th>
-                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.number}} </span></mat-cell></td>
-              </ng-container>
-  
-              <!-- Campaign Column -->
-              <ng-container matColumnDef="campaign">
-                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Campaign </mat-header-cell></th>
-                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.campaign}} </span></mat-cell></td>
-              </ng-container>
-  
-              <!-- RouteId Column -->
-              <ng-container matColumnDef="routeId">
-                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Route Id </mat-header-cell></th>
-                <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.routeId}} </span></mat-cell></td>
-              </ng-container>
-  
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="action">
-                  <th><mat-header-cell *matHeaderCellDef class="tbl-xs-3"> Action </mat-header-cell></th>
-                  <td><mat-cell *matCellDef="let element" class="tbl-xs-3">
-                      <a mat-icon-button href="javascript:void(0)" (click)='openSettingDialog()'>
-                          <mat-icon>edit</mat-icon></a>
-                      </mat-cell></td>
-              </ng-container>
-            
-              <mat-header-row *matHeaderRowDef="messageDisplayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: messageDisplayedColumns;"></mat-row>
-          </mat-table>
-        </div>
-  </div>
-  
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="accountName">
+              <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Account Name </mat-header-cell></th>
+              <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.AccountName}} </span></mat-cell></td>
+            </ng-container>
+          
+            <!-- Type Column -->
+            <ng-container matColumnDef="typeV">
+              <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Type V </mat-header-cell></th>
+              <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.MessageType}} </span>
+                <!-- <mat-icon aria-hidden="false"> {{element.typeV}} </mat-icon> -->
+            </mat-cell></td>
+            </ng-container>
+
+            <!-- Ph Number Column -->
+            <ng-container matColumnDef="number">
+              <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Number </mat-header-cell></th>
+              <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.Number}} </span></mat-cell></td>
+            </ng-container>
+
+            <!-- Campaign Column -->
+            <ng-container matColumnDef="campaign">
+              <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Campaign </mat-header-cell></th>
+              <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.Campaign}} </span></mat-cell></td>
+            </ng-container>
+
+            <!-- RouteId Column -->
+            <ng-container matColumnDef="routeId">
+              <th><mat-header-cell *matHeaderCellDef class="tbl-xs-4"> Route Id </mat-header-cell></th>
+              <td><mat-cell *matCellDef="let element" class="tbl-xs-4"><span> {{element.RouteId}} </span></mat-cell></td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="action">
+                <th><mat-header-cell *matHeaderCellDef class="tbl-xs-3"> Action </mat-header-cell></th>
+                <td><mat-cell *matCellDef="let element" class="tbl-xs-3">
+                    <a mat-icon-button href="javascript:void(0)" (click)='editNote(element)'>
+                        <mat-icon>edit</mat-icon></a>
+                    </mat-cell></td>
+            </ng-container>
+          
+            <mat-header-row *matHeaderRowDef="messageDisplayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: messageDisplayedColumns;"></mat-row>
+        </mat-table>
+        <ng-container>
+          <mat-paginator [length]='count' [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+            (page)="pageEvent($event)"></mat-paginator>
+        </ng-container>
+      </div>
+</div>

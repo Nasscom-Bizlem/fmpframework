@@ -351,5 +351,44 @@ get deleteOAuth() {
   return this.GET_URL('setting/oauth/deleteOAuth');
 }
 
+//settings - email - whatsapp
+
+get getemailSettingList(){
+  return this.GET_URL('setting/email/showEmailList');
+}
+
+get  AddemailSettingList(){
+  return this.GET_URL('setting/email/addEmail');
+}
+
+get  editemailSettingList(){
+  return this.GET_URL('setting/email/updateEmail');
+}
+get  deleteemailSettingList(){
+  return this.GET_URL('setting/setting/email/deleteEmail');
+}
+//whtasappsms
+get getwhatsappsmsList(){
+  return this.GET_URL('setting/whatsupsms/getWhatsupsmsList');
+}
+
+get  AddwhatsappsmsList(){
+  return this.GET_URL('setting/whatsupsms/addWhatsupsms');
+}
+
+get  editwhatsappsmsList(){
+  return this.GET_URL('setting/whatsupsms/updateWhatsupsms');
+}
+get  deletewhatsappsmsList(){
+  return this.GET_URL('setting/whatsupsms/deleteWhatsupsms');
+}
+get getoAuthsList(){
+  return this.GET_URL('setting/oauth/getOAuthList');
+}
+get addAuthToken(){
+  return this.GET_URL('setting/email/addAuthToken');
+}
+
+
 
 }

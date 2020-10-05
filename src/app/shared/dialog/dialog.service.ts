@@ -329,6 +329,18 @@ export class DialogService {
     return d.afterClosed();
   }
 
+  openwhatsappDialog(dialogTitle: string, modeldata: any) {
+    const d = this.dialog.open(EditWhatsappDialogComponent, {
+      data: {
+        title: dialogTitle,
+        modeldata: [],
+      },
+      width: '50%',
+      maxWidth: '50vw',
+    });
+    return d.afterClosed();
+  }
+
   /*   openRole( settingRoleModel?: SettingRoleModel ) {
       const d = this.dialog.open(AdminRoleDialogComponent, {
         data: {

@@ -1,91 +1,90 @@
 <div class="header">
-    <h1 mat-dialog-title>{{data.title}}
-    <span>
-    <i mat-icon-button class="material-icons close pointer " [mat-dialog-close]='false'>close</i>
-    </span></h1>
+  <h1 mat-dialog-title>{{data.title}}
+  <span>
+  <i mat-icon-button class="material-icons close pointer " [mat-dialog-close]='false'>close</i>
+  </span></h1>
+</div>
+
+  <mat-grid-list cols="2" [formGroup]="manageSettingForm">
+    <mat-grid-tile>
+      <div class="dialog-content" >
+        <mat-form-field>
+          <mat-label>Choose an Message Type</mat-label>
+          <mat-select    formControlName="MessageType">
+            <mat-option value="WhatsApp">WhatsApp</mat-option>
+            <mat-option value="SMS">SMS</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Account Name</mat-label>
+          <input matInput placeholder="" value="" formControlName="AccountName">
+        </mat-form-field>
+        <div *ngIf="submitted && f.AccountName.errors" class="invalid-feedback">
+          <div *ngIf="f.AccountName.errors.required">Account Name is required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>Number</mat-label>
+          <input matInput placeholder="" value="" formControlName="Number">
+        </mat-form-field>
+        <div *ngIf="submitted && f.Number.errors" class="invalid-feedback">
+          <div *ngIf="f.Number.errors.required">Number is required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>Account Type</mat-label>
+          <input matInput placeholder="" value="" formControlName="AccountType">
+        </mat-form-field>
+        <div *ngIf="submitted && f.AccountType.errors" class="invalid-feedback">
+          <div *ngIf="f.AccountType.errors.required">Account Type is required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>Auth Token</mat-label>
+          <input matInput placeholder="" value="" formControlName="AuthToken">
+        </mat-form-field>
+        <div *ngIf="submitted && f.AuthToken.errors" class="invalid-feedback">
+          <div *ngIf="f.AuthToken.errors.required">Token is required</div>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="dialog-content">
+        <mat-form-field>
+          <mat-label>URL</mat-label>
+          <input matInput placeholder="" value="" formControlName="Url" >
+        </mat-form-field>
+        <div *ngIf="submitted && f.Url.errors" class="invalid-feedback">
+          <div *ngIf="f.Url.errors.required">Url is required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>Key</mat-label>
+          <input matInput placeholder="" value="" formControlName="Key" >
+        </mat-form-field>
+        <div *ngIf="submitted && f.Key.errors" class="invalid-feedback">
+          <div *ngIf="f.Key.errors.required">Key is required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>Campaign</mat-label>
+          <input matInput placeholder="" value="" formControlName="Campaign">
+        </mat-form-field>
+        <div *ngIf="submitted && f.Campaign.errors" class="invalid-feedback">
+          <div *ngIf="f.authToken.Campaign.required">Campaign is required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>Route ID</mat-label>
+          <input matInput placeholder="" value="" formControlName="RouteId">
+        </mat-form-field>
+        <div *ngIf="submitted && f.RouteId.errors" class="invalid-feedback">
+          <div *ngIf="f.RouteId.errors.required">RouteID Name is required</div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="dialog-footer">
+    <button mat-button class="glbl-btn green-btn" (click)='onSave()'>
+      <span>Save</span>
+    </button>
+    <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
+      <span>Cancel</span>
+    </button>
   </div>
-  
-    <mat-grid-list cols="2">
-      <mat-grid-tile>
-        <div class="dialog-content" [formGroup]="manageSettingForm">
-          <mat-form-field>
-            <mat-label>Choose an Message Type</mat-label>
-            <mat-select>
-              <mat-option value="option1">WhatsApp</mat-option>
-              <mat-option value="option2">SMS</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Account Name</mat-label>
-            <input matInput placeholder="" value="" >
-          </mat-form-field>
-          <div *ngIf="submitted && f.accountName.errors" class="invalid-feedback">
-            <div *ngIf="f.accountName.errors.required">Account Name is required</div>
-          </div>
-          <mat-form-field>
-            <mat-label>Number</mat-label>
-            <input matInput placeholder="" value="" >
-          </mat-form-field>
-          <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
-            <div *ngIf="f.number.errors.required">Number is required</div>
-          </div>
-          <mat-form-field>
-            <mat-label>Account Type</mat-label>
-            <input matInput placeholder="" value="" >
-          </mat-form-field>
-          <div *ngIf="submitted && f.accountType.errors" class="invalid-feedback">
-            <div *ngIf="f.accountType.errors.required">Account Type is required</div>
-          </div>
-          <mat-form-field>
-            <mat-label>Auth Token</mat-label>
-            <input matInput placeholder="" value="" >
-          </mat-form-field>
-          <div *ngIf="submitted && f.authToken.errors" class="invalid-feedback">
-            <div *ngIf="f.authToken.errors.required">Token is required</div>
-          </div>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="dialog-content">
-          <mat-form-field>
-            <mat-label>URL</mat-label>
-            <input matInput placeholder="" value="" >
-          </mat-form-field>
-          <div *ngIf="submitted && f.url.errors" class="invalid-feedback">
-            <div *ngIf="f.url.errors.required">Url is required</div>
-          </div>
-          <mat-form-field>
-            <mat-label>Key</mat-label>
-            <input matInput placeholder="" value="" >
-          </mat-form-field>
-          <div *ngIf="submitted && f.key.errors" class="invalid-feedback">
-            <div *ngIf="f.key.errors.required">Key is required</div>
-          </div>
-          <mat-form-field>
-            <mat-label>Campaign</mat-label>
-            <input matInput placeholder="" value="" >
-          </mat-form-field>
-          <div *ngIf="submitted && f.campaign.errors" class="invalid-feedback">
-            <div *ngIf="f.authToken.campaign.required">Campaign is required</div>
-          </div>
-          <mat-form-field>
-            <mat-label>Route ID</mat-label>
-            <input matInput placeholder="" value="" >
-          </mat-form-field>
-          <div *ngIf="submitted && f.routeId.errors" class="invalid-feedback">
-            <div *ngIf="f.routeId.errors.required">RouteID Name is required</div>
-          </div>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
-  
-    <div class="dialog-footer">
-      <button mat-button class="glbl-btn green-btn" (click)='onSave()'>
-        <span>Save</span>
-      </button>
-      <button mat-button class="glbl-btn" [mat-dialog-close]='false'>
-        <span>Cancel</span>
-      </button>
-    </div>
-    
   

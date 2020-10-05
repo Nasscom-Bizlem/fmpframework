@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { OAuth, OAuthListModel } from '../setup-model/oauth.model';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 export interface PeriodicOAuthElement {
   check: boolean;
@@ -78,6 +79,7 @@ export class OauthComponent implements OnInit {
     private setupService: SetupService,
     private datePipe: DatePipe,
     private router: Router,
+    private http: HttpClient,
   ) { }
 
   ngOnInit(): void {
@@ -312,6 +314,86 @@ export class OauthComponent implements OnInit {
         this.message = '';
       }, 3000);
     }
+  }
+
+  OauthCheckHardcoded() {
+
+    let _url = 'https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/gmail.labels https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.readonly&client_id=350043906139-infkug7o8lu33pvo0ak3l4accic1guqo.apps.googleusercontent.com&redirect_uri=http://localhost:4200/setup/oauth&response_type=code&approval_prompt=force&access_type=offline';
+
+    var top = window.screen.height - 600;
+    top = top > 0 ? top / 2 : 0;
+
+    var left = window.screen.width - 800;
+    left = left > 0 ? left / 2 : 0;
+
+    var win = window.open(_url, "windowname1", "width=800,height=600" + ",top=" + top + ",left=" + left);
+    win.moveTo(left, top);
+    win.focus();
+
+    var pollTimer = window.setInterval(() => {
+      try {
+        console.log(win.document.URL);
+        if (win.document.URL.indexOf('http://localhost:4200/setup/oauth') != -1) {
+          window.clearInterval(pollTimer);
+          var url = win.document.URL;
+          //console.log("url:: " + url);
+
+          var newcode = this.getcode(url, 'code');
+          console.log("newcode:: " + newcode);
+
+          /* let params = new HttpParams()
+          .set('code', newcode)
+          .set('client_id', '350043906139-infkug7o8lu33pvo0ak3l4accic1guqo.apps.googleusercontent.com')
+          .set('client_secret', 'rWSaS6LZA_VZSTGe7UzSoS9l')
+          .set('grant_type', 'authorization_code')
+          .set('redirect_uri', 'http://localhost:4200/setup/oauth'); */
+
+          const formData = new FormData();
+          // append your data
+          formData.append('code', newcode);
+          formData.append('client_id', '350043906139-infkug7o8lu33pvo0ak3l4accic1guqo.apps.googleusercontent.com');
+          formData.append('client_secret', 'rWSaS6LZA_VZSTGe7UzSoS9l');
+          formData.append('grant_type', 'authorization_code');
+          formData.append('redirect_uri', 'http://localhost:4200/setup/oauth');
+
+          this.http.post('https://www.googleapis.com/oauth2/v4/token', formData)
+            .subscribe(res => {
+              console.log("OauthCheckHardcoded:: " + JSON.stringify(res));
+              let strJsonObj = JSON.stringify(res);
+              let parsedObj = JSON.parse(strJsonObj);
+              let oauthTokenObj = {};
+              oauthTokenObj['AccessToken'] = parsedObj.access_token;
+              oauthTokenObj['RefreshToken'] = parsedObj.refresh_token;
+              oauthTokenObj['TokenType'] = 'gmail';
+              oauthTokenObj['UserId'] = 'cus1001';
+              oauthTokenObj['ClientSecret'] = 'rWSaS6LZA_VZSTGe7UzSoS9l';
+              oauthTokenObj['AuthCode'] = newcode;
+              oauthTokenObj['RedirectUrl'] = 'http://localhost:4200/setup/oauth';
+
+              this.http.post('http://199.217.112.145:8089/fma/api/setting/email/addAuthToken', oauthTokenObj)
+                .subscribe(res => {
+                  console.log("oauthTokenObj:: " + JSON.stringify(res));
+                });
+
+            });
+
+
+          win.close();
+        }
+      } catch (e) {
+      }
+    }, 500);
+  }
+
+  getcode(url, name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regexS = "[\\?&]" + name + "=([^&?]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(url);
+    if (results == null)
+      return "";
+    else
+      return results[1];
   }
 
 

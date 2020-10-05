@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AddEmail, oAuthsData, saveAuthToken } from './add-email.model';
+import { AddEmail, oAuthsData, saveAuthToken, AppOAuthSettings } from './add-email.model';
 import { EmailServiceService } from 'src/app/settings/setup/email/email-service.service';
 import { GlobalConstantService } from 'src/app/core-services/global-constant.service';
 
@@ -110,11 +110,9 @@ export class AddEmailDialogComponent implements OnInit {
 
 
   onclicksaveurl(_url: any, type: any) {
-   // console.log("_url " + _url);
-   // console.log("type " + type);
-    let typeSource=String(type);
+
+    let typeSource = String(type);
     console.log("typeSource " + typeSource);
-    // let _url = 'https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/gmail.labels https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.readonly&client_id=350043906139-infkug7o8lu33pvo0ak3l4accic1guqo.apps.googleusercontent.com&redirect_uri=http://localhost:4200/setup/oauth&response_type=code&approval_prompt=force&access_type=offline';
 
     var top = window.screen.height - 600;
     top = top > 0 ? top / 2 : 0;
@@ -125,36 +123,27 @@ export class AddEmailDialogComponent implements OnInit {
     var win = window.open(_url, "windowname1", "width=800,height=600" + ",top=" + top + ",left=" + left);
     win.moveTo(left, top);
     win.focus();
+    const customer = JSON.parse(localStorage.getItem('currentUser'));
 
     var pollTimer = window.setInterval(() => {
       try {
         console.log(win.document.URL);
-        if (win.document.URL.indexOf('http://localhost:4200/setup') != -1) {
+        if (win.document.URL.indexOf(AppOAuthSettings.currentWindowUrl) != -1) {
           window.clearInterval(pollTimer);
           var url = win.document.URL;
-          //console.log("url:: " + url);
+          var newcode = this.getcode(url, AppOAuthSettings.code);
 
-          var newcode = this.getcode(url, 'code');
-         // console.log("newcode:: " + newcode);
-
-          /* let params = new HttpParams()
-          .set('code', newcode)
-          .set('client_id', '350043906139-infkug7o8lu33pvo0ak3l4accic1guqo.apps.googleusercontent.com')
-          .set('client_secret', 'rWSaS6LZA_VZSTGe7UzSoS9l')
-          .set('grant_type', 'authorization_code')
-          .set('redirect_uri', 'http://localhost:4200/setup/oauth'); */
           let AuthApi = "";
           const formData = new FormData();
-          if (typeSource.toUpperCase() == 'GMAIL') {
-            console.log("insidetype");
-            // append your data
-            formData.append('code', newcode);
-            formData.append('client_id', '350043906139-infkug7o8lu33pvo0ak3l4accic1guqo.apps.googleusercontent.com');
-            formData.append('client_secret', 'rWSaS6LZA_VZSTGe7UzSoS9l');
-            formData.append('grant_type', 'authorization_code');
-            formData.append('redirect_uri', 'http://localhost:4200/setup/email');
-            AuthApi = "https://www.googleapis.com/oauth2/v4/token";
-          } else if (type == "OUTLOOK") { }
+          if (typeSource.toUpperCase() == AppOAuthSettings.GMAIL) {
+            // append data
+            formData.append(AppOAuthSettings.code, newcode);
+            formData.append(AppOAuthSettings.client_id_key, AppOAuthSettings.client_id);
+            formData.append(AppOAuthSettings.client_secret_key, AppOAuthSettings.client_secret);
+            formData.append(AppOAuthSettings.grant_type_key, AppOAuthSettings.authorization_code);
+            formData.append(AppOAuthSettings.redirect_uri_key, AppOAuthSettings.redirect_uri);
+            AuthApi = AppOAuthSettings.gmailOAuthApi;
+          } else if (type == AppOAuthSettings.OUTLOOK) { }
 
           this.http.post(AuthApi, formData)
             .subscribe(res => {
@@ -163,17 +152,17 @@ export class AddEmailDialogComponent implements OnInit {
               let parsedObj = JSON.parse(strJsonObj);
               let oauthTokenObj = new saveAuthToken();
 
-              oauthTokenObj.AccessToken= parsedObj.access_token;
-              oauthTokenObj.RefreshToken= parsedObj.refresh_token;
+              oauthTokenObj.AccessToken = parsedObj.access_token;
+              oauthTokenObj.RefreshToken = parsedObj.refresh_token;
               oauthTokenObj.TokenType = typeSource;
-              oauthTokenObj.UserId = 'cus1001';
-              oauthTokenObj.ClientSecret = 'rWSaS6LZA_VZSTGe7UzSoS9l';
+              oauthTokenObj.UserId = customer.CustomerId;
+              oauthTokenObj.ClientSecret = AppOAuthSettings.client_secret;
               oauthTokenObj.AuthCode = newcode;
-              oauthTokenObj.RedirectUrl = 'http://localhost:4200/setup/email';
-             // console.log("oauthTokenObj:: " + JSON.stringify(oauthTokenObj));
+              oauthTokenObj.RedirectUrl = AppOAuthSettings.redirect_uri;
+
               this.http.post(this.globalConstants.addAuthToken, oauthTokenObj)
                 .subscribe(res => {
-                  console.log("oauthTokenObj:: " + JSON.stringify(res));
+                 // console.log("oauthTokenObj:: " + JSON.stringify(res));
                 });
             });
 
@@ -196,5 +185,5 @@ export class AddEmailDialogComponent implements OnInit {
       return results[1];
   }
 
-  
+
 }

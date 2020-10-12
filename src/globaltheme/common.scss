@@ -184,7 +184,7 @@ mat-form-field {
           .mat-form-field-infix {
             padding: 3px 7px;
             border-top: 2px solid transparent;
-            font: 400 14px/25px "Poppins", sans-serif;
+            font: 400 14px/25px 'Poppins', sans-serif;
             .mat-form-field-label-wrapper {
               > label {
                 &.mat-form-field-label {
@@ -228,21 +228,21 @@ mat-form-field {
       border-radius: 4px;
       background-color: #fafafa;
       box-shadow: 0 2px 4px 0 rgba(12, 0, 46, 0.04);
-      font: 400 15px/25px "Poppins", sans-serif;
+      font: 400 15px/25px 'Poppins', sans-serif;
       .mat-form-field-wrapper {
         padding-bottom: 0;
         .mat-form-field-flex {
           .mat-form-field-infix {
             padding: 3px 7px;
             border-top: 2px solid transparent;
-            font: 400 14px/25px "Poppins", sans-serif;
+            font: 400 14px/25px 'Poppins', sans-serif;
             .mat-select {
               .mat-select-value {
                 // padding-left: 10px;
-                font: 400 14px/25px "Poppins", sans-serif;
+                font: 400 14px/25px 'Poppins', sans-serif;
                 .mat-select-value-text {
                   > span {
-                    font: 400 13px/25px "Poppins", sans-serif;
+                    font: 400 13px/25px 'Poppins', sans-serif;
                   }
                 }
               }
@@ -281,7 +281,7 @@ mat-form-field {
           .mat-form-field-infix {
             padding: 5px 7px;
             border-top: 2px solid transparent;
-            font: 400 14px/25px "Poppins", sans-serif;
+            font: 400 14px/25px 'Poppins', sans-serif;
             .mat-form-field-label-wrapper {
               > label {
                 &.mat-form-field-label {
@@ -308,7 +308,7 @@ mat-form-field {
 mat-checkbox {
   &.mat-checkbox {
     &.glbl-checkbox {
-      font: 500 14px/28px "Poppins", sans-serif;
+      font: 500 14px/28px 'Poppins', sans-serif;
       .mat-checkbox-layout {
         .mat-checkbox-inner-container {
           .mat-checkbox-frame {
@@ -343,7 +343,7 @@ button {
     border: 1px solid #e8e8e8;
     line-height: 33px;
     min-width: 80px;
-    font: 600 14px "Poppins", sans-serif;
+    font: 600 14px 'Poppins', sans-serif;
     padding: 5px 5px;
     border-radius: 4px;
     box-shadow: 0 2px 4px 0 rgba(12, 0, 46, 0.04);
@@ -380,7 +380,7 @@ button {
     color: #fff;
     line-height: 33px;
     min-width: 80px;
-    font: 600 13px "Poppins", sans-serif;
+    font: 600 13px 'Poppins', sans-serif;
     padding: 3px 10px;
     border-radius: 4px;
     .mat-icon {
@@ -436,7 +436,7 @@ button {
     flex-direction: column;
     > li {
       color: #fbfbfb;
-      font: 100 13px "Poppins", sans-serif;
+      font: 100 13px 'Poppins', sans-serif;
       // display: inline-flex;
       justify-content: space-between;
       align-items: center;
@@ -477,7 +477,7 @@ fieldset {
     legend {
       border: 0;
       padding: 4px;
-      font: 600 14px/28px "Poppins", sans-serif;
+      font: 600 14px/28px 'Poppins', sans-serif;
       color: #252324;
     }
   }
@@ -516,7 +516,7 @@ fieldset {
         > h5 {
           margin: 0;
           font-weight: 600;
-          font: 600 16px "Poppins", sans-serif;
+          font: 600 16px 'Poppins', sans-serif;
         }
         &:last-child {
           display: inline-flex;
@@ -546,7 +546,7 @@ fieldset {
             border-bottom: 2px solid #04c3f9;
             th {
               text-align: left;
-              font: 600 12px/25px "Poppins", sans-serif;
+              font: 600 12px/25px 'Poppins', sans-serif;
               color: #252324;
               padding: 5px;
               &:first-of-type {
@@ -569,7 +569,7 @@ fieldset {
             }
             td {
               text-align: left;
-              font: 500 13px/25px "Poppins", sans-serif;
+              font: 500 13px/25px 'Poppins', sans-serif;
               color: #252324;
               padding: 5px;
               border: none;
@@ -737,7 +737,7 @@ table {
         border-bottom: 2px solid #04c3f9;
         th {
           text-align: left;
-          font: 600 12px/25px "Poppins", sans-serif;
+          font: 600 12px/25px 'Poppins', sans-serif;
           color: #252324;
           padding: 5px;
           &:first-of-type {
@@ -751,7 +751,7 @@ table {
         height: 40px;
         td {
           text-align: left;
-          font: 500 13px/25px "Poppins", sans-serif;
+          font: 500 13px/25px 'Poppins', sans-serif;
           color: #252324;
           padding: 5px;
           &:first-of-type {
@@ -871,7 +871,7 @@ app-fmp-tero-card {
   > .fmp-header {
     padding: 0;
     font-weight: 600;
-    font: 600 16px "Poppins", sans-serif;
+    font: 600 16px 'Poppins', sans-serif;
     color: #3d3c41;
     .header {
       padding: 15px 10px;
@@ -887,7 +887,7 @@ app-fmp-tero-card {
         h5 {
           margin: 0;
           font-weight: 600;
-          font: 600 16px "Poppins", sans-serif;
+          font: 600 16px 'Poppins', sans-serif;
         }
       }
     }
@@ -895,11 +895,11 @@ app-fmp-tero-card {
   > .fmp-content {
     padding: 0 16px 16px 16px;
     font-weight: 600;
-    font: 600 16px "Poppins", sans-serif;
+    font: 600 16px 'Poppins', sans-serif;
     color: #3d3c41;
     .main {
       div {
-        font: 400 14px "Poppins", sans-serif;
+        font: 400 14px 'Poppins', sans-serif;
         &.button-list {
           display: inline-flex;
           justify-content: center;
@@ -931,7 +931,7 @@ app-fmp-tero-card {
   .fmp-footer {
     // padding: 0 16px 16px 16px;
     font-weight: 600;
-    font: 600 16px "Poppins", sans-serif;
+    font: 600 16px 'Poppins', sans-serif;
     color: #3d3c41;
     > div {
       padding: 10px 15px;
@@ -967,7 +967,7 @@ app-fmp-tero-card {
             padding: 7px 0;
             display: block;
             font-weight: 500;
-            font: 600 12px "Poppins", sans-serif;
+            font: 600 12px 'Poppins', sans-serif;
           }
         }
       }
@@ -1032,7 +1032,7 @@ mat-chip-list {
                 padding: 7px 0;
                 display: block;
                 font-weight: 500;
-                font: 600 12px "Poppins", sans-serif;
+                font: 600 12px 'Poppins', sans-serif;
               }
             }
           }
@@ -1075,7 +1075,7 @@ mat-form-field {
       border-radius: 4px;
       background-color: #fafafa;
       box-shadow: 0 2px 4px 0 rgba(12, 0, 46, 0.04);
-      font: 400 15px/25px "Poppins", sans-serif;
+      font: 400 15px/25px 'Poppins', sans-serif;
       .mat-form-field-wrapper {
         padding: 0;
         .mat-form-field-flex {
@@ -1084,7 +1084,7 @@ mat-form-field {
           .mat-form-field-infix {
             padding: 3px 7px;
             border-top: 2px solid transparent;
-            font: 400 14px/25px "Poppins", sans-serif;
+            font: 400 14px/25px 'Poppins', sans-serif;
             position: relative;
             .mat-form-field-label-wrapper {
               .mat-form-field-label {
@@ -1158,7 +1158,7 @@ button {
   cursor: pointer !important;
 }
 .chart-legend .legend-label-text {
-  font: 400 13px "Poppins", sans-serif;
+  font: 400 13px 'Poppins', sans-serif;
   letter-spacing: 0.3px;
 }
 .upcoming-due {
@@ -1189,7 +1189,7 @@ button {
       padding-bottom: 25px;
       position: relative;
       :before {
-        content: "";
+        content: '';
         width: 2px;
         height: calc(100% - 27px);
         position: absolute;
@@ -1275,7 +1275,7 @@ ngx-charts-bar-vertical
       justify-content: flex-start;
       padding: 0;
       border-bottom: 1px solid #f5f5f5;
-      font: 400 14px "Poppins", sans-serif;
+      font: 400 14px 'Poppins', sans-serif;
       letter-spacing: 0.2px;
       img {
         width: 24px;
@@ -1425,7 +1425,7 @@ ngx-material-timepicker-minutes-face
 ngx-material-timepicker-minutes-face
   ngx-material-timepicker-face
   .clock-face__clock-hand.clock-face__clock-hand_minute:before {
-  content: "";
+  content: '';
   width: 7px;
   height: 7px;
   background-color: #fff;
@@ -1470,7 +1470,7 @@ ngx-material-timepicker-minutes-face
         white-space: nowrap;
         line-height: 40px;
         height: 40px;
-        font: 400 13px/28px "Poppins", sans-serif;
+        font: 400 13px/28px 'Poppins', sans-serif;
         &.header-text-btn {
           background: #e4e7ea;
           text-align: center;
@@ -1563,7 +1563,7 @@ as-split-area.as-min.as-max .txt-minmax {
           width: 100%;
           .mat-tab-label-content {
             color: #505052;
-            font: 500 12px/28px "Poppins", sans-serif;
+            font: 500 12px/28px 'Poppins', sans-serif;
           }
         }
       }
@@ -1599,7 +1599,7 @@ as-split-area.as-min.as-max .txt-minmax {
   width: 100%;
   border-collapse: separate;
   font-weight: 500;
-  font: 300 14px/28px "Poppins", sans-serif;
+  font: 300 14px/28px 'Poppins', sans-serif;
 }
 
 .table_row {
@@ -1751,23 +1751,26 @@ as-split-area.as-min.as-max .txt-minmax {
 
 ///Mandatory globally
 
-app-data-filter{
-  table { 
-    width: 100%; 
-    border-collapse: collapse; 
+app-data-filter {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0px 0px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 1px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 2px 0px rgba(0, 0, 0, 0.12);
   }
   /* Zebra striping */
-  tr:nth-of-type(odd) { 
-    background: #eee; 
+  tr:nth-of-type(odd) {
+    background: #eee;
   }
-  th { 
-    background: #2887fb; 
-    color: white; 
-    font-weight: bold; 
+  th {
+    background: #2887fb;
+    color: white;
+    font-weight: bold;
   }
-  td, th { 
-    padding: 6px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
+  td,
+  th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
   }
 }

@@ -143,7 +143,7 @@
                 <ng-container *ngIf='col.Payment && col.Payment.length>0'>
                     <div>
                         <div>
-                            <label>Payement</label>
+                            <label>Payment</label>
                             <ng-container *ngFor='let payment of col.Payment'>
                                 <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'"
                                     (change)='getFields($event,payment)' [checked]="chipsSelection.indexOf(payment)>-1">

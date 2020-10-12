@@ -211,4 +211,14 @@ export class GlobalConstantService {
   //invoice/getInvoiceDetail
 
   ///invoice/getCustomerInvoiceList
+
+  //api/recon/getReconHeaderList?ColumnType=Transaction
+
+  get getReconFields() {
+    return this.GET_URL('recon/getReconHeaderList?ColumnType=#ColumnType');
+  }
+
+  get getReconList() {
+    return this.GET_URL('recon/getReconRecordList');
+  }
 }

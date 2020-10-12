@@ -18,6 +18,9 @@ export class UiService {
 
   customerIdEmiiter = new EventEmitter<any>();
 
+
+  reconColumnFieldEmitter  = new EventEmitter<any>();
+
   constructor() {}
 
   toggleSideNav(): void {

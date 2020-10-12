@@ -45,7 +45,7 @@
           <span>Payments</span>
         </li>
 
-        <li (click)="navigateToPath('/receivables/reconcilation')">
+        <li (click)="navigateToPath('/receivables/reconcilation/datafilter')">
           <img src="assets/images1/Payment.png" class="refresh">
           <span>Reconcilliation</span>
         </li>
@@ -57,6 +57,47 @@
 
       </ul>
     </div>
+
+
+    <mat-list-item role="listitem" class="slide-in-up" appExpandMenu>
+      <div class="slide-inner">
+        <img src="assets/images1/setup-icon.png" class="refresh">
+        <div>
+          <span>Incentives</span>
+          <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+        </div>
+      </div>
+    </mat-list-item>
+
+    <div class="glbl-open-advance" @fade>
+      <ul>
+        <li (click)="navigateToPath('/incentives/team')">
+          <img src="assets/images1/Payment.png" class="refresh">
+          <span>Team</span>
+        </li>
+
+       
+
+      </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- <mat-list-item role="listitem" (click)="navigateToPath('/reminder')">

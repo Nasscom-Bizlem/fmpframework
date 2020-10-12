@@ -7,9 +7,6 @@ import { IncentivesComponent } from './incentives.component';
 
 @NgModule({
   declarations: [IncentivesComponent],
-  imports: [
-    CommonModule,
-    IncentivesRoutingModule
-  ]
+  imports: [CommonModule, IncentivesRoutingModule],
 })
-export class IncentivesModule { }
+export class IncentivesModule {}

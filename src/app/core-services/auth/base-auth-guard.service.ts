@@ -88,6 +88,10 @@ export class BaseAuthGuardService {
     var header = {
       headers: {
         Authorization: 'Bearer ' + token,
+        // 'X-permissions': user !== undefined ? user.permissions : '',
+        // 'X-Username': user !== undefined ? user.username : '',
+        // 'X-userSession': user !== undefined ? userSession : '',
+        // Authorization: accessToken,
       },
     };
 

@@ -1,1 +1,14 @@
-<p>data-filter works!</p>
+<div class="table-area tablediv"> 
+    <table class="mat-elevation-z3 fixed_header table hover" *ngIf='data && data.length>0'>
+        <thead>
+            <th *ngFor="let entry of fieldOBJ | keys">
+                {{entry.key}}
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor='let item of data'>
+                <td data-th="key1.key" *ngFor='let key1 of fieldOBJ | keys'>{{item[key1.key]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

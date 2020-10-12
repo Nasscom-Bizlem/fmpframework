@@ -15,6 +15,7 @@ import { FilterComponent } from './filter/filter.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PopoverComponent } from './popover/popover.component';
 import { PopupDataComponent } from './popup-data/popup-data.component';
+import { KeysPipe } from './pipe/object.pipe';
 const sharedModules: any[] = [
   CommonModule,
   FormsModule,
@@ -32,11 +33,12 @@ const sharedModules: any[] = [
     CustomerTilesComponent,
     FmpTeroCardComponent,
     ExpandInnerMenuDirective,
-   
+
     FilterComponent,
     NotfoundComponent,
     PopoverComponent,
     PopupDataComponent,
+    KeysPipe,
   ],
   exports: [
     sharedModules,
@@ -51,8 +53,9 @@ const sharedModules: any[] = [
     FilterComponent,
     NotfoundComponent,
     PopoverComponent,
-    PopupDataComponent, 
+    PopupDataComponent,
+    KeysPipe,
   ],
-  entryComponents: [PopoverComponent,PopupDataComponent],
+  entryComponents: [PopoverComponent, PopupDataComponent],
 })
 export class SharedModule {}

@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from 'src/app/shared/ui.service';
 import { SlideInOutAnimation } from '../recon-animation';
+import {
+  FieldDisputeModel,
+  FieldInvoiceModel,
+  FieldPaymentModel,
+  FieldSettlementModel,
+  FieldsRootModel,
+  FieldTransactionModel,
+} from '../recon.model';
+import { ReconService } from '../recon.service';
 import { FieldDataModelRoot } from './recon-field';
 
 @Component({
@@ -9,153 +19,26 @@ import { FieldDataModelRoot } from './recon-field';
   animations: [SlideInOutAnimation],
 })
 export class ReconControlComponent implements OnInit {
+  fieldTransactionModel: Array<FieldTransactionModel>;
+  fieldPaymentModel: Array<FieldPaymentModel>;
+  fieldInvoiceModel: Array<FieldInvoiceModel>;
+  fieldSettlementModel: Array<FieldSettlementModel>;
+  fieldDisputeModel: Array<FieldDisputeModel>;
+
   selected = 'option1';
   isFilterPanelOpen = false;
   animationState = 'out';
   isFiledOpen = false;
-  columnFields: Array<FieldDataModelRoot> = [];
+  columnFields = [];
 
   chipsSelection = [];
 
   filterChipsSelection = [];
 
-  constructor() {}
+  constructor(private reconService: ReconService,private uiService:UiService) {}
 
   ngOnInit(): void {
-    this.columnFields = [
-      {
-        Transaction: [
-          {
-            ColumnName: 'Order Transaction',
-            ColumnCode: 1,
-            ColumnType: 'Transaction',
-          },
-          {
-            ColumnName: 'Debt Party',
-            ColumnCode: 2,
-            ColumnType: 'Transaction',
-          },
-          {
-            ColumnName: 'Transaction Ref',
-            ColumnCode: 3,
-            ColumnType: 'Transaction',
-          },
-          {
-            ColumnName: 'Transaction No',
-            ColumnCode: 4,
-            ColumnType: 'Transaction',
-          },
-          {
-            ColumnName: 'Credit Party',
-            ColumnCode: 5,
-            ColumnType: 'Transaction',
-          },
-          {
-            ColumnName: 'Transaction type',
-            ColumnCode: 6,
-            ColumnType: 'Transaction',
-          },
-        ],
-        Invoice: [
-          {
-            ColumnName: 'Invoice Date',
-            ColumnCode: 7,
-            ColumnType: 'Invoice',
-          },
-          {
-            ColumnName: 'Invoice No',
-            ColumnCode: 8,
-            ColumnType: 'Invoice',
-          },
-          {
-            ColumnName: 'Invoice Amount',
-            ColumnCode: 9,
-            ColumnType: 'Invoice',
-          },
-        ],
-        Settlement: [
-          {
-            ColumnName: 'Settlement Percentage',
-            ColumnCode: 10,
-            ColumnType: 'Settlement',
-          },
-          {
-            ColumnName: 'Total Settlement Value',
-            ColumnCode: 11,
-            ColumnType: 'Settlement',
-          },
-          {
-            ColumnName: 'Settlement Amount',
-            ColumnCode: 12,
-            ColumnType: 'Settlement',
-          },
-          {
-            ColumnName: 'Settlement Invoice No',
-            ColumnCode: 13,
-            ColumnType: 'Settlement',
-          },
-        ],
-        Payment: [
-          {
-            ColumnName: 'Bank Name',
-            ColumnCode: 14,
-            ColumnType: 'Payment',
-          },
-          {
-            ColumnName: 'Bank Charge',
-            ColumnCode: 15,
-            ColumnType: 'Payment',
-          },
-          {
-            ColumnName: 'Probability Percentage',
-            ColumnCode: 16,
-            ColumnType: 'Payment',
-          },
-          {
-            ColumnName: 'Bank Code',
-            ColumnCode: 17,
-            ColumnType: 'Payment',
-          },
-          {
-            ColumnName: 'Currency',
-            ColumnCode: 18,
-            ColumnType: 'Payment',
-          },
-          {
-            ColumnName: 'Currency Code',
-            ColumnCode: 19,
-            ColumnType: 'Payment',
-          },
-        ],
-        Dispute: [
-          {
-            ColumnName: 'Dispute Date',
-            ColumnCode: 20,
-            ColumnType: 'Dispute',
-          },
-          {
-            ColumnName: 'Dispute ID',
-            ColumnCode: 21,
-            ColumnType: 'Dispute',
-          },
-          {
-            ColumnName: 'Dispute Type',
-            ColumnCode: 22,
-            ColumnType: 'Dispute',
-          },
-          {
-            ColumnName: 'Dispute Status',
-            ColumnCode: 23,
-            ColumnType: 'Dispute',
-          },
-          {
-            ColumnName: 'Dispute Comments',
-            ColumnCode: 24,
-            ColumnType: 'Dispute',
-          },
-        ],
-      },
-    ];
+    this.getReconFields();
   }
 
   getFields(event: any, columnDetails: any) {
@@ -164,13 +47,14 @@ export class ReconControlComponent implements OnInit {
       this.chipsSelection.push(columnDetails);
     } else {
       let index = this.chipsSelection.findIndex(
-        (R) => R.ColumnCode == columnDetails.ColumnCode
+        (R) => R.Id == columnDetails.Id
       );
       if (index > -1) {
         this.chipsSelection.splice(index, 1);
       }
     }
     console.log(this.chipsSelection);
+   
   }
 
   getSourceDetails(event: any) {}
@@ -195,6 +79,7 @@ export class ReconControlComponent implements OnInit {
   showChips() {
     this.isFiledOpen = false;
     this.isFilterPanelOpen = false;
+    this.uiService.reconColumnFieldEmitter.emit(this.chipsSelection);
   }
 
   removeChipList(data: any) {
@@ -203,8 +88,28 @@ export class ReconControlComponent implements OnInit {
     if (index >= 0) {
       this.chipsSelection.splice(index, 1);
     }
+    this.uiService.reconColumnFieldEmitter.emit(this.chipsSelection);
   }
 
   //Filter Chips
-  
+  getReconFields() {
+    //getReconFieldResponse
+    this.reconService.getAllFields().subscribe((res) => {
+      console.log(res);
+      this.fieldTransactionModel = res.Transaction.Transaction;
+      this.fieldPaymentModel = res.Payment.Payment;
+      this.fieldDisputeModel = res.Dispute.Dispute;
+      this.fieldInvoiceModel = res.Invoice.Invoice;
+      this.fieldSettlementModel = res.Settlement.Settlement;
+      this.columnFields = [
+        { Transaction: this.fieldTransactionModel },
+        { Payment: this.fieldPaymentModel },
+        { Settlement: this.fieldSettlementModel },
+        { Invoice: this.fieldInvoiceModel },
+        { Dispute: this.fieldDisputeModel },
+      ];
+      console.log(this.columnFields);
+      this.uiService.reconColumnFieldEmitter.emit(this.fieldTransactionModel);
+    });
+  }
 }

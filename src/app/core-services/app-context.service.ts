@@ -6,4 +6,6 @@ import { UiService } from '../shared/ui.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AppContext {}
+export class AppContext {
+  public accesToken: string;
+}

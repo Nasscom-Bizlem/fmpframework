@@ -17,6 +17,7 @@ export class GlobalConstantService {
 
   GET_URL(api_URL: string) {
     // this.session.resetTimer();
+    // return 'http://199.217.112.145:8089/fmp/api/' + api_URL;
     return 'http://199.217.112.145:8089/fma/api/' + api_URL;
     // return this.BASE_URL + api_URL;
   }
@@ -43,26 +44,26 @@ export class GlobalConstantService {
 
   getHeaders() {
     var accessToken = '';
-    if (localStorage && localStorage.getItem('UserAccessToken')) {
-      accessToken = 'Bearer ' + localStorage.getItem('UserAccessToken');
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (localStorage && localStorage.getItem('currentUser')) {
+      let Bearer = user.tokenType;
+      accessToken = Bearer + ' ' + user.accessToken;
     }
-    const user = JSON.parse(localStorage.getItem('userdata'));
-    let userSession = localStorage.getItem('userSession');
-    if (userSession == null) {
-      userSession = localStorage.getItem('userdata')
-        ? JSON.parse(localStorage.getItem('userdata')).authToken.substring(
-            1,
-            4
-          ) + Math.floor(Math.random() * 1000 + 1)
-        : Math.floor(Math.random() * 1000 + 1).toString();
+    
+    // let userSession = localStorage.getItem('userSession');
+    // if (userSession == null) {
+    //   userSession = localStorage.getItem('userdata')
+    //     ? JSON.parse(localStorage.getItem('userdata')).authToken.substring(
+    //         1,
+    //         4
+    //       ) + Math.floor(Math.random() * 1000 + 1)
+    //     : Math.floor(Math.random() * 1000 + 1).toString();
 
-      localStorage.setItem('userSession', userSession);
-    }
+    //   localStorage.setItem('userSession', userSession);
+    // }
     const headers = new HttpHeaders({
-      'X-Auth-Token': user !== undefined ? user.authToken : '',
-      'X-permissions': user !== undefined ? user.permissions : '',
-      'X-Username': user !== undefined ? user.username : '',
-      'X-userSession': user !== undefined ? userSession : '',
+      // 'X-permissions': user !== undefined ? user.viewPermission : '',
+      'X-Username': user !== undefined ? user.email : '',
       Authorization: accessToken,
     });
 
@@ -78,6 +79,12 @@ export class GlobalConstantService {
   get ForgotPassword() {
     return this.GET_URL('auth/sign_up');
   }
+  
+
+  get TESTAPI() {
+    return this.GET_URL('test/admin');
+  }
+
   //auth/sign_up
 
   //Customers Api

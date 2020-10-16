@@ -66,6 +66,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     // });
   }
   ngOnInit() {
+    debugger;
     this.loginSubscription = this.uiService.isLogginPage.subscribe((res) => {
       this.isLogginPage = res;
     });
@@ -107,6 +108,7 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   loadAppSettings() {
     this.coreServices.getAppSettings().subscribe(
       (response) => {
+        debugger;
         this.globalConstants.AppSettings = response;
         if (this.globalConstants.AppSettings.switchMiddleTierV1) {
           this.globalConstants.BASE_URL = this.globalConstants.AppSettings.baseUrlV1;

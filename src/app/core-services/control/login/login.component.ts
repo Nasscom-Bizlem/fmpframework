@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, OnChanges, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  OnChanges,
+  OnDestroy,
+} from '@angular/core';
 import { UiService } from 'src/app/shared/ui.service';
 import { Router } from '@angular/router';
 import { GlobalConstantService } from '../../global-constant.service';
@@ -15,7 +21,7 @@ import { UserModel } from '../user.model';
   styleUrls: ['./login.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class LoginComponent implements OnInit ,OnChanges{
+export class LoginComponent implements OnInit, OnChanges {
   constructor(
     private UiService: UiService,
     private router: Router,
@@ -30,11 +36,9 @@ export class LoginComponent implements OnInit ,OnChanges{
   password = new FormControl('', [Validators.required]);
 
   ngOnInit(): void {
-    debugger;
     this.UiService.isLogginPage.next(true);
   }
-  ngOnChanges(){
-  }
+  ngOnChanges() {}
 
   forgotPassword() {
     this.isForgot = true;
@@ -53,12 +57,18 @@ export class LoginComponent implements OnInit ,OnChanges{
     let params = new HttpParams()
       .set('userid', this.email.value)
       .set('password', this.password.value);
+    // let params = {
+    //   username: this.email.value,
+    //   password: this.password.value,
+    // };
     this.authGuard.LoggedUser(params).subscribe((res) => {
       console.log(res);
       if (res.User) {
+        // if (res) {
         debugger;
         this.userdata = res.User;
         localStorage.setItem('currentUser', JSON.stringify(this.userdata));
+        // localStorage.setItem('currentUser', JSON.stringify(res));
         const customer = JSON.parse(localStorage.getItem('currentUser'));
         this.UiService.isLogginPage.next(false);
         this.router.navigate(['/customerdashboard']);

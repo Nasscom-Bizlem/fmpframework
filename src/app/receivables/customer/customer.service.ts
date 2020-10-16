@@ -75,6 +75,17 @@ export class CustomerService {
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
+  //TESTAPI
+
+  public getTESTAPI() {
+    return this.http
+      .get<any>(
+        this.globalConstants.TESTAPI,
+        this.globalConstants.getHeaders()        
+      )
+      .pipe(catchError(this.baseAuthSercvice.handleError));
+  }
+
   public requestDataFromMultipleSources(
     customerId: string
   ): Observable<CustomerListNewRootModel[]> {

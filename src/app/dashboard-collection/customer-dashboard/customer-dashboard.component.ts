@@ -50,6 +50,10 @@ export class CustomerDashboardComponent implements OnInit {
       this.showCustomersList();
     // }
     console.log(this.customerListModel);
+    // this.customerService.getTESTAPI().subscribe(res =>{
+    //   debugger;
+    //   console.log(res)
+    // });
   }
   ngOnChanges() {
     if (!!this.globalConstants.BASE_URL) {

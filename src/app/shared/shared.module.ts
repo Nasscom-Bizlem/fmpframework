@@ -16,6 +16,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { PopoverComponent } from './popover/popover.component';
 import { PopupDataComponent } from './popup-data/popup-data.component';
 import { KeysPipe } from './pipe/object.pipe';
+import { IncTabComponent } from '../incentives/incentive-common/inc-tab/inc-tab.component';
 const sharedModules: any[] = [
   CommonModule,
   FormsModule,
@@ -39,6 +40,9 @@ const sharedModules: any[] = [
     PopoverComponent,
     PopupDataComponent,
     KeysPipe,
+
+    //Incentive Related
+    IncTabComponent,
   ],
   exports: [
     sharedModules,
@@ -55,6 +59,9 @@ const sharedModules: any[] = [
     PopoverComponent,
     PopupDataComponent,
     KeysPipe,
+
+    //Incentive Related
+    IncTabComponent,
   ],
   entryComponents: [PopoverComponent, PopupDataComponent],
 })

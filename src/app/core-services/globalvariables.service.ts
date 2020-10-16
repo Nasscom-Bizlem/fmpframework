@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GlobalvariablesService {
-  constructor() {}
+  constructor(private router: Router) {}
+
   FieldLabel = ['Transaction', 'Invoice', 'Payment', 'Dispute', 'Settlement'];
   FieldColumn = [
     'Order Transaction',
@@ -31,4 +33,19 @@ export class GlobalvariablesService {
     'Dispute Status',
     'Dispute Comments',
   ];
+
+  incentiveHomeTabs = [
+    {
+      name: 'Home'
+    },
+    {
+      name: 'Status'
+    },
+    { name: 'Dashboard' },
+  ];
+
+  navigateToPath(path: any) {
+    this.router.navigate([`${path}`]);
+    //admin
+  }
 }

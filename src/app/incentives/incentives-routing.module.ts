@@ -9,6 +9,14 @@ const routes: Routes = [
     component: IncentivesComponent,
     children: [
       {
+        path: 'home',
+        canActivateChild: [],
+        loadChildren: () =>
+          import('./incentive-home/incentive-home.module').then(
+            (m) => m.IncentiveHomeModule
+          ),
+      },
+      {
         path: 'team',
         canActivateChild: [],
         loadChildren: () =>

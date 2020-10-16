@@ -50,10 +50,7 @@ export class CustomerDashboardComponent implements OnInit {
       this.showCustomersList();
     // }
     console.log(this.customerListModel);
-    // this.customerService.getTESTAPI().subscribe(res =>{
-    //   debugger;
-    //   console.log(res)
-    // });
+    
   }
   ngOnChanges() {
     if (!!this.globalConstants.BASE_URL) {
@@ -89,7 +86,7 @@ export class CustomerDashboardComponent implements OnInit {
     debugger;
     const customer = JSON.parse(localStorage.getItem('currentUser'));
     this.customerService
-      .getUserCustomerList(customer.CustomerId)
+      .getUserCustomerList(customer.user.customerId)
       .subscribe((res) => {
         debugger;
         this.customerListModel = res.customers;

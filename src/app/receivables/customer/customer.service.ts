@@ -54,7 +54,8 @@ export class CustomerService {
     return this.http
       .post<CustomerListNewRootModel>(
         this.globalConstants.getCustomerInfo,
-        params
+        params,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -64,14 +65,19 @@ export class CustomerService {
     return this.http
       .post<CustomerTaskAddModel>(
         this.globalConstants.postAddCustomerTask,
-        data
+        data,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
   public updateCustomerTask(data: TaskModel) {
     return this.http
-      .post<TaskRootModel>(this.globalConstants.updateCustomerTask, data)
+      .post<TaskRootModel>(
+        this.globalConstants.updateCustomerTask,
+        data,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
@@ -79,10 +85,7 @@ export class CustomerService {
 
   public getTESTAPI() {
     return this.http
-      .get<any>(
-        this.globalConstants.TESTAPI,
-        this.globalConstants.getHeaders()        
-      )
+      .get<any>(this.globalConstants.TESTAPI, this.globalConstants.getHeaders())
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
@@ -100,7 +103,8 @@ export class CustomerService {
     return this.http
       .post<LogACallAddRootModel>(
         this.globalConstants.createCustomerLogCall,
-        data
+        data,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -112,7 +116,8 @@ export class CustomerService {
     return this.http
       .post<CustomerTaskRootModel>(
         this.globalConstants.getCustomerTaskList,
-        params
+        params,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -124,7 +129,8 @@ export class CustomerService {
     return this.http
       .post<LogACallRootModel>(
         this.globalConstants.getCustomerLogCallList,
-        params
+        params,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -144,7 +150,8 @@ export class CustomerService {
     return this.http
       .post<CustomerDisuteRootModel>(
         this.globalConstants.getDisputeList,
-        params
+        params,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -154,14 +161,19 @@ export class CustomerService {
     return this.http
       .post<UpdateCustomerDisuteRootModel>(
         this.globalConstants.editDisputeList,
-        data
+        data,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
   public deleteDispute(data: any) {
     return this.http
-      .post<any>(this.globalConstants.deleteDispute, data)
+      .post<any>(
+        this.globalConstants.deleteDispute,
+        data,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
@@ -169,26 +181,42 @@ export class CustomerService {
   public getUserCustomerList(customerId: any) {
     let params = new HttpParams().set('managerId', customerId);
     return this.http
-      .post<any>(this.globalConstants.getUserCustomerList, params)
+      .post<any>(
+        this.globalConstants.getUserCustomerList,
+        params,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
   // /addCustomer
   public addCustomer(data: any) {
     return this.http
-      .post<any>(this.globalConstants.addCustomer, data)
+      .post<any>(
+        this.globalConstants.addCustomer,
+        data,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
   public addNotesList(data: any) {
     return this.http
-      .post<any>(this.globalConstants.addNote, data)
+      .post<any>(
+        this.globalConstants.addNote,
+        data,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
   public editdNotes(data: any) {
     return this.http
-      .post<any>(this.globalConstants.editNote, data)
+      .post<any>(
+        this.globalConstants.editNote,
+        data,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
@@ -199,7 +227,8 @@ export class CustomerService {
     return this.http
       .post<CustomerNotesRootModel>(
         this.globalConstants.getCustomerNoteList,
-        params
+        params,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -208,7 +237,11 @@ export class CustomerService {
 
   public deleteNotes(data: any) {
     return this.http
-      .post<any>(this.globalConstants.deleteNote, data)
+      .post<any>(
+        this.globalConstants.deleteNote,
+        data,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
@@ -219,7 +252,8 @@ export class CustomerService {
     return this.http
       .post<CustomerEventListRootModel>(
         this.globalConstants.getCustomerEventList,
-        params
+        params,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -229,7 +263,8 @@ export class CustomerService {
     return this.http
       .post<CustomerEventRootModel>(
         this.globalConstants.createAddCustomerEvent,
-        data
+        data,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -240,7 +275,8 @@ export class CustomerService {
     return this.http
       .post<CustomerInvoiceRootModel>(
         this.globalConstants.getInvoiceList,
-        params
+        params,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -250,7 +286,8 @@ export class CustomerService {
     return this.http
       .post<SaveUpdateCusProPayRootModel>(
         this.globalConstants.addPromiseToPay,
-        data
+        data,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -261,7 +298,8 @@ export class CustomerService {
     return this.http
       .post<GetPromisePayRootModel>(
         this.globalConstants.getPromiseToPayList,
-        params
+        params,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -270,7 +308,8 @@ export class CustomerService {
     return this.http
       .post<SaveUpdateCusProPayRootModel>(
         this.globalConstants.updatePromiseToPay,
-        data
+        data,
+        this.globalConstants.getHeaders()
       )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
@@ -278,7 +317,11 @@ export class CustomerService {
   public getCustomerInvoiceList(customerId: any) {
     let params = new HttpParams().set('managerId', customerId);
     return this.http
-      .post<any>(this.globalConstants.getCustomerInvoiceList, params)
+      .post<any>(
+        this.globalConstants.getCustomerInvoiceList,
+        params,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
@@ -288,7 +331,11 @@ export class CustomerService {
       .set('customerId', customerId)
       .set('invoiceNumber', invoiceNumber);
     return this.http
-      .post<any>(this.globalConstants.getInvoiceDetail, params)
+      .post<any>(
+        this.globalConstants.getInvoiceDetail,
+        params,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
   //getInvoiceNumber
@@ -296,14 +343,22 @@ export class CustomerService {
   public getInvoiceNumber(customerId?: any, invoiceNumber?: any) {
     // let params = new HttpParams().set('customerId', customerId).set('invoiceNumber', invoiceNumber);
     return this.http
-      .post<any>(this.globalConstants.getInvoiceNumber, '')
+      .post<any>(
+        this.globalConstants.getInvoiceNumber,
+        '',
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 
   //addInvoice
   public addInvoice(data: any) {
     return this.http
-      .post<SaveUpdateCusProPayRootModel>(this.globalConstants.addInvoice, data)
+      .post<SaveUpdateCusProPayRootModel>(
+        this.globalConstants.addInvoice,
+        data,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 }

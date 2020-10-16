@@ -17,8 +17,8 @@ export class GlobalConstantService {
 
   GET_URL(api_URL: string) {
     // this.session.resetTimer();
-    // return 'http://199.217.112.145:8089/fmp/api/' + api_URL;
-    return 'http://199.217.112.145:8089/fma/api/' + api_URL;
+    return 'http://199.217.112.145:8089/fmp/api/' + api_URL;
+    // return 'http://199.217.112.145:8089/fma/api/' + api_URL;
     // return this.BASE_URL + api_URL;
   }
 

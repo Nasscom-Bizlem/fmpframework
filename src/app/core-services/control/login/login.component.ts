@@ -54,21 +54,21 @@ export class LoginComponent implements OnInit, OnChanges {
   // this.email.value, this.password.value
 
   logggedIn() {
-    let params = new HttpParams()
-      .set('userid', this.email.value)
-      .set('password', this.password.value);
-    // let params = {
-    //   username: this.email.value,
-    //   password: this.password.value,
-    // };
+    // let params = new HttpParams()
+    //   .set('userid', this.email.value)
+    //   .set('password', this.password.value);
+    let params = {
+      username: this.email.value,
+      password: this.password.value,
+    };
     this.authGuard.LoggedUser(params).subscribe((res) => {
       console.log(res);
-      if (res.User) {
-        // if (res) {
+      // if (res.User) {
+      if (res) {
         debugger;
         this.userdata = res.User;
-        localStorage.setItem('currentUser', JSON.stringify(this.userdata));
-        // localStorage.setItem('currentUser', JSON.stringify(res));
+        // localStorage.setItem('currentUser', JSON.stringify(this.userdata));
+        localStorage.setItem('currentUser', JSON.stringify(res));
         const customer = JSON.parse(localStorage.getItem('currentUser'));
         this.UiService.isLogginPage.next(false);
         this.router.navigate(['/customerdashboard']);

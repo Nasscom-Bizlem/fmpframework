@@ -67,10 +67,12 @@ export class ReconService {
       .set('LastIndex', LastIndex)
       .set('filterRequest', JSON.stringify(filterRequest));
 
-     
-
     return this.httpClient
-      .post<any>(this.globalConstants.getReconList, params)
+      .post<any>(
+        this.globalConstants.getReconList,
+        params,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
 }

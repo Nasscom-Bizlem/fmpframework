@@ -102,10 +102,11 @@ export class CustomerListDialogComponent implements OnInit, AfterViewInit {
   // dataSource = ELEMENT_DATA;
   showCustomerDetails(element: any) {
     console.log(element);
+    debugger;
     // this.router.navigateByUrl(`/customer/overview?id=${element.Id}`);
     // this.router.navigate( ['/customer/overview', {id1: element.Id, id2:
     //   element.CustomerId}]);
-    this.router.navigate(['/customer/overview'], {
+    this.router.navigate(['/receivables/customer/overview'], {
       queryParams: { CustomerId: element.CustomerId },
     });
     this.dialogRef.close();

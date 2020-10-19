@@ -7,7 +7,7 @@
         <mat-chip color="primary" appExpandMenu>Stage History</mat-chip>
       </mat-chip-list> -->
       <mat-tab-group [animationDuration]="'0'">
-        <mat-tab label="Activity">
+        <mat-tab label="Activity" *ngIf='appContext.geStorageTaskPermission'>
           <app-fmp-tero-card>
             <div class="header">Task</div>
             <div class="main">
@@ -38,7 +38,7 @@
                           <span class="material-icons link-icon">
                             dns
                           </span>
-                          <span class="pointer" (click)='openTaskDialog(upcoming)'>
+                          <span class="pointer" (click)='openTaskDialog(upcoming)' >
                             <!-- <mat-checkbox class="glbl-checkbox" [labelPosition]="'after'">
                           </mat-checkbox>  -->
                             {{upcoming.Name}}

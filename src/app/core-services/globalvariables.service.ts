@@ -31,4 +31,6 @@ export class GlobalvariablesService {
     'Dispute Status',
     'Dispute Comments',
   ];
+
+  isCustomerEdit: boolean = false;
 }

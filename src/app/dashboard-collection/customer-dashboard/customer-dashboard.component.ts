@@ -3,7 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppContext } from 'src/app/core-services/app-context.service';
 import { GlobalConstantService } from 'src/app/core-services/global-constant.service';
+import { GlobalvariablesService } from 'src/app/core-services/globalvariables.service';
 import { CustomerService } from 'src/app/receivables/customer/customer.service';
 import { CustomerListNewModel } from 'src/app/receivables/customer/customermodel/customerlist.model';
 import { UiService } from 'src/app/shared/ui.service';
@@ -14,6 +16,8 @@ import { UiService } from 'src/app/shared/ui.service';
   styleUrls: ['./customer-dashboard.component.scss'],
 })
 export class CustomerDashboardComponent implements OnInit {
+  displayedColumns: string[];
+
   @Input() customerListModel: Array<CustomerListNewModel>;
   // @Output() showCustomers = new EventEmitter();
   // @Output() profileEmitter = new EventEmitter();
@@ -41,30 +45,34 @@ export class CustomerDashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private uiService: UiService,
-    private globalConstants: GlobalConstantService
+    private globalConstants: GlobalConstantService,
+    public appcontext: AppContext
   ) {}
 
   ngOnInit(): void {
     debugger;
     // if (!!this.globalConstants.BASE_URL) {
-      this.showCustomersList();
+    this.showCustomersList();
     // }
     console.log(this.customerListModel);
-    
+
+    if (!this.appcontext.geStorageViewPermission) {
+      this.displayedColumns = ['Name', 'Email', 'TeamSpaceName', 'PhoneNumber'];
+    } else {
+      this.displayedColumns = [
+        'Name',
+        'Email',
+        'TeamSpaceName',
+        'PhoneNumber',
+        'view',
+      ];
+    }
   }
   ngOnChanges() {
     if (!!this.globalConstants.BASE_URL) {
       this.showCustomersList();
     }
   }
-
-  displayedColumns: string[] = [
-    'Name',
-    'Email',
-    'TeamSpaceName',
-    'PhoneNumber',
-    'view',
-  ];
 
   //Later Will move in Seperate Service Class
   pageEvent(event) {
@@ -87,14 +95,19 @@ export class CustomerDashboardComponent implements OnInit {
     const customer = JSON.parse(localStorage.getItem('currentUser'));
     this.customerService
       .getUserCustomerList(customer.user.customerId)
-      .subscribe((res) => {
-        debugger;
-        this.customerListModel = res.customers;
-        this.dataSource = new MatTableDataSource(this.customerListModel);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        this.count = this.customerListModel.length;
-      });
+      .subscribe(
+        (res) => {
+          debugger;
+          this.customerListModel = res.customers;
+          this.dataSource = new MatTableDataSource(this.customerListModel);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          this.count = this.customerListModel.length;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   showCustomerDetails(element: any) {
@@ -107,7 +120,7 @@ export class CustomerDashboardComponent implements OnInit {
 
   goToProfile() {
     const customer = JSON.parse(localStorage.getItem('currentUser'));
-    let cusId = customer.CustomerId;
+    let cusId = customer.user.customerId;
     this.uiService.customerIdEmiiter.emit(cusId);
     this.router.navigate(['/receivables/customer/overview'], {
       queryParams: { CustomerId: cusId },

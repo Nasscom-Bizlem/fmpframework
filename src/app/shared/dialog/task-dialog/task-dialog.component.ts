@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AppContext } from 'src/app/core-services/app-context.service';
 import { CustomerTaskModel } from 'src/app/receivables/customer/customermodel/customertask.model';
 interface Status {
   value: number;
@@ -17,7 +18,8 @@ interface Priority {
 export class TaskDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<TaskDialogComponent>
+    public dialogRef: MatDialogRef<TaskDialogComponent>,
+    public appcontext: AppContext
   ) {}
   selectedvalue: string;
   statusSelected: number = 0;

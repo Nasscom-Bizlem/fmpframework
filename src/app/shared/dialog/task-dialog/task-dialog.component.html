@@ -5,8 +5,8 @@
   <!-- </button> -->
 </div>
 <div class="dialog-content">
-  <mat-tab-group animationDuration="0ms">
-    <mat-tab label="Details">
+  <!-- <mat-tab-group animationDuration="0ms"> -->
+    <!-- <mat-tab label="Details"> -->
 
 
       <app-fmp-tero-card class="row-flex">
@@ -16,7 +16,7 @@
             <label>Assigned To</label>
             <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
               <input matInput placeholder="" value="" [readonly]='isFieldDisabled' [(ngModel)]='taskList.AssignedTo'>
-              <mat-icon matSuffix (click)='enableFields()'>create</mat-icon>
+              <mat-icon matSuffix (click)='enableFields()' *ngIf='appcontext.geStorageEditTaskPermission'>create</mat-icon>
             </mat-form-field>
           </div>
           <div>
@@ -40,7 +40,7 @@
             <label>Name</label>
             <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
               <input matInput placeholder="" value="" [readonly]='isFieldDisabled' [(ngModel)]='taskList.Name'>
-              <mat-icon matSuffix (click)='enableFields()'>create</mat-icon>
+              <mat-icon matSuffix (click)='enableFields()' *ngIf='appcontext.geStorageEditTaskPermission'>create</mat-icon>
             </mat-form-field>
           </div>
           <div>
@@ -53,7 +53,7 @@
             <label>Related To</label>
             <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
               <input matInput placeholder="" value="" [readonly]='isFieldDisabled' [(ngModel)]='taskList.AssignedTo'>
-              <mat-icon matSuffix (click)='enableFields()'>create</mat-icon>
+              <mat-icon matSuffix (click)='enableFields()' *ngIf='appcontext.geStorageEditTaskPermission'>create</mat-icon>
             </mat-form-field>
           </div>
           <div>
@@ -70,7 +70,7 @@
             <label>Created By</label>
             <mat-form-field class="glb-ctrl-search" [floatLabel]="'never'" [class.readonly]='isFieldDisabled'>
               <input matInput placeholder="" value="" [readonly]='isFieldDisabled' [(ngModel)]='taskList.Name'>
-              <mat-icon matSuffix (click)='enableFields()'>create</mat-icon>
+              <mat-icon matSuffix (click)='enableFields()' *ngIf='appcontext.geStorageEditTaskPermission'>create</mat-icon>
             </mat-form-field>
           </div>
           <div>
@@ -90,19 +90,19 @@
       </app-fmp-tero-card>
 
 
-    </mat-tab>
+    <!-- </mat-tab> -->
 
-    <mat-tab label="Related">
+    <!-- <mat-tab label="Related">
 
       Content 2
 
-    </mat-tab>
+    </mat-tab> -->
 
-  </mat-tab-group>
+  <!-- </mat-tab-group> -->
 </div>
 <div class="dialog-footer">
   <div class="dialog-footer">
-    <button mat-button class="glbl-btn  green-btn" (click)='updateTask()' [disabled]='isFieldDisabled'>
+    <button mat-button class="glbl-btn  green-btn" (click)='updateTask()' [disabled]='isFieldDisabled' *ngIf='appcontext.geStorageEditTaskPermission'>
       <span>Save</span>
     </button>
     <button mat-button class="glbl-btn" [mat-dialog-close]='false'>

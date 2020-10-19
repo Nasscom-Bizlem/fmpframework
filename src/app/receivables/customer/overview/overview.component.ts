@@ -5,6 +5,7 @@ import { CustomerTaskModel } from '../customermodel/customertask.model';
 import { CustomerLogACallModel } from '../customermodel/customerlogcall.model';
 import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { CustomerEventModel } from '../customermodel/customer-events.model';
+import { AppContext } from 'src/app/core-services/app-context.service';
 
 @Component({
   selector: 'app-overview',
@@ -20,7 +21,8 @@ export class OverviewComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
     private customerService: CustomerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public appContext:AppContext
   ) {
     this.view = [150, 150];
   }
@@ -164,6 +166,9 @@ export class OverviewComponent implements OnInit {
   }
 
   openTaskDialog(taskName: CustomerTaskModel) {
+    if(this.appContext.geStorageTaskPermission){
+      return;
+    }
     this.dialogService.openTask(taskName).subscribe((res) => {
       if (res) {
         this.customerService

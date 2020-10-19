@@ -31,7 +31,9 @@
   
       <ng-container matColumnDef="PhoneNumber">
         <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Phone Number </th>
-        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{element.customerContacts[0].PhoneNumber}}</span> </td>
+        <td mat-cell *matCellDef="let element" class="tbl-xs-6"> 
+          <span *ngIf='element.customerContacts && element.customerContacts.length>0'>
+            {{element.customerContacts[0].PhoneNumber}}</span> </td>
       </ng-container>
   
   
@@ -41,7 +43,7 @@
       </ng-container> -->
   
   
-      <ng-container matColumnDef="view">
+      <ng-container matColumnDef="view" *ngIf='appcontext.geStorageViewPermission'>
         <th mat-header-cell *matHeaderCellDef class="tbl-xs-6"> View </th>
         <td mat-cell *matCellDef="let element" class="tbl-xs-6">
           <mat-icon mat-icon-button class="edit" (click)='showCustomerDetails(element)'>

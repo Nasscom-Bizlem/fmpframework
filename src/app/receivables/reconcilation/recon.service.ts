@@ -21,9 +21,8 @@ export class ReconService {
 
   getReconFieldResponse(ColumnType: string) {
     return this.httpClient.get<any>(
-      this.globalConstants.getReconFields.replace('#ColumnType', ColumnType)
-
-      //   this.globalconstants.getHeaders()
+      this.globalConstants.getReconFields.replace('#ColumnType', ColumnType),
+      this.globalConstants.getHeaders()
     );
   }
 

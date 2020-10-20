@@ -22,7 +22,7 @@ export class OverviewComponent implements OnInit {
     private dialogService: DialogService,
     private customerService: CustomerService,
     private route: ActivatedRoute,
-    public appContext:AppContext
+    public appContext: AppContext
   ) {
     this.view = [150, 150];
   }
@@ -42,6 +42,11 @@ export class OverviewComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+  
+    console.log(
+      'this.appContext.getCreateNewEventPermission',
+      this.appContext.getCreateNewEventPermission
+    );
     // const customer = JSON.parse(localStorage.getItem('currentUser'));
     this.route.queryParams.subscribe((res) => {
       console.log(res);
@@ -116,42 +121,48 @@ export class OverviewComponent implements OnInit {
 
   //Dialog Related
   openNewtask() {
-    this.dialogService.openNewTask(this.customerId,'customer').subscribe((res) => {
-      console.log(res);
-      if (res) {
-        this.customerService
-          .postCustomerTaskModel(res)
-          .subscribe((taskresponse) => {
-            debugger;
-            console.log(taskresponse);
-            this.customerTaskDetails.unshift(taskresponse.task);
-          });
-      }
-    });
+    this.dialogService
+      .openNewTask(this.customerId, 'customer')
+      .subscribe((res) => {
+        console.log(res);
+        if (res) {
+          this.customerService
+            .postCustomerTaskModel(res)
+            .subscribe((taskresponse) => {
+              debugger;
+              console.log(taskresponse);
+              this.customerTaskDetails.unshift(taskresponse.task);
+            });
+        }
+      });
   }
   openLogCall() {
-    this.dialogService.openlogCall(this.customerId,'customer').subscribe((res) => {
-      console.log(res);
-      if (res) {
-        debugger;
-        this.customerService
-          .createCustomerLogCall(res)
-          .subscribe((logresponse) => {
-            this.CustomerLogACallList.unshift(logresponse.customerLogCall);
-            console.log(this.CustomerLogACallList);
-          });
-      }
-    });
+    this.dialogService
+      .openlogCall(this.customerId, 'customer')
+      .subscribe((res) => {
+        console.log(res);
+        if (res) {
+          debugger;
+          this.customerService
+            .createCustomerLogCall(res)
+            .subscribe((logresponse) => {
+              this.CustomerLogACallList.unshift(logresponse.customerLogCall);
+              console.log(this.CustomerLogACallList);
+            });
+        }
+      });
   }
   openEvent() {
-    this.dialogService.openNewEvent(this.customerId,'customer').subscribe((res) => {
-      if (res) {
-        this.customerService.addCustomerEvent(res).subscribe((res1) => {
-          this.customerEventList.unshift(res1.customerEvent);
-          console.log(this.customerEventList);
-        });
-      }
-    });
+    this.dialogService
+      .openNewEvent(this.customerId, 'customer')
+      .subscribe((res) => {
+        if (res) {
+          this.customerService.addCustomerEvent(res).subscribe((res1) => {
+            this.customerEventList.unshift(res1.customerEvent);
+            console.log(this.customerEventList);
+          });
+        }
+      });
   }
 
   selectedIndex = -1;
@@ -166,7 +177,7 @@ export class OverviewComponent implements OnInit {
   }
 
   openTaskDialog(taskName: CustomerTaskModel) {
-    if(this.appContext.geStorageTaskPermission){
+    if (this.appContext.getCreateTaskPermission) {
       return;
     }
     this.dialogService.openTask(taskName).subscribe((res) => {
@@ -198,29 +209,35 @@ export class OverviewComponent implements OnInit {
 
   getTaskLists(CustomerId: any) {
     // let params = new HttpParams().set('customerId', customer.CustomerId);
-    this.customerService.getCustomerTaskList(CustomerId,'customer').subscribe((res) => {
-      console.log(res);
-      this.customerTaskDetails = res.taskList;
-      console.log(this.customerTaskDetails);
-    });
+    this.customerService
+      .getCustomerTaskList(CustomerId, 'customer')
+      .subscribe((res) => {
+        console.log(res);
+        this.customerTaskDetails = res.taskList;
+        console.log(this.customerTaskDetails);
+      });
   }
   getLogACallList(CustomerId: any) {
     // const customer = JSON.parse(localStorage.getItem('currentUser'));
     // let params = new HttpParams().set('customerId', customer.CustomerId);
-    this.customerService.getCustomerLogCallList(CustomerId,'customer').subscribe((res) => {
-      console.log(res);
-      this.CustomerLogACallList = res.CustomerLogCallList;
-      console.log(this.CustomerLogACallList);
-    });
+    this.customerService
+      .getCustomerLogCallList(CustomerId, 'customer')
+      .subscribe((res) => {
+        console.log(res);
+        this.CustomerLogACallList = res.CustomerLogCallList;
+        console.log(this.CustomerLogACallList);
+      });
   }
 
   getEventLists(CustomerId: any) {
     //getCustomerEventLists
-    this.customerService.getCustomerEventLists(CustomerId,'customer').subscribe((res1) => {
-      console.log(res1);
-      this.customerEventList = res1.customerEventsList;
-      // this.CustomerLogACallList = res.CustomerLogCallList;
-      // console.log(this.customerEventList);
-    });
+    this.customerService
+      .getCustomerEventLists(CustomerId, 'customer')
+      .subscribe((res1) => {
+        console.log(res1);
+        this.customerEventList = res1.customerEventsList;
+        // this.CustomerLogACallList = res.CustomerLogCallList;
+        // console.log(this.customerEventList);
+      });
   }
 }

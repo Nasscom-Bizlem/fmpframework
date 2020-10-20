@@ -46,17 +46,17 @@ export class CustomerDashboardComponent implements OnInit {
     private router: Router,
     private uiService: UiService,
     private globalConstants: GlobalConstantService,
-    public appcontext: AppContext
+    public appContext: AppContext
   ) {}
 
-  ngOnInit(): void {
-    debugger;
+  ngOnInit(): void { 
+    this.uiService.isLogginPage.next(false);
     // if (!!this.globalConstants.BASE_URL) {
     this.showCustomersList();
     // }
     console.log(this.customerListModel);
 
-    if (!this.appcontext.geStorageViewPermission) {
+    if (!this.appContext.geStorageCustomerViewPermission) {
       this.displayedColumns = ['Name', 'Email', 'TeamSpaceName', 'PhoneNumber'];
     } else {
       this.displayedColumns = [

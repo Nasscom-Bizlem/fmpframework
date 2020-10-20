@@ -7,7 +7,7 @@
         <mat-chip color="primary" appExpandMenu>Stage History</mat-chip>
       </mat-chip-list> -->
       <mat-tab-group [animationDuration]="'0'">
-        <mat-tab label="Activity" *ngIf='appContext.geStorageTaskPermission'>
+        <mat-tab label="Activity" *ngIf='appContext.getCreateTaskPermission'>
           <app-fmp-tero-card>
             <div class="header">Task</div>
             <div class="main">
@@ -56,7 +56,7 @@
           </app-fmp-tero-card>
 
         </mat-tab>
-        <mat-tab label="Log A Call">
+        <mat-tab label="Log A Call" *ngIf='appContext.getCreateLogPermission'>
           <app-fmp-tero-card>
             <div class="header">Log a call</div>
             <div class="main">
@@ -105,8 +105,8 @@
 
           </app-fmp-tero-card>
         </mat-tab>
-        <mat-tab label="New Event">
-          <app-fmp-tero-card>
+        <mat-tab label="New Event" *ngIf='appContext.getCreateNewEventPermission'>
+          <app-fmp-tero-card >
             <div class="header">New Event</div>
             <div class="main">
               <div class="button-list">

@@ -7,7 +7,7 @@
     <mat-sidenav [mode]="mobileQuery.matches ? 'over' : 'side'"
      [fixedInViewport]="mobileQuery.matches"
       [disableClose]='true'>
-      <app-left-panel *ngIf='isLogginPage'></app-left-panel>
+      <app-left-panel></app-left-panel>
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>

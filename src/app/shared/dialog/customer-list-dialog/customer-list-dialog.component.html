@@ -10,7 +10,7 @@
   <ng-container *ngIf='!isCustomerAdd'>
     <div class="add-customer">
       <div>
-        <mat-icon matTooltip="Add Customers" (click)='addCustomer()'>person_add</mat-icon>
+        <mat-icon matTooltip="Add Customers" (click)='addCustomer()' *ngIf='appContxt.getAddCustomerDetailPermission'>person_add</mat-icon>
       </div>
     </div>
     <div class="table-wrapper tbl-border dialog-tbl">

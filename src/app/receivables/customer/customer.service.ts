@@ -138,7 +138,11 @@ export class CustomerService {
   //addDisputeList
   public addDisputeList(data: CustomerDisputeModel) {
     return this.http
-      .post<any>(this.globalConstants.addDisputeList, data)
+      .post<any>(
+        this.globalConstants.addDisputeList,
+        data,
+        this.globalConstants.getHeaders()
+      )
       .pipe(catchError(this.baseAuthSercvice.handleError));
   }
   //dispute/getDisputeList

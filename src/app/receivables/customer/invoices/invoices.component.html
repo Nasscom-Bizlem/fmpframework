@@ -14,24 +14,24 @@ LogCall -->
       <!-- <button mat-button class="glbl-btn xs-glbl-btn green-btn">
         Edit
       </button> -->
-      <button mat-button class="glbl-btn xs-glbl-btn violet-btn" (click)='openLogCall()'>
+      <button mat-button class="glbl-btn xs-glbl-btn violet-btn" (click)='openLogCall()' *ngIf='appContext.getCreateLogPermission'>
         Log Call
       </button>
-      <button mat-button class="glbl-btn  xs-glbl-btn yellow-btn" (click)='openNewtask()'>
+      <button mat-button class="glbl-btn  xs-glbl-btn yellow-btn" (click)='openNewtask()' *ngIf='appContext.getCreateTaskPermission'>
         New Task
       </button>
-      <button mat-button class="glbl-btn xs-glbl-btn  blue-btn " (click)='addPromise()'>
+      <button mat-button class="glbl-btn xs-glbl-btn  blue-btn " (click)='addPromise()' *ngIf='appContext.getAddPromiseToPayPermission'>
         Add Promise to Pay
       </button>
-      <button mat-button class="glbl-btn  xs-glbl-btn orange-btn">
+      <!-- <button mat-button class="glbl-btn  xs-glbl-btn orange-btn">
         Delete
-      </button>
-      <button mat-button class="glbl-btn  xs-glbl-btn orange-btn" (click)='addInvoice()'>
+      </button> -->
+      <button mat-button class="glbl-btn  xs-glbl-btn orange-btn" (click)='addInvoice()'  *ngIf='appContext.getAddInvoicePermission'>
         Add Invoice
       </button>
-      <span class="material-icons refresh" mat-icon-button>
+      <!-- <span class="material-icons refresh" mat-icon-button>
         loop
-      </span>
+      </span> -->
     </div>
   </div>
   <table mat-table [dataSource]="dataSource" class="glbl-tbl invoice-tbl">

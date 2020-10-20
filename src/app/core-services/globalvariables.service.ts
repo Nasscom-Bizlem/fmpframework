@@ -32,5 +32,7 @@ export class GlobalvariablesService {
     'Dispute Comments',
   ];
 
+  ScreenLabel = ['isCustomerEdit', 'isCustomerView'];
+
   isCustomerEdit: boolean = false;
 }

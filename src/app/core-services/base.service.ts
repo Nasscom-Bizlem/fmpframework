@@ -14,6 +14,7 @@ export class BaseService {
   ) {}
 
   getAppSettings() {
+    debugger;
     return this.http.get(this.constants.WebConfig_URL);
   }
 

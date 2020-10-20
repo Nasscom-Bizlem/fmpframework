@@ -16,6 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { CustomerListNewModel } from 'src/app/receivables/customer/customermodel/customerlist.model';
+import { AppContext } from 'src/app/core-services/app-context.service';
 
 @Component({
   selector: 'app-customer-list-dialog',
@@ -41,7 +42,8 @@ export class CustomerListDialogComponent implements OnInit, AfterViewInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<CustomerListDialogComponent>,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public appContxt: AppContext
   ) {}
 
   // dataSource: MatTableDataSource<FavouriteModel>;
@@ -102,7 +104,6 @@ export class CustomerListDialogComponent implements OnInit, AfterViewInit {
   // dataSource = ELEMENT_DATA;
   showCustomerDetails(element: any) {
     console.log(element);
-    debugger;
     // this.router.navigateByUrl(`/customer/overview?id=${element.Id}`);
     // this.router.navigate( ['/customer/overview', {id1: element.Id, id2:
     //   element.CustomerId}]);

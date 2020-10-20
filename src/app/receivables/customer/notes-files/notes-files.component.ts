@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DatePipe } from '@angular/common';
+import { AppContext } from 'src/app/core-services/app-context.service';
 export interface PeriodicElement {
   title: string;
   textpreview: string;
@@ -55,7 +56,8 @@ export class NotesFilesComponent implements OnInit, AfterViewInit {
     private dialogService: DialogService,
     private route: ActivatedRoute,
     private customerService: CustomerService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    public appContext: AppContext
   ) {}
 
   ngOnInit(): void {
@@ -90,55 +92,61 @@ export class NotesFilesComponent implements OnInit, AfterViewInit {
   }
 
   getCustomerNoteLists(customerId: any) {
-    this.customerService.getCustomerNoteList(customerId,'customer').subscribe((res) => {
-      this.customerNotesList = res.customerNotesList;
-      this.count = this.customerNotesList.length;
-      // console.log(this.customerNotesList);
-      // this.dataSource = this.customerNotesList;
-      this.dataSource = new MatTableDataSource(this.customerNotesList);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
+    this.customerService
+      .getCustomerNoteList(customerId, 'customer')
+      .subscribe((res) => {
+        this.customerNotesList = res.customerNotesList;
+        this.count = this.customerNotesList.length;
+        // console.log(this.customerNotesList);
+        // this.dataSource = this.customerNotesList;
+        this.dataSource = new MatTableDataSource(this.customerNotesList);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
   }
 
   openNotesList() {
-    this.dialogService.openNotes(this.customerId,'customer').subscribe((res) => {
-      if (res) {
-        this.customerService.addNotesList(res).subscribe((notesAddRes) => {
-          this.customerNotesList.unshift(notesAddRes.customerNote);
-          this.count = this.customerNotesList.length;
-          // console.log(this.CustomerDisputeList);
-          // this.dataSource = this.CustomerDisputeList;
-          this.dataSource = new MatTableDataSource(this.customerNotesList);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-        });
-      }
-    });
+    this.dialogService
+      .openNotes(this.customerId, 'customer')
+      .subscribe((res) => {
+        if (res) {
+          this.customerService.addNotesList(res).subscribe((notesAddRes) => {
+            this.customerNotesList.unshift(notesAddRes.customerNote);
+            this.count = this.customerNotesList.length;
+            // console.log(this.CustomerDisputeList);
+            // this.dataSource = this.CustomerDisputeList;
+            this.dataSource = new MatTableDataSource(this.customerNotesList);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          });
+        }
+      });
   }
 
   editNotes(element) {
     debugger;
-    this.dialogService.openNotes(this.customerId,'customer', element).subscribe((res) => {
-      if (res) {
-        this.customerService.editdNotes(res).subscribe((disputeresponse) => {
-          debugger;
-          let updatedDisputeIndex;
-          updatedDisputeIndex = this.customerNotesList.findIndex(
-            (r) => r.Id === disputeresponse.customerNote.Id
-          );
-          if (updatedDisputeIndex > -1) {
-            let disputeList = disputeresponse.customerNote;
-            this.customerNotesList.splice(updatedDisputeIndex, 1);
-            this.customerNotesList.push(disputeList);
-            this.customerNotesList.sort((n1, n2) => n1.Id - n2.Id);
-            this.dataSource = new MatTableDataSource(this.customerNotesList);
-            this.dataSource.paginator = this.paginator;
-            this.dataSource.sort = this.sort;
-          }
-        });
-      }
-    });
+    this.dialogService
+      .openNotes(this.customerId, 'customer', element)
+      .subscribe((res) => {
+        if (res) {
+          this.customerService.editdNotes(res).subscribe((disputeresponse) => {
+            debugger;
+            let updatedDisputeIndex;
+            updatedDisputeIndex = this.customerNotesList.findIndex(
+              (r) => r.Id === disputeresponse.customerNote.Id
+            );
+            if (updatedDisputeIndex > -1) {
+              let disputeList = disputeresponse.customerNote;
+              this.customerNotesList.splice(updatedDisputeIndex, 1);
+              this.customerNotesList.push(disputeList);
+              this.customerNotesList.sort((n1, n2) => n1.Id - n2.Id);
+              this.dataSource = new MatTableDataSource(this.customerNotesList);
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+            }
+          });
+        }
+      });
   }
   deleteNotes(element: CustomerNotesListModel) {
     let obj = new CustomerNotesListModel();

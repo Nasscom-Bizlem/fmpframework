@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './core-services/control/login/login.component';
 import { RegistrationComponent } from './core-services/control/registration/registration.component';
+import { ApplicationGuard } from './core-services/guard/application-guard.guard';
 import { AuthLoginGuard } from './core-services/guard/authLogin.guard';
 import { CustomerDashboardComponent } from './dashboard-collection/customer-dashboard/customer-dashboard.component';
 import { CustomerInvoiceComponent } from './dashboard-collection/customer-invoice/customer-invoice.component';
@@ -13,15 +14,31 @@ const routes: Routes = [
     canActivate: [],
     canActivateChild: [],
     children: [
-      { path: 'login', component: LoginComponent },
+      { 
+        // canActivate: [ApplicationGuard],
+        path: 'login', component: LoginComponent 
+      },
       { path: 'registration', component: RegistrationComponent },
-      { path: 'notfound', component: NotfoundComponent },
-      { path: 'customerdashboard', component: CustomerDashboardComponent },
-      { path: 'customerinvoice', component: CustomerInvoiceComponent },
-      
+      {
+        // canActivate: [ApplicationGuard],
+        path: 'notfound',
+        component: NotfoundComponent,
+      },
+      {
+        // canActivate: [ApplicationGuard],
+        path: 'customerdashboard',
+        component: CustomerDashboardComponent,
+      },
+      {
+        // canActivate: [ApplicationGuard],
+        path: 'customerinvoice',
+        component: CustomerInvoiceComponent,
+      },
+
       //---------------------------Incentives-------------------------------------------
       {
         path: 'incentives',
+        canActivate: [ApplicationGuard],
         canActivateChild: [AuthLoginGuard],
         loadChildren: () =>
           import('./incentives/incentives.module').then(

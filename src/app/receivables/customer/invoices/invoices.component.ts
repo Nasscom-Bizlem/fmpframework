@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from '../customer.service';
 import { DatePipe } from '@angular/common';
 import { PromisePayModel } from '../customermodel/promise-pay.model';
+import { AppContext } from 'src/app/core-services/app-context.service';
 export interface PeriodicElement {
   customerName: string;
   recievable: number;
@@ -73,7 +74,8 @@ export class InvoicesComponent implements OnInit, AfterViewInit {
     private dialogService: DialogService,
     private route: ActivatedRoute,
     private customerService: CustomerService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    public appContext: AppContext
   ) {}
 
   ngOnInit(): void {

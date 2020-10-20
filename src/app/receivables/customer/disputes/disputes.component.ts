@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { AppContext } from 'src/app/core-services/app-context.service';
 export interface PeriodicElement {
   DisputeId: number;
   contactName: string;
@@ -61,7 +62,8 @@ export class DisputesComponent implements OnInit, AfterViewInit {
     private dialogService: DialogService,
     private customerService: CustomerService,
     private datePipe: DatePipe,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public appContext: AppContext
   ) {}
 
   ngOnInit(): void {
@@ -70,7 +72,6 @@ export class DisputesComponent implements OnInit, AfterViewInit {
       this.customerId = res.CustomerId;
       this.getDisputeLists(this.customerId);
     });
-
   }
 
   ngAfterViewInit() {
@@ -135,7 +136,7 @@ export class DisputesComponent implements OnInit, AfterViewInit {
     // const customer = JSON.parse(localStorage.getItem('currentUser'));
     // let params = new HttpParams().set('customerId', customer.CustomerId);
     this.customerService
-      .getDisputeList(customerId,'customer')
+      .getDisputeList(customerId, 'customer')
       .subscribe((disputeresponse) => {
         debugger;
         console.log(disputeresponse);
@@ -150,7 +151,7 @@ export class DisputesComponent implements OnInit, AfterViewInit {
   }
 
   openDispute() {
-    this.dialogService.openDispute( this.customerId).subscribe((res) => {
+    this.dialogService.openDispute(this.customerId).subscribe((res) => {
       if (res) {
         this.customerService
           .addDisputeList(res)
@@ -167,54 +168,60 @@ export class DisputesComponent implements OnInit, AfterViewInit {
     });
   }
   openNewtask() {
-    this.dialogService.openNewTask(this.customerId,'customer').subscribe((res) => {
-      console.log(res);
-      if (res) {
-        this.customerService
-          .postCustomerTaskModel(res)
-          .subscribe((taskresponse) => {
-            console.log(taskresponse);
-          });
-      }
-    });
+    this.dialogService
+      .openNewTask(this.customerId, 'customer')
+      .subscribe((res) => {
+        console.log(res);
+        if (res) {
+          this.customerService
+            .postCustomerTaskModel(res)
+            .subscribe((taskresponse) => {
+              console.log(taskresponse);
+            });
+        }
+      });
   }
   openLogCall() {
-    this.dialogService.openlogCall(this.customerId,'customer').subscribe((res) => {
-      console.log(res);
-      if (res) {
-        this.customerService
-          .createCustomerLogCall(res)
-          .subscribe((logresponse) => {
-            console.log(logresponse);
-          });
-      }
-    });
+    this.dialogService
+      .openlogCall(this.customerId, 'customer')
+      .subscribe((res) => {
+        console.log(res);
+        if (res) {
+          this.customerService
+            .createCustomerLogCall(res)
+            .subscribe((logresponse) => {
+              console.log(logresponse);
+            });
+        }
+      });
   }
 
   editDispute(element) {
-    this.dialogService.openDispute(this.customerId,element).subscribe((res) => {
-      if (res) {
-        this.customerService
-          .editDisputesList(res)
-          .subscribe((disputeresponse) => {
-            let updatedDisputeIndex;
-            updatedDisputeIndex = this.CustomerDisputeList.findIndex(
-              (r) => r.Id === disputeresponse.dispute.Id
-            );
-            if (updatedDisputeIndex > -1) {
-              let disputeList = disputeresponse.dispute;
-              this.CustomerDisputeList.splice(updatedDisputeIndex, 1);
-              this.CustomerDisputeList.push(disputeList);
-              this.CustomerDisputeList.sort((n1, n2) => n1.Id - n2.Id);
-              this.dataSource = new MatTableDataSource(
-                this.CustomerDisputeList
+    this.dialogService
+      .openDispute(this.customerId, element)
+      .subscribe((res) => {
+        if (res) {
+          this.customerService
+            .editDisputesList(res)
+            .subscribe((disputeresponse) => {
+              let updatedDisputeIndex;
+              updatedDisputeIndex = this.CustomerDisputeList.findIndex(
+                (r) => r.Id === disputeresponse.dispute.Id
               );
-              this.dataSource.paginator = this.paginator;
-              this.dataSource.sort = this.sort;
-            }
-          });
-      }
-    });
+              if (updatedDisputeIndex > -1) {
+                let disputeList = disputeresponse.dispute;
+                this.CustomerDisputeList.splice(updatedDisputeIndex, 1);
+                this.CustomerDisputeList.push(disputeList);
+                this.CustomerDisputeList.sort((n1, n2) => n1.Id - n2.Id);
+                this.dataSource = new MatTableDataSource(
+                  this.CustomerDisputeList
+                );
+                this.dataSource.paginator = this.paginator;
+                this.dataSource.sort = this.sort;
+              }
+            });
+        }
+      });
   }
 
   getDateFormate(date: any) {

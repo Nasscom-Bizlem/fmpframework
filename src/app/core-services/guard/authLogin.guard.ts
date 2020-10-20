@@ -5,10 +5,12 @@ import {
   RouterStateSnapshot,
   Router,
   CanActivateChild,
+  UrlTree,
 } from '@angular/router';
 import { BaseService } from '../base.service';
 import { UiService } from 'src/app/shared/ui.service';
 import { GlobalConstantService } from '../global-constant.service';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthLoginGuard implements CanActivate, CanActivateChild {
@@ -27,11 +29,6 @@ export class AuthLoginGuard implements CanActivate, CanActivateChild {
       this.router.navigate(['login']);
       return false;
     }
-    // if (!this.router.url.includes('/CustomerId')) {
-    //   this.router.navigate(['notfound']);
-    //   return false;
-    // }
-
     return true;
   }
 }

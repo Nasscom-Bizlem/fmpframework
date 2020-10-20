@@ -42,7 +42,7 @@
         <mat-slide-toggle class="glbl-toggler">Reminder</mat-slide-toggle>
   
       </div>
-      <div class="slider">
+      <div class="slider"  *ngIf='appContext.getLateFeesTogglePermission'>
         <mat-slide-toggle class="glbl-toggler">Late Fees</mat-slide-toggle>
   
       </div>

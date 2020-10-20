@@ -13,13 +13,17 @@ Preview
  -->
 
 
-      <button mat-button class="glbl-btn xs-glbl-btn green-btn" (click)='openDispute()'>
+     
+      <button mat-button class="glbl-btn xs-glbl-btn green-btn" (click)='openDispute()'
+        *ngIf='appContext.getAddDisputePermission'>
         New Dispute
       </button>
-      <button mat-button class="glbl-btn xs-glbl-btn violet-btn" (click)='openLogCall()'>
+      <button mat-button class="glbl-btn xs-glbl-btn violet-btn" (click)='openLogCall()'
+        *ngIf='appContext.getCreateLogPermission'>
         Log Call
       </button>
-      <button mat-button class="glbl-btn  xs-glbl-btn yellow-btn" (click)='openNewtask()' >
+      <button mat-button class="glbl-btn  xs-glbl-btn yellow-btn" (click)='openNewtask()'
+        *ngIf='appContext.getCreateTaskPermission'>
         New Task
       </button>
       <!-- <button mat-button class="glbl-btn xs-glbl-btn  blue-btn ">
@@ -33,7 +37,7 @@ Preview
       </span>
     </div>
   </div>
- <table mat-table [dataSource]="dataSource" class="glbl-tbl" >
+  <table mat-table [dataSource]="dataSource" class="glbl-tbl" *ngIf='appContext.getViewDisputePermission'>
 
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef class="tbl-xs-6">
@@ -58,7 +62,8 @@ Preview
     </ng-container>
     <ng-container matColumnDef="LastActivity">
       <th mat-header-cell *matHeaderCellDef class="tbl-xs-3">Last Activity </th>
-      <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{getDateFormate(element.LastActivity)}}</span> </td>
+      <td mat-cell *matCellDef="let element" class="tbl-xs-6"> <span>{{getDateFormate(element.LastActivity)}}</span>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="Owner">
@@ -82,7 +87,7 @@ Preview
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
- <ng-container>
+  <ng-container>
     <mat-paginator [length]='count' [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
       (page)="pageEvent($event)"></mat-paginator>
   </ng-container>

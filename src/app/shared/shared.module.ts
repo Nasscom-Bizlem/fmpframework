@@ -16,6 +16,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { PopoverComponent } from './popover/popover.component';
 import { PopupDataComponent } from './popup-data/popup-data.component';
 import { KeysPipe } from './pipe/object.pipe';
+import { LoaderSpinnerComponent } from './loader-spinner/loader-spinner.component';
 const sharedModules: any[] = [
   CommonModule,
   FormsModule,
@@ -39,6 +40,7 @@ const sharedModules: any[] = [
     PopoverComponent,
     PopupDataComponent,
     KeysPipe,
+    LoaderSpinnerComponent,
   ],
   exports: [
     sharedModules,

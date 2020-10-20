@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppContext } from 'src/app/core-services/app-context.service';
 import { DialogService } from 'src/app/shared/dialog/dialog.service';
 import { UiService } from 'src/app/shared/ui.service';
 import { CustomerService } from './customer.service';
@@ -9,7 +10,7 @@ import { CustomerTaskModel } from './customermodel/customertask.model';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  styleUrls: ['./customer.component.scss'],
 })
 export class CustomerComponent implements OnInit {
   @ViewChild('chartWrapper', { read: ElementRef }) chartWrapper: ElementRef;
@@ -21,7 +22,8 @@ export class CustomerComponent implements OnInit {
     private dialgService: DialogService,
     private customerService: CustomerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public appContext: AppContext
   ) {}
 
   customerDetails: CustomerListNewModel;
@@ -32,6 +34,7 @@ export class CustomerComponent implements OnInit {
   ctx: any;
 
   ngOnInit(): void {
+    this.uiService.isLogginPage.next(false);
     if (window.innerWidth > 1025) {
       this.view = [window.innerWidth / 2.95, 280];
       this.barPadding = '24';
@@ -243,5 +246,4 @@ export class CustomerComponent implements OnInit {
     }
     return name;
   }
-
 }

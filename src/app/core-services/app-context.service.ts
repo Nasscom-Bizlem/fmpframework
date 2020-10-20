@@ -26,9 +26,7 @@ export class AppContext {
 
   get geStorageCustomerEditPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 1 &&
-        R.viewLabel.toLowerCase() === 'isCustomerEdit'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'isCustomerEdit'.toLowerCase()
     );
 
     if (isEdit) {
@@ -39,9 +37,7 @@ export class AppContext {
   //isCustomerView
   get geStorageCustomerViewPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 2 &&
-        R.viewLabel.toLowerCase() === 'isCustomerView'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'isCustomerView'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -51,8 +47,7 @@ export class AppContext {
   //AddCustomer
   get geAddCustomerPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 3 && R.viewLabel.toLowerCase() === 'AddCustomer'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'AddCustomer'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -62,8 +57,7 @@ export class AppContext {
   //CreateTask
   get getCreateTaskPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 4 && R.viewLabel.toLowerCase() === 'CreateTask'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'CreateTask'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -73,8 +67,7 @@ export class AppContext {
   //CreateLog
   get getCreateLogPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 5 && R.viewLabel.toLowerCase() === 'CreateLog'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'CreateLog'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -84,9 +77,7 @@ export class AppContext {
   //CreateNewEvent
   get getCreateNewEventPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 6 &&
-        R.viewLabel.toLowerCase() === 'CreateNewEvent'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'CreateNewEvent'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -96,9 +87,7 @@ export class AppContext {
   //AddCustomerDetail
   get getAddCustomerDetailPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 7 &&
-        R.viewLabel.toLowerCase() === 'AddCustomerDetail'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'AddCustomerDetail'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -108,8 +97,7 @@ export class AppContext {
   //ViewDispute
   get getViewDisputePermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 8 && R.viewLabel.toLowerCase() === 'ViewDispute'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'ViewDispute'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -119,8 +107,7 @@ export class AppContext {
   //AddDispute
   get getAddDisputePermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 9 && R.viewLabel.toLowerCase() === 'AddDispute'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'AddDispute'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -130,9 +117,7 @@ export class AppContext {
   //AddPromiseToPay
   get getAddPromiseToPayPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 11 &&
-        R.viewLabel.toLowerCase() === 'AddPromiseToPay'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'AddPromiseToPay'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -142,8 +127,7 @@ export class AppContext {
   //AddInvoice
   get getAddInvoicePermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 12 && R.viewLabel.toLowerCase() === 'AddInvoice'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'AddInvoice'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -154,8 +138,7 @@ export class AppContext {
   //AddNote
   get getAddNotePermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 13 && R.viewLabel.toLowerCase() === 'AddNote'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'AddNote'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -165,8 +148,7 @@ export class AppContext {
   //EditNote
   get getEditNotePermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 14 && R.viewLabel.toLowerCase() === 'EditNote'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'EditNote'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -176,8 +158,7 @@ export class AppContext {
   //DeleteNote
   get getDeleteNotePermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 15 && R.viewLabel.toLowerCase() === 'DeleteNote'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'DeleteNote'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -187,9 +168,7 @@ export class AppContext {
   //InvoiceCreateNewEvent
   get getInvoiceCreateNewEventPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 16 &&
-        R.viewLabel.toLowerCase() === 'InvoiceCreateNewEvent'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'InvoiceCreateNewEvent'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -199,9 +178,7 @@ export class AppContext {
   //InvoiceCreateLog
   get getInvoiceCreateLogPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 17 &&
-        R.viewLabel.toLowerCase() === 'InvoiceCreateLog'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'InvoiceCreateLog'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -211,8 +188,7 @@ export class AppContext {
   //EditTask
   get getStorageEditTaskPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 18 && R.viewLabel.toLowerCase() === 'EditTask'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'EditTask'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -222,8 +198,7 @@ export class AppContext {
   //DeleteTask
   get getDeleteTaskPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 19 && R.viewLabel.toLowerCase() === 'EditTask'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'EditTask'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -233,9 +208,7 @@ export class AppContext {
   //PaymentSearchFilter
   get getPaymentSearchFilterPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 20 &&
-        R.viewLabel.toLowerCase() === 'PaymentSearchFilter'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'PaymentSearchFilter'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -245,8 +218,7 @@ export class AppContext {
   //AddPayment
   get getAddPaymentPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 21 && R.viewLabel.toLowerCase() === 'AddPayment'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'AddPayment'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -256,8 +228,7 @@ export class AppContext {
   //ViewPayment
   get getViewPaymentPermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 22 && R.viewLabel.toLowerCase() === 'ViewPayment'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'ViewPayment'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);
@@ -267,9 +238,7 @@ export class AppContext {
   //LateFeesToggle
   get getLateFeesTogglePermission() {
     let isEdit = this.appContextPermissionModel.find(
-      (R) =>
-        R.id === 23 &&
-        R.viewLabel.toLowerCase() === 'LateFeesToggle'.toLowerCase()
+      (R) => R.viewLabel.toLowerCase() === 'LateFeesToggle'.toLowerCase()
     );
     if (isEdit) {
       return this.getBoolean(isEdit.viewValue);

@@ -86,9 +86,9 @@ app-header {
       display: block;
       overflow: hidden;
       z-index: 1024;
-      margin-top: 56px;
-      &.login {
-        margin: 0;
+      margin-top: 0;
+      &.login-done {
+        margin-top: 56px;
       }
       .mat-sidenav {
         &.mat-drawer {

@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit, OnChanges {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
-  ngOnInit(): void {
-    this.UiService.isLogginPage.next(true);
-  }
+  ngOnInit(): void {}
   ngOnChanges() {}
 
   forgotPassword() {

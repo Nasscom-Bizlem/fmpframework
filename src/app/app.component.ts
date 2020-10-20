@@ -29,11 +29,10 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   mobileQuery: MediaQueryList;
   reason = '';
   isbackdrop = false;
-  isLogginPage : any;
+  isLogginPage: true;
   sub: Subscription;
   queryParam: any;
 
-  // tslint:disable-next-line: variable-name
   private _mobileQueryListener: () => void;
 
   loginSubscription: Subscription;
@@ -54,18 +53,14 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     this._mobileQueryListener = () => {
       changeDetectorRef.detectChanges();
     };
-    // tslint:disable-next-line: deprecation
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.isLogginPage = true;
   }
-  ngOnChanges() {
-    // debugger;
-    // this.route.queryParams.subscribe((res) => {
-    //   if (!res.CustomerId) {
-    //     this.router.navigate(['notfound']);
-    //   }
-    // });
-  }
+  ngOnChanges() {}
   ngOnInit() {
+    if (this.router.url.indexOf('/login') > -1) {
+      alert('Login Apge');
+    }
     debugger;
     this.loginSubscription = this.uiService.isLogginPage.subscribe((res) => {
       this.isLogginPage = res;
@@ -80,7 +75,6 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     //   });
   }
 
-  // tslint:disable-next-line: typedef
   toggle(event) {
     this.sideNav.toggle();
     console.log(this.mobileQuery);
@@ -91,7 +85,6 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
   ngOnDestroy(): void {
-    // tslint:disable-next-line: deprecation
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.sub.unsubscribe();
     this.loginSubscription.unsubscribe();
@@ -99,7 +92,6 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   //data
   close(reason: string) {
     console.log(reason);
-    // this.navToggle.emit(true);
     this.isbackdrop = false;
     this.reason = reason;
     this.sideNav.toggle();
